@@ -7,40 +7,70 @@
             "filename":"./about-the-workshop/content.md"
         },
         {
-            "title": "Lab 0: Connect to HOL image",
+            "title": "Lab 0: Starting the environment",
             "description":"Setup the Lab Environment",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab000/content.md"
         },
         {
-            "title": "Lab 1: Lab 1",
+            "title": "Lab 1: Database Security Assessment Tool",
             "description":"Lab 1",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab100/content.md"
         },
         {
-            "title": "Lab 2: Lab 2",
+            "title": "Lab 2: Network Encryption",
             "description":"Lab 2",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab200/content.md"
         },
         {
-            "title": "Lab 3: Lab 3",
+            "title": "Lab 3: Transparent Data Encryption",
             "description":"Lab 3",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab300/content.md"
         },
         {
-            "title": "Lab 4: Lab 4",
+            "title": "Lab 4: Data Redaction",
             "description":"Lab 4",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab400/content.md"
         },
         {
-            "title": "Lab 5: Lab 5",
+            "title": "Lab 5: Privilege Analysis",
             "description":"Lab 5",
-            "publisheddate": "03/20/2020",
+            "publisheddate": "04/21/2020",
             "filename":"./lab500/content.md"
+        },
+        {
+            "title": "Lab 6: Database Vault",
+            "description":"Lab 6",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab600/content.md"
+        },
+        {
+            "title": "Lab 7: Database Audit",
+            "description":"Lab 7",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab700/content.md"
+        },
+        {
+            "title": "Lab 8: Audit Vault",
+            "description":"Lab 8",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab800/content.md"
+        },
+        {
+            "title": "Lab 9: Data Masking",
+            "description":"Lab 9",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab900/content.md"
+        },
+        {
+            "title": "Lab 10: Running DBSAT and compare results",
+            "description":"Lab 10",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab1000/content.md"
         }
     ]
 }
