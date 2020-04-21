@@ -1,4 +1,4 @@
-# Title in About-the-workshop folder #
+# Database Security Solution Workshop #
 
 ## Workshop Overview ##
 
