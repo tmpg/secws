@@ -1,7 +1,7 @@
 {
     "tutorials": [
         {
-            "title": "Workshop Overview",
+            "title": "Oracle Database Security Solutions Workshop",
             "description":"Workhop Overview",
             "publisheddate": "01/15/2020",
             "filename":"./about-the-workshop/content.md"

@@ -20,6 +20,15 @@ Some more text
 Some more
 ````
 
+Table
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+
+
 ### Substep 1.1 ###
 
 Description of substep 1.1
