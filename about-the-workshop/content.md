@@ -60,10 +60,10 @@ Labs to use and demonstrate the functionalities of the Data Safe solution that w
 ## Access the labs ##
 
 - Use **Lab Contents** menu on your right to access the labs.
-    - If the menu is not displayed, click the menu button ![](./images/menu-button.png) on the top right  make it visible.
+    - If the menu is not displayed, click the menu button ![](./images/menu-button.png =50x50) on the top right  make it visible.
 
-- From the menu, click on the lab that you like to proceed with. For example, if you like to proceed to **Lab 0**, click **Lab 0: Setup the Lab Environment**.
 
+- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
 
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
