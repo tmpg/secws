@@ -60,7 +60,7 @@ Labs to use and demonstrate the functionalities of the Data Safe solution that w
 ## Access the labs ##
 
 - Use **Lab Contents** menu on your right to access the labs.
-    - If the menu is not displayed, click the menu button ![](./images/menu-button.png =30x30) on the top right  make it visible.
+    - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right  make it visible.
 
 
 - From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
@@ -71,7 +71,8 @@ Labs to use and demonstrate the functionalities of the Data Safe solution that w
 ## Acknowledgements
 
 **Authors** 
-- Adrián Galindo, Database Product Management, PTS LAD - April 2020
-- François Pons, Database Product Management, PTS EMEA - April 2020
 
-Data Safe Labs based on the materials from Oracle Database Security Product Management Team.
+- Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
+
+**Credits**
+- Data Safe Labs based on the materials from Oracle Database Security Product Management Team.
