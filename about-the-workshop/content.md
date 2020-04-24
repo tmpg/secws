@@ -68,7 +68,7 @@ Labs to use and demonstrate the functionalities of the Data Safe solution that w
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
-## Acknowledgements
+## Acknowledgments
 
 **Authors** 
 
