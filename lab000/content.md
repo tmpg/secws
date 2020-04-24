@@ -59,11 +59,17 @@ Set the **oracle** user in Connection->Data->Auto-login username for **dbclient*
 
 Choose the private key on Connection->SSH->Auth menu and save it to the session 
 
-![Choose private key](./images/Lab000_Step2_3.png "Private Key")
+![Choose private key](./images/Lab000_Step2_3.png )
 
 Additionally you can specify a keepalive of 10 seconds to prevent disconnections 
 
 ![Keepalive](./images/Lab000_Step2_4.png "")
+
+Finally, enable compression to make a smoother connection- Save the session with a name and open the new connection to the server.
+
+![Compression](./images/Lab000_Step2_4.png )
+
+
 
 ### Connect from Linux or Mac
 
