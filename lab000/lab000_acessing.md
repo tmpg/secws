@@ -1,4 +1,4 @@
-# Accessing Labs Environment #
+# Lab 0: Accessing Labs Environment
 
 In this chapter, we will connect to the labs environment and make sure we are ready for the hands-on.
 Your environment is hosted on Oracle Cloud Infrastructure with the following virtual machines as instances on IaaS:
@@ -11,10 +11,10 @@ Your environment is hosted on Oracle Cloud Infrastructure with the following vir
 The virtual machines can be used accessing with a SSH Client (Putty, MobaXterm) or with `ssh` on the command line (bash, mac or linux).
 For secdb, the Virtual Cloud Network (**VNC**) is also configured to access a graphical environment.
 
-## Disclaimer ##
+## Disclaimer
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
 
-## Requirements ##
+## Requirements
 
 Access to the OCI tenancy, provided by the instructor.
 Private key to access via SSH with the client.
@@ -67,7 +67,7 @@ Additionally you can specify a keepalive of 10 seconds to prevent disconnections
 
 Finally, enable compression to make a smoother connection- Save the session with a name and open the new connection to the server.
 
-![Compression](./images/Lab000_Step2_4.png )
+![Compression](./images/Lab000_Step2_5.png )
 
 
 
@@ -88,7 +88,7 @@ Use the actual IP address for each server, to open 2 terminals:
 You now can start the workshop labs.
 
 
-## Acknowledgments
+## Credits
 
 **Authors** 
 
