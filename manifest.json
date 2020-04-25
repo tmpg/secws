@@ -10,13 +10,13 @@
             "title": "Lab 0: Accessing the Labs environment",
             "description":"Accessing the Labs environment",
             "publisheddate": "04/21/2020",
-            "filename":"./lab000/content.md"
+            "filename":"./lab000/lab000_acessing.md"
         },
         {
             "title": "Lab 1: Database Security Assessment Tool",
-            "description":"Lab 1",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab100/content.md"
+            "description":"Database Security Assessment Tool",
+            "publisheddate": "04/24/2020",
+            "filename":"./lab100/lab100_dbsat.md"
         },
         {
             "title": "Lab 2: Network Encryption",
