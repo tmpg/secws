@@ -29,7 +29,7 @@ Modify sqlnet.ora on secdb as shown below:
 
 You can then connect to EM13cR3 at the following URL:
 
-**https://<EM CC PUBLIC IP>:7803/em**
+**https://&lt EM CC PUBLIC IP &gt:7803/em**
 
 Allow a security exception as we are just using a self-signed certificate and connect as **sysman**, password **MyDbPwd#1**.
 
