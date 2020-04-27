@@ -28,9 +28,9 @@ We will now install and run DBSAT on PDB1 in Container Database CONT.
 Go to the session opened to the secdb server.
 
 Change to the lab directory
-```
-[oracle@secdb ~ ]$ <copy>cd /home/oracle/HOL/lab01_dbsat/</copy>
-```
+
+    [oracle@secdb ~ ]$ <copy>cd /home/oracle/HOL/lab01_dbsat/</copy>
+
 Run `dbsat10_user.sh` to create a DBSAT local user with appropriate privileges.
 
 ```
@@ -269,7 +269,7 @@ zip completed successfully.
 
 Unzip the report file to be able to check the contents by opening it in Firefox. You will be asked for the password to unzip. Input `oracle` when requested. 
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
 [oracle@secdb install]$ <copy>unzip dbsat_pdb1_report.zip</copy>
 Archive:  dbsat_pdb1_report.zip
@@ -278,7 +278,8 @@ Archive:  dbsat_pdb1_report.zip
   inflating: dbsat_pdb1_report.html
   inflating: dbsat_pdb1_report.xlsx
   inflating: dbsat_pdb1_report.json
-```
+````
+
 
 ### Explore Database Security Risk Assessment Report
 
@@ -292,10 +293,76 @@ The report contains *informational tables*, as the one shown below and *findings
 
 ![](./images/Lab100_Step2_1.png)
 
-At the top of the report, you will find information about the Collector and Reporter run details as the date of data collection and the date of report generation along with the reporter version.
+At the top of the report, you will find information about the Collector and Reporter run details as the date of *data collection* and the *date of report* generation along with the reporter version.
 The Summary table presents all the findings per section/domain along with their severity level. 
 
 ![](./images/Lab100_Step2_2.png)
+
+
+![](./images/Lab100_Step2_3.png)
+
+The DBSAT reporter resulting analysis is reported in units called ***Findings***. In each Finding you see: 
+
+***Unique ID for the Rule*** The ID has two parts: the prefix identifies the report section, and the suffix identifies the specific rule. 
+
+**Status** You can use the status values as guidelines for implementing DBSAT recommendations. They can be used to prioritize and schedule changes based on the level of risk, and what it might mean to your organization. High risk might require immediate remedial action, whereas other risks might be fixed during a scheduled downtime, or bundled together with other maintenance activities. 
+
+- Pass: no error found 
+- Evaluate: needs manual analysis 
+- Low Risk 
+- Medium Risk 
+- High Risk 
+- Advisory: improve security posture by enabling additional security features and technology. 
+
+**Summary** A brief summary of the finding. When the finding is informational, the summary typically reports only the number of data elements that were examined.
+
+**Details** Provides detailed information to explain the finding summary, typically results from the assessed database, followed by any recommendations for changes. 
+
+**Remarks** Explains the reason for the rule and recommended actions for remediation. 
+
+**References** If the finding is related to a CIS Oracle Database Benchmark 12c v2.0.0 recommendation or related to a GDPR Article/Recitals it will be mentioned here.
+
+![](./images/Lab100_Step2_4.png)
+
+Currently, our PDB1 database is not using many security features at all!
+
+![](./images/Lab100_Step2_5.png)
+
+In the next chapters, we will follow some of DBSAT’s Advisory findings to strengthen the security of our database. For example, in the Encryption section, DBSAT recommends to consider encrypting data:
+
+![](./images/Lab100_Step2_6.png)
+
+## Step 3: Running DBSAT Discoverer
+
+DBSAT Discoverer quickly provides a view on where sensitive data resides, which is helpful on the path to GDPR compliance. DBSAT will not create any objects in the database.
+
+Here is the Sensitive and Personal data you may discover in Oracle Databases:
+
+- Personally identifiable information (PII), Health Data, Job data, IT Data...
+- Religion, Political Affiliation, Trade Union Membership, Criminal, Race, etc.
+
+Let’s run DBSAT Discoverer on PDB1
+
+### Update Configuration Files
+
+DBSAT discoverer will connect to the database and collect data needed for analysis based on settings specified in configuration files. Locate the configuration file dbsat.config and make sure it is updateable:
+
+
+    [oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
+    [oracle@secdb conf]$ <copy>ls -l</copy>
+    total 228
+    -r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config
+    -r--r--r--. 1 oracle oinstall 29090 Sep 11  2019 sensitive_de.ini
+    -r--r--r--. 1 oracle oinstall 12642 Sep 11  2019 sensitive_el.ini
+    -r--r--r--. 1 oracle oinstall 31911 Sep 11  2019 sensitive_en.ini
+    -r--r--r--. 1 oracle oinstall 26829 Sep 11  2019 sensitive_es.ini
+    -r--r--r--. 1 oracle oinstall 27308 Sep 11  2019 sensitive_fr.ini
+    -r--r--r--. 1 oracle oinstall 25172 Sep 11  2019 sensitive_it.ini
+    -r--r--r--. 1 oracle oinstall 26302 Sep 11  2019 sensitive_nl.ini
+    -r--r--r--. 1 oracle oinstall 27424 Sep 11  2019 sensitive_pt.ini
+    [oracle@secdb conf]$ <copy>cp sample_dbsat.config dbsat.config</copy>
+    [oracle@secdb conf]$ <copy>chmod +w dbsat.config</copy>
+    
 
 ## Credits
 
