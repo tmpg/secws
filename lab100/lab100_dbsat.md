@@ -178,8 +178,9 @@ To run DBSAT collector, we will use script `dbsat30_collect.sh`, which contains 
 
 The time it takes to complete depends on the hardware and the data that needs to be collected. It might take between 2 to 5 minutes. At the end of the process, you will be asked to provide a password twice (please use **oracle**) to protect the report file dbsat_pdb1.zip. Below is the expected output:
 
+    [oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
+
 ```
-[oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
 [oracle@secdb lab01_dbsat]$ <copy>./dbsat30_collect.sh</copy>
 
 Database Security Assessment Tool version 2.2 (September 2019)
@@ -215,13 +216,14 @@ Version 19.6.0.0.0
 DBSAT Collector completed successfully.
 
 Calling /u01/oracle/db/prod/19c/ee/bin/zip to encrypt dbsat_pdb1.json...
-
-Enter password: <copy>oracle</copy>
-Verify password: <copy>oracle</copy>
-  adding: dbsat_pdb1.json (deflated 86%)
-zip completed successfully.
-[oracle@secdb lab01_dbsat]$
 ```
+
+    Enter password: <copy>oracle</copy>
+
+    Verify password: <copy>oracle</copy>
+      adding: dbsat_pdb1.json (deflated 86%)
+    zip completed successfully.
+
 
 ### Run DBSAT Reporter
 
@@ -234,8 +236,9 @@ To run DBSAT discoverer, we will use script `dbsat40_report.sh`, which contains 
 At the beginning and end of the process, you will be asked to provide a password. Please use oracle.
 Below is the expected output:
 
+    [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
+
 ```
-[oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
 [oracle@secdb lab01_dbsat]$ <copy>./dbsat40_report.sh</copy>
 
 Database Security Assessment Tool version 2.2 (September 2019)
@@ -256,30 +259,32 @@ Archive:  dbsat_pdb1.zip
 DBSAT Reporter ran successfully.
 
 Calling /usr/bin/zip to encrypt the generated reports...
-
-Enter password: <copy>oracle</copy>
-Verify password: <copy>oracle</copy>
-        zip warning: dbsat_pdb1_report.zip not found or empty
-  adding: dbsat_pdb1_report.txt (deflated 78%)
-  adding: dbsat_pdb1_report.html (deflated 84%)
-  adding: dbsat_pdb1_report.xlsx (deflated 3%)
-  adding: dbsat_pdb1_report.json (deflated 82%)
-zip completed successfully.
 ```
+
+    Enter password: <copy>oracle</copy>
+
+    Verify password: <copy>oracle</copy>
+          zip warning: dbsat_pdb1_report.zip not found or empty
+      adding: dbsat_pdb1_report.txt (deflated 78%)
+      adding: dbsat_pdb1_report.html (deflated 84%)
+      adding: dbsat_pdb1_report.xlsx (deflated 3%)
+      adding: dbsat_pdb1_report.json (deflated 82%)
+    zip completed successfully.
+
 
 Unzip the report file to be able to check the contents by opening it in Firefox. You will be asked for the password to unzip. Input `oracle` when requested. 
 
-````
-[oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
-[oracle@secdb install]$ <copy>unzip dbsat_pdb1_report.zip</copy>
-Archive:  dbsat_pdb1_report.zip
-[dbsat_pdb1_report.zip] dbsat_pdb1_report.txt password: <copy>oracle</copy>
-  inflating: dbsat_pdb1_report.txt
-  inflating: dbsat_pdb1_report.html
-  inflating: dbsat_pdb1_report.xlsx
-  inflating: dbsat_pdb1_report.json
-````
 
+    [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
+
+    [oracle@secdb install]$ <copy>unzip dbsat_pdb1_report.zip</copy>
+    Archive:  dbsat_pdb1_report.zip
+
+    [dbsat_pdb1_report.zip] dbsat_pdb1_report.txt password: <copy>oracle</copy>
+      inflating: dbsat_pdb1_report.txt
+      inflating: dbsat_pdb1_report.html
+      inflating: dbsat_pdb1_report.xlsx
+      inflating: dbsat_pdb1_report.json
 
 ### Explore Database Security Risk Assessment Report
 
@@ -303,7 +308,7 @@ The Summary table presents all the findings per section/domain along with their 
 
 The DBSAT reporter resulting analysis is reported in units called ***Findings***. In each Finding you see: 
 
-***Unique ID for the Rule*** The ID has two parts: the prefix identifies the report section, and the suffix identifies the specific rule. 
+**Unique ID for the Rule** The ID has two parts: the prefix identifies the report section, and the suffix identifies the specific rule. 
 
 **Status** You can use the status values as guidelines for implementing DBSAT recommendations. They can be used to prioritize and schedule changes based on the level of risk, and what it might mean to your organization. High risk might require immediate remedial action, whereas other risks might be fixed during a scheduled downtime, or bundled together with other maintenance activities. 
 
@@ -349,6 +354,7 @@ DBSAT discoverer will connect to the database and collect data needed for analys
 
 
     [oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
+
     [oracle@secdb conf]$ <copy>ls -l</copy>
     total 228
     -r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config
@@ -360,7 +366,9 @@ DBSAT discoverer will connect to the database and collect data needed for analys
     -r--r--r--. 1 oracle oinstall 25172 Sep 11  2019 sensitive_it.ini
     -r--r--r--. 1 oracle oinstall 26302 Sep 11  2019 sensitive_nl.ini
     -r--r--r--. 1 oracle oinstall 27424 Sep 11  2019 sensitive_pt.ini
+
     [oracle@secdb conf]$ <copy>cp sample_dbsat.config dbsat.config</copy>
+
     [oracle@secdb conf]$ <copy>chmod +w dbsat.config</copy>
     
 
