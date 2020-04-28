@@ -90,6 +90,87 @@ Agent is running.
 
 ## Step 2 : Configuring Audit Trails ##
 
+Now that the agent has been installed and started on secdb, it is possible to connect to Audit Vault from a local browser on your workstation.
+
+You can then connect to the Audit Vault Server console using its public IP at the following URL:
+
+**https://&lt AV PUBLIC IP &gt**
+
+* User Name : **AVADMIN**
+* Password  : **Reganam_1**
+
+![Alt text](./images/img05.png " ")
+
+Allow a security exception as we are just using a self-signed certificate.
+
+![Alt text](./images/img06.png " ")
+
+![Alt text](./images/img07.png " ")
+
+Please also accept to run Adobe Flash.
+
+![Alt text](./images/img08.png " ")
+
+![Alt text](./images/img09.png " ")
+
+We can now register secure targets and create the audit trails.
+
+Go to **Secured Targets** > **Target** > **Register** and create the following two secure targets.
+
+*	New Secured Target Name: **cont**
+*	Description: Container **database**
+*	Secured Target Type: **Database**
+*	Host name: **secdb**
+*	Port: **1521**
+*	Service Name: **cont**
+*	Username: **system**
+*	Password: **MyDbPwd#1**
+
+Click on **Save** in the upper right corner.
+
+*	New Secured Target Name: **pdb1**
+*	Description: Pluggable **database**
+*	Secured Target Type: **Database**
+*	Host name: **secdb**
+*	Port: **1521**
+*	Service Name: **pdb1**
+*	Username: **system**
+*	Password: **MyDbPwd#1**
+
+Click on **Save** in the upper right corner.
+
+![Alt text](./images/img10.png " ")
+
+Let’s collect audit data created inside the database (view UNIFIED_AUDIT_TRAIL) and in operating system files (as per parameter audit_file_dest = /u01/oracle/admin/CONT/adump).
+
+Go to **Secured Targets** > **Audit Trails** > **Add** and create the following three audit trails.
+
+*	audit trail type: **TABLE**
+*	collection host: **secdb.localdomain**
+*	secured target: **cont**
+*	trail location: **UNIFIED_AUDIT_TRAIL**
+*	collection plugin: **com.oracle.av.plugin.oracle**
+
+
+*	audit trail type: **TABLE**
+*	collection host: **secdb.localdomain**
+*	secured target: **pdb1**
+*	trail location: **UNIFIED_AUDIT_TRAIL**
+*	collection plugin: **com.oracle.av.plugin.oracle**
+
+
+*	audit trail type: **DIRECTORY**
+*	collection host: **secdb.localdomain**
+*	secured target: **cont**
+*	trail location: **/u01/oracle/db/admin/CONT/adump**
+*	collection plugin: **com.oracle.av.plugin.oracle**
+
+The collection should start automatically after a few seconds. The Collection Status arrows will change from down (Red Arrow Down) to up (Green Arrow Up).
+
+![Alt text](./images/img11.png " ")
+
+
+
 ## Acknowledgements ##
 
 - **Authors** - Adrian Galindo & François Pons, PTS EMEA - April 2020.
