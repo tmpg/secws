@@ -219,7 +219,6 @@ Calling /u01/oracle/db/prod/19c/ee/bin/zip to encrypt dbsat_pdb1.json...
 ```
 
     Enter password: <copy>oracle</copy>
-
     Verify password: <copy>oracle</copy>
       adding: dbsat_pdb1.json (deflated 86%)
     zip completed successfully.
@@ -261,24 +260,26 @@ DBSAT Reporter ran successfully.
 Calling /usr/bin/zip to encrypt the generated reports...
 ```
 
-    Enter password: <copy>oracle</copy>
-
-    Verify password: <copy>oracle</copy>
-          zip warning: dbsat_pdb1_report.zip not found or empty
-      adding: dbsat_pdb1_report.txt (deflated 78%)
-      adding: dbsat_pdb1_report.html (deflated 84%)
-      adding: dbsat_pdb1_report.xlsx (deflated 3%)
-      adding: dbsat_pdb1_report.json (deflated 82%)
-    zip completed successfully.
-
+```
+Enter password: <copy>oracle</copy>
+Verify password: <copy>oracle</copy>
+      zip warning: dbsat_pdb1_report.zip not found or empty
+  adding: dbsat_pdb1_report.txt (deflated 78%)
+  adding: dbsat_pdb1_report.html (deflated 84%)
+  adding: dbsat_pdb1_report.xlsx (deflated 3%)
+  adding: dbsat_pdb1_report.json (deflated 82%)
+zip completed successfully.
+```
 
 Unzip the report file to be able to check the contents by opening it in Firefox. You will be asked for the password to unzip. Input `oracle` when requested. 
 
 
     [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
 
+```
     [oracle@secdb install]$ <copy>unzip dbsat_pdb1_report.zip</copy>
     Archive:  dbsat_pdb1_report.zip
+```
 
     [dbsat_pdb1_report.zip] dbsat_pdb1_report.txt password: <copy>oracle</copy>
       inflating: dbsat_pdb1_report.txt
@@ -290,7 +291,7 @@ Unzip the report file to be able to check the contents by opening it in Firefox.
 
 If you are inside the graphical environment connected through VNC, launch the browser and open the html file generated: **dbsat_pdb1_report.html**
 
-*Note: In case tou are working on the command line outside the VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle / MyDbPwd#1 and specify the private key to authenticate.*
+*Note: In case tou are working on the command line outside the VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle and specify the private key to authenticate.*
 
 Please take a couple of minutes to scroll through the html report. You can click the links in the summary table to go to a specific section or use the navigation arrows at the bottom right. 
 
@@ -353,24 +354,156 @@ Let’s run DBSAT Discoverer on PDB1
 DBSAT discoverer will connect to the database and collect data needed for analysis based on settings specified in configuration files. Locate the configuration file dbsat.config and make sure it is updateable:
 
 
-    [oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
+```
+[oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
 
-    [oracle@secdb conf]$ <copy>ls -l</copy>
-    total 228
-    -r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config
-    -r--r--r--. 1 oracle oinstall 29090 Sep 11  2019 sensitive_de.ini
-    -r--r--r--. 1 oracle oinstall 12642 Sep 11  2019 sensitive_el.ini
-    -r--r--r--. 1 oracle oinstall 31911 Sep 11  2019 sensitive_en.ini
-    -r--r--r--. 1 oracle oinstall 26829 Sep 11  2019 sensitive_es.ini
-    -r--r--r--. 1 oracle oinstall 27308 Sep 11  2019 sensitive_fr.ini
-    -r--r--r--. 1 oracle oinstall 25172 Sep 11  2019 sensitive_it.ini
-    -r--r--r--. 1 oracle oinstall 26302 Sep 11  2019 sensitive_nl.ini
-    -r--r--r--. 1 oracle oinstall 27424 Sep 11  2019 sensitive_pt.ini
+[oracle@secdb conf]$ <copy>ls -l</copy>
+total 228
+-r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config
+-r--r--r--. 1 oracle oinstall 29090 Sep 11  2019 sensitive_de.ini
+-r--r--r--. 1 oracle oinstall 12642 Sep 11  2019 sensitive_el.ini
+-r--r--r--. 1 oracle oinstall 31911 Sep 11  2019 sensitive_en.ini
+-r--r--r--. 1 oracle oinstall 26829 Sep 11  2019 sensitive_es.ini
+-r--r--r--. 1 oracle oinstall 27308 Sep 11  2019 sensitive_fr.ini
+-r--r--r--. 1 oracle oinstall 25172 Sep 11  2019 sensitive_it.ini
+-r--r--r--. 1 oracle oinstall 26302 Sep 11  2019 sensitive_nl.ini
+-r--r--r--. 1 oracle oinstall 27424 Sep 11  2019 sensitive_pt.ini
+```
 
-    [oracle@secdb conf]$ <copy>cp sample_dbsat.config dbsat.config</copy>
+```
+[oracle@secdb conf]$ <copy>cp sample_dbsat.config dbsat.config</copy>
+```
 
-    [oracle@secdb conf]$ <copy>chmod +w dbsat.config</copy>
-    
+```
+[oracle@secdb conf]$ <copy>chmod +w dbsat.config</copy>
+```
+
+Now use the editor of your choice (e.g. vi, gedit) to set the database service name in dbsat.config. Update the value of parameter **DB_SERVICE_NAME** to **PDB1** as follows:
+
+![](./images/Lab100_Step3_1.png)
+
+### Run DBSAT Discoverer
+
+To run DBSAT discoverer, we will use script dbsat50_discover.sh, which contains the full command line:
+
+***dbsat discover -c Discover/conf/dbsat.config pdb1sensitivedata***
+
+Pass dbsat as the username and password. At the end of the process, you will be asked to provide a password twice (please use `oracle`) to protect the report file `pdb1sensitivedata_report.zip`. Below is the expected output:
+
+```
+[oracle@secdb conf]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
+```
+
+```
+[oracle@secdb lab01_dbsat]$ <copy>./dbsat50_discover.sh</copy>
+
+Database Security Assessment Tool version 2.2 (September 2019)
+
+This tool is intended to assist you in securing your Oracle database
+system. You are solely responsible for your system and the effect and
+results of the execution of this tool (including, without limitation,
+any damage or data loss). Further, the output generated by this tool may
+include potentially sensitive system configuration data and information
+that could be used by a skilled attacker to penetrate your system. You
+are solely responsible for ensuring that the output of this tool,
+including any generated reports, is handled in accordance with your
+company's policies.
+
+Enter username: **dbsat**
+Enter password: **[password]**
+DBSAT Discover ran successfully.
+Calling /usr/bin/zip to encrypt the generated reports...
+
+Enter password: **oracle**
+Verify password: **oracle**
+        zip warning: pdb1sensitivedata_report.zip not found or empty
+  adding: pdb1sensitivedata_discover.html (deflated 81%)
+  adding: pdb1sensitivedata_discover.csv (deflated 78%)
+Zip completed successfully.
+```
+
+Unzip the report file to be able to check the contents by opening it the browser inside the Graphical Environment to **secdb**. You will be asked for the password to unzip. Input `oracle` when requested. 
+
+*Note: In case tou are working on the command line outside the VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle and specify the private key to authenticate.*
+
+```
+[oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
+````
+````
+[oracle@secdb install]$ <copy>unzip pdb1sensitivedata_report.zip</copy>
+Archive:  pdb1sensitivedata_report.zip
+[pdb1sensitivedata_report.zip] pdb1sensitivedata_discover.html password:
+  inflating: pdb1sensitivedata_discover.html
+  inflating: pdb1sensitivedata_discover.csv
+````
+
+### Explore the Sensitive Data Assessment Report
+
+Open the file with the Sensitive Data Assessment Report: **pdb1sensitivedata_discover.html**
+
+At the top of the report, you will find information about the Discoverer run details as the Date of *DBSAT Report Generation* along with the DBSAT *Discoverer version*. 
+
+![](./images/Lab100_Step3_2.png)
+
+Follows the Database Identity information where you will find details about the target database This section may vary depending on whether dbsat connects to a non-CDB, CDB or PDB. 
+
+Then the *Discovery Parameters* table. The Discover Parameters table shows the parameters that were used from the *dbsat.config* file. 
+
+![](./images/Lab100_Step3_3.png)
+
+You can change many parameters in the configuration file:
+
+- **Schemas Scope=ALL** Enables to choose if the search takes all schemas into account (except SYS, SYSTEM and other Oracle maintained schemas) or a limited set of comma separated schemas. By default, ALL will target all schemas and will discover accordingly. 
+- **Exclusion List File = NONE**  Allows to exclude from the results all tables from a schema (schemaD), a whole table (schemaA.tableA), or certain columns (schemaA.tableB.columnA ; schemaB.tableA.columnC). 
+- **Minimum Rows Count = [1 (default)]** Exclude tables with less than X rows from the result set. This enables to exclude tables with less than a certain number of rows. This argument is used to define the weight of tables to be considered by the discoverer. It enables to produce a smaller and more focused report. 19 | Database Security: Identifying Security Risks and Sensitive Data with DBSAT [INTERNAL] 
+- **Pattern File(s) = [sensitive.ini (default), other.ini, …]**  By default, sensitive_en.ini is used and it contains patterns in English and will look for English based sensitive columns/comments. This parameter enables the end user to choose which pattern ini files to add to the search. We provide sample pattern files in other languages in ./dbsat/install/Discover/conf
+
+````
+[oracle@secdb lab01_dbsat]$ ls -l /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf
+total 236
+-rw-r--r--. 1 oracle oinstall  5907 Apr 28 00:10 dbsat.config
+-r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config
+-r--r--r--. 1 oracle oinstall 29090 Sep 11  2019 sensitive_de.ini
+-r--r--r--. 1 oracle oinstall 12642 Sep 11  2019 sensitive_el.ini
+-r--r--r--. 1 oracle oinstall 31911 Sep 11  2019 sensitive_en.ini
+-r--r--r--. 1 oracle oinstall 26829 Sep 11  2019 sensitive_es.ini
+-r--r--r--. 1 oracle oinstall 27308 Sep 11  2019 sensitive_fr.ini
+-r--r--r--. 1 oracle oinstall 25172 Sep 11  2019 sensitive_it.ini
+-r--r--r--. 1 oracle oinstall 26302 Sep 11  2019 sensitive_nl.ini
+-r--r--r--. 1 oracle oinstall 27424 Sep 11  2019 sensitive_pt.ini
+```` 
+
+**Summary Table**
+
+The Summary will show you, organized by Sensitive Category, the number of tables, the number of columns and the number or rows. 
+
+![](./images/Lab100_Step3_4.png)
+
+**Sensitive Data section** 
+
+In this section you will see a list of findings. Each finding is comprised of:
+
+- Risk Level – Low Risk, Medium Risk and High Risk 
+- Summary – A brief summary of what was found - number of schemas or tables/columns 
+- Location – In which SCHEMA.TABLE sensitive data was found 
+
+The first one lists the Schemas with Sensitive Data and then follows one finding per Sensitive Category. The report shows Tables Detected within *Sensitive Category:PII*. 
+
+Personally identifiable information (PII) is any data that could potentially identify a specific individual. Any information that can be used to distinguish one person from another and can be used for de-anonymizing anonymous data can be considered PII.
+
+![](./images/Lab100_Step3_5.png)
+
+![](./images/Lab100_Step3_6.png)
+
+A detailed report of tables with sensitive data is provided at the end of the report.
+
+![](./images/Lab100_Step3_7.png)
+ 
+The Discoverer CSV report can be loaded into Oracle Audit Vault and Database Firewall to add sensitive data context to the new Data Privacy reports. We will be doing this as part of the Audit Vault lab.
+
+
+This completes the DBSAT lab. You can continue with lab 2.
+
 
 ## Credits
 
