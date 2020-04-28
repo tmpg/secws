@@ -170,6 +170,111 @@ The collection should start automatically after a few seconds. The Collection St
 ![Alt text](./images/img11.png " ")
 
 
+## Step 3 : Using Audit Vault Reporting ##
+
+The Oracle Audit Vault Server provides powerful built-in reports to monitor a wide range of activity, including privileged user activity and changes to database structures. The reports provide visibility into activities and provide detailed information regarding the who, what, when and where of database access.
+
+
+Let's generate new audit records by executing the following script which will create a number of violations that will be audited.
+
+````
+$ <copy>cd /home/oracle/HOL/lab08_av</copy>
+````
+
+````
+$ <copy>java -jar agent.jar -d /u01/oracle/avagent</copy>
+
+[oracle@secdb lab08_av]$ av_createrecords.sh
+
+(...)
+
+SQL> delete from hr.regions;
+delete from hr.regions
+               *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+````
+
+To view the audit records just collected, logout from AVADMIN and login as AVAUDITOR using the following credentials:
+
+*	Username	: **AVAUDITOR**
+*	Password	: **Reganam_1**
+
+![Alt text](./images/img12.png " ")
+
+Scroll down the Audit Vault and Database Firewall Home page and notice the graphs that will begin to populate as we move through the rest of the labs. Also, you will likely see an indication of failed logins at the far right of the Failed Logins graph. Sample output is shown below.
+
+![Alt text](./images/img13.png " ")
+
+Click on the **Reports** tab and **Activity Reports** under **Built-in Reports**.
+
+Select the **Data Access** report within the **Activity Reports** section (expand that section).  View the report by clicking on its name and verify that you see audit records that were collected on today’s date.
+
+Remove the default  filters by clicking on the cross.
+
+![Alt text](./images/img14.png " ")
+
+Add a new filter by clicking on **Actions** > **Filter** and selecting the secure target **pdb1**
+
+![Alt text](./images/img15.png " ")
+
+![Alt text](./images/img16.png " ")
+
+The report should now be filtered on **pdb1** and show the audit records previously generated.
+
+Detailed information for one record can be obtained by clicking on the left side icon.
+
+![Alt text](./images/img17.png " ")
+
+
+
+![Alt text](./images/img18.png " ")
+![Alt text](./images/img19.png " ")
+
+
+Try other interesting reports, for example:
+
+**Reports** > **Activity Reports** > **Login Failures**
+
+![Alt text](./images/img20.png " ")
+
+**Reports** > **Activity Reports** > **Database Schema Changes**
+
+![Alt text](./images/img21.png " ")
+
+**Reports** > **Specialized Reports** > **Database Vault Reports** > **Database Vault Activity**
+
+![Alt text](./images/img22.png " ")
+
+![Alt text](./images/img23.png " ")
+
+Audit Vault can also be used to retrieve and display **user entitlements** (ie granted privileges and roles).
+
+First, retrieve user entitlement data for **pdb1**.
+
+![Alt text](./images/img24.png " ")
+
+Click a couple of times on the “Jobs” link to show the status of the job.
+
+![Alt text](./images/img25.png " ")
+
+Wait until the job shows as **completed**. You should now be able to check the report.
+
+**Reports** > **Activity Reports** > **Entitlement Reports** > **User Accounts**
+
+The **User Accounts** Report displays the latest snapshot of Database users with their account profile and values for sources registered with Oracle Audit Vault.
+
+Initially you will not see any reporting data.  Click on **Go** (next to the **Latest** drop down).  This will bring back the latest Entitlement snapshot that you just retrieved from the source database.  
+
+![Alt text](./images/img26.png " ")
+
+It is possible to take multiple snapshots of user entitlement data.
+
+This report lets you look at the data for any of these snapshots.  You can also compare different snapshots to see how the data has changed over time, as it is generally be more useful to report on what has **changed** over a specific period.
+
+![Alt text](./images/img27.png " ")
+
+## Step 4 : Compliance Reports ##
 
 ## Acknowledgements ##
 
