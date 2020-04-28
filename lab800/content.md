@@ -276,6 +276,121 @@ This report lets you look at the data for any of these snapshots.  You can also 
 
 ## Step 4 : Compliance Reports ##
 
+The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across **GDPR**, **PCI**, **Sarbanes-Oxley**, **HIPAA** (healthcare-related) and other areas.  In order to generate compliance reports for a secured target, you must add it to a compliance report group.
+
+Let us start by adding our secure target **pdb1** as a member of a compliance group (e.g. **Payment Card Industry**).
+
+Click on the **Compliance Reports** menu and open the **Payment Card Industry (PCI) Reports** category.  Click the **Go** button, as shown in the figure below.
+
+![Alt text](./images/img28.png " ")
+
+Select **pdb1**, click on **Add Members** and **save** the change.
+
+![Alt text](./images/img29.png " ")
+
+We can now review some reports.  Click on the **Logins Failures** link under the **Payment Card Industry (PCI)** Reports section.
+
+Select the **Database Schema Changes** report in the **PCI** section, but this time we will schedule the report so we can create a PDF version of a report, which can then be sent to people who require it.
+
+![Alt text](./images/img31.png " ")
+
+You can schedule a report to run immediately or on a regular basis.
+Click on Schedule to run this job immediately
+
+![Alt text](./images/img32.png " ")
+
+Once the report has been generated (click on the **Jobs** link), you can save it or open it.
+
+![Alt text](./images/img33.png " ")
+
+![Alt text](./images/img34.png " ")
+
+![Alt text](./images/img35.png " ")
+
+
+## Step 5 : Capturing All Activity ##
+
+One advantage of unified auditing is that all database activities are captured in the same audit trail, including **SQL*Loader Direct Mode** or **Data Pump**.
+
+Verify that **UNIFIED_AUDIT_TRAIL** does capture **DATA PUMP** activity.
+
+In a default **Database Vault** environment, **SYSTEM** loses the **BECOME USER** privilege, which is required to run Data Pump jobs.
+
+Let us first give back this privilege to SYSTEM. Please note that it would not be sufficient to run Data Pump as SYSTEM on realm-protected data.
+
+Run the following scripts from a terminal window to the secdb server.
+
+````
+$ <copy>/home/oracle/HOL/lab08_av/dp</copy>
+````
+
+````
+$ <copy>dp00_grant_become_user.sh</copy>
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Tue Apr 28 12:55:08 2020
+Version 19.6.0.0.0
+Connected.
+
+SQL> alter session set container=PDB1;
+Session altered.
+
+SQL> grant become user to system;
+Grant succeeded.
+````
+
+Create a DIRECTORY object.
+
+````
+$ <copy>sqlplus /nolog</copy>
+````
+
+
+````
+$ <copy>@dp10_data_dir.sql</copy>
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Tue Apr 28 12:55:08 2020
+Version 19.6.0.0.0
+Connected.
+SQL> alter session set container=pdb1;
+Session altered.
+
+SQL> create or replace directory data_dir as '/home/oracle/HOL/lab08_av/dp';
+Directory created.
+
+SQL> grant read, write on directory data_dir to system;
+Grant succeeded.
+````
+
+We can now run a Data Pump import of the SCOTT schema as SYSTEM
+
+
+````
+$ <copy>dp20_import.sh</copy>
+
+[oracle@secdb dp]$ dp20_import.sh
+
+(...)
+Starting "SYSTEM"."SYS_IMPORT_SCHEMA_01":  system/********@secdb/pdb1 parfile=dp20_import.ini
+Processing object type SCHEMA_EXPORT/PRE_SCHEMA/PROCACT_SCHEMA
+Processing object type SCHEMA_EXPORT/TABLE/TABLE
+Processing object type SCHEMA_EXPORT/TABLE/TABLE_DATA
+. . imported "SCOTT"."EMP"                               8.773 KB      14 rows
+. . imported "SCOTT"."DEPT"                              6.023 KB       4 rows
+. . imported "SCOTT"."SALGRADE"                          5.953 KB       5 rows
+. . imported "SCOTT"."BONUS"                                 0 KB       0 rows
+Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type SCHEMA_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type SCHEMA_EXPORT/POST_SCHEMA/PROCACT_SCHEMA
+Job "SYSTEM"."SYS_IMPORT_SCHEMA_01" successfully completed at Tue (...)
+````
+
+Select the **Data Schema Changes** report in the **Built-in Reports** section and filter information on **PDB1**.
+
+You should see the audit trace of Data Pump workers (**DW00**) processes.
+
+![Alt text](./images/img36.png " ")
+
+
 ## Acknowledgements ##
 
 - **Authors** - Adrian Galindo & François Pons, PTS EMEA - April 2020.
