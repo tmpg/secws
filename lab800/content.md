@@ -427,6 +427,97 @@ For instance:
 
 ![Alt text](./images/img41.png " ")
 
+## Step 5 : Audit Vault Alerting ##
+
+After monitoring and collecting database activity your organization may want to be alerted when certain activities occur.  It is possible to identify high-risk activities that the security team needs to be made aware of.  These may include account management and database structural changes.  The alerts will let the security team know when there has been activity in these areas
+
+During this lab you will:
+
+* Modify the email template for Audit Vault Alerts
+* Add a new Audit Vault Alert Status
+* Create an Audit Vault Alert with the Web Interface
+* Test that the alert is functioning
+* View the near real-time nature of alert functionality
+
+We'll start by modifying the email template for Audit Vault Alerts.
+
+Log into the Audit Vault console as **AVAUDITOR**.
+
+Select the **Notifications** / **Email Templates** page.  From here will be able to manage the existing template definitions and create new ones.  
+
+![Alt text](./images/img42.png " ")
+
+Edit the **Alert Notification** Template, which is the default template used for sending emails.  You could create a new template, but for the purpose of this lab we will just edit the existing one.  Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the **Sav** button once completed.
+
+![Alt text](./images/img43.png " ")
+
+
+Let's add a new Audit Vault **Alert Status**
+
+Navigate to the **Policy** tab, then to the **Alert** page.  Click on the **Manage Alert Status Values** button.
+
+![Alt text](./images/img44.png " ")
+
+You will see that there are two default Alert status values.  
+
+These values are used to maintain a status for each alert that is created in Audit Vault.  You can then manage alerts according to your business requirements.   
+
+We will be adding a new status to record that we are reviewing a given alert.  
+
+Click on the **Creat**’ button. Now add a new Alert Status:
+
+* Status Value: **Reviewing**
+* Description: **Alert being reviewed**
+
+![Alt text](./images/img45.png " ")
+
+
+We will now create a new alert in Audit Vault. This alert will let us know when a new table has been created. Click on **Policy** > **Alert Definition**.  Click on the **Create** button.
+
+* Name: **CREATE_TABLE**
+* Secured Target Type: **Oracle Database**
+* Alert Severity: **Critical**
+* Threshold (times): **1**
+* Duration (min): **0**
+* Group By (field): **&ltDefault&gt**
+* Description: **Alert when a table is created**
+* Condition: **:EVENT_NAME='CREATE TABLE'**
+* Notification Action: Select the **Alert Notification Template**
+* Mailing List: **&ltLeave Blank&gt**
+
+![Alt text](./images/img46.png " ")
+
+Let us test that the alert is functioning! Run the following script to create once again a new table.
+
+````
+$ <copy>cd /home/oracle/HOL/lab08_av</copy>
+````
+
+
+````
+$ <copy>av_createrecords.sh</copy>
+
+[oracle@secdb lab08_av]$ av_createrecords.sh
+
+(…)
+SQL> create table job2 as select * from jobs;
+Table created.
+(…)
+````
+
+In the Audit Vault Server, the **Home** page should now show the alert (you may have to wait for a few seconds for the alert to be reported).
+
+![Alt text](./images/img47.png " ")
+
+You can also view the alert report:
+
+**Reports** > **Built-in Reports** > **Activity Reports** > **Critical Alerts**
+
+![Alt text](./images/img48.png " ")
+
+From the home page, you can now edit the **alert status**, for example to close the alert.
+
+![Alt text](./images/img49.png " ")
 
 ## Acknowledgements ##
 
