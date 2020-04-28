@@ -390,6 +390,43 @@ You should see the audit trace of Data Pump workers (**DW00**) processes.
 
 ![Alt text](./images/img36.png " ")
 
+## Step 5 : Data Privacy Reports ##
+
+DBSAT Discoverer CSV output can be uploaded in order to run Data Privacy reports from Audit Vault (see Auditor's guide, chapter 6 - Data Privacy reports)
+We will start by loading DBSAT Discoverer’s report into Audit Vault.
+From the desktop connection to secdb:
+•	login to Audit Vault as avadmin/Reganam_1
+•	go to Secure Targets
+•	click on pdb1 to show the Modify Secure Target page
+•	scroll  down to Sensitive Objects
+
+![Alt text](./images/img37.png " ")
+
+* Browse to /home/oracle/HOL/lab01_dbsat/dbsat/install/pdb1sensitivedata_discover.csv
+*	Upload the csv file
+*	click on **Save**
+
+We can now add **PDB1** to the **Data Privacy compliance** report group and view **Data Privacy** reports.
+
+*	Login to Audit Vault Server as **AVAUDITOR** / **Reganam_1**
+*	Go to **Reports** > **Built-in Reports** > **Compliance Reports**
+*	Click on the **Go** button for **Data Privacy Reports**
+
+![Alt text](./images/img38.png " ")
+
+Select Secured Target **pdb1** and click **Add Members** and **Save**.
+
+![Alt text](./images/img39.png " ")
+
+We can finally review the built-in Data Privacy reports.
+
+![Alt text](./images/img40.png " ")
+
+For instance:
+**Sensitive Data**
+
+![Alt text](./images/img41.png " ")
+
 
 ## Acknowledgements ##
 
