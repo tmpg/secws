@@ -433,11 +433,11 @@ After monitoring and collecting database activity your organization may want to 
 
 During this lab you will:
 
-* Modify the email template for Audit Vault Alerts
-* Add a new Audit Vault Alert Status
-* Create an Audit Vault Alert with the Web Interface
-* Test that the alert is functioning
-* View the near real-time nature of alert functionality
+1. Modify the email template for Audit Vault Alerts
+2. Add a new Audit Vault Alert Status
+3. Create an Audit Vault Alert with the Web Interface
+4. Test that the alert is functioning
+5. View the near real-time nature of alert functionality
 
 We'll start by modifying the email template for Audit Vault Alerts.
 
@@ -518,6 +518,160 @@ You can also view the alert report:
 From the home page, you can now edit the **alert status**, for example to close the alert.
 
 ![Alt text](./images/img49.png " ")
+
+
+## Step 5 : Archiving and Purging the Audit Trail ##
+
+Audit information should follow a full lifecycle:
+
+1. Audit data is captured in the database and stored in the AUDSYS schema;
+2. Audit Vault Agent collects this information  and automatically sets a timestamp on audit data that has been collected;
+3. A database job can then run regularly and purge audit information that has been already collected;
+4. Audit information stays in Audit Vault during a customizable retention time;
+5. At the expiration of this retention time, audit data can be extracted from Audit Vault and archived;
+6. At the expiration of the archival time, the archive may be destroyed.
+
+Oracle AVDF is integrated with the **DBMS_AUDIT_MGMT** package in an Oracle Database. This integration automates the purging of audit records from **UNIFIED_AUDIT_TRAIL**, **AUD$**, and **FGA_LOG$** views and from the operating system **.aud** and **.xml** files after they have been successfully inserted into the Audit Vault Server repository.
+
+The Audit Vault Agent automatically sets a timestamp on audit data that has been collected. We can use the system procedure **DBMS_AUDIT_MGMT.CREATE_PURGE_JOB** to periodically purge audit data that has been already collected.
+
+1) Let us count the existing rows in audit tables.
+
+````
+$ <copy>cd /home/oracle/HOL/lab08_av/purgejob</copy>
+````
+
+
+````
+$ <copy>cleanup00_count.sh</copy>
+
+SQL> select count(*) from sys.aud$;
+  COUNT(*)
+----------
+         0
+
+SQL> select count(*) from unified_audit_trail;
+
+  COUNT(*)
+----------
+       312
+
+SQL> alter session set container=pdb1;
+Session altered.
+
+SQL> select count(*) from sys.aud$;
+  COUNT(*)
+----------
+         0
+
+SQL> select count(*) from unified_audit_trail;
+  COUNT(*)
+----------
+       556
+````
+
+2) Initialize the purging job by setting it to run every hour by default
+
+````
+$ <copy>cleanup10_init.sh</copy>
+
+SQL> BEGIN
+  2   DBMS_AUDIT_MGMT.INIT_CLEANUP(
+  3    AUDIT_TRAIL_TYPE            => DBMS_AUDIT_MGMT.AUDIT_TRAIL_ALL,
+  4    DEFAULT_CLEANUP_INTERVAL    => 1 );
+  5  END;
+  6  /
+PL/SQL procedure successfully completed.
+
+SQL> alter session set container=pdb1;
+Session altered.
+
+SQL> BEGIN
+  2   DBMS_AUDIT_MGMT.INIT_CLEANUP(
+  3    AUDIT_TRAIL_TYPE            => DBMS_AUDIT_MGMT.AUDIT_TRAIL_ALL,
+  4    DEFAULT_CLEANUP_INTERVAL    => 1 );
+  5  END;
+  6  /
+PL/SQL procedure successfully completed.
+````
+
+3) Check the status of the purging job
+
+````
+$ <copy>cleanup20_show.sh</copy>
+
+(…)
+CDB is initialized for cleanup
+
+(…)
+PDB1 is initialized for cleanup
+````
+
+4) Schedule the purging job
+
+````
+$ <copy>cleanup30_schedule.sh</copy>
+
+SQL> -- creates a purge job to run every hour to purge the audit records
+SQL> -- in the container database
+SQL> --
+SQL> BEGIN
+  2    DBMS_AUDIT_MGMT.CREATE_PURGE_JOB (
+  3     AUDIT_TRAIL_TYPE            => DBMS_AUDIT_MGMT.AUDIT_TRAIL_ALL,
+  4     AUDIT_TRAIL_PURGE_INTERVAL  => 1,
+  5     AUDIT_TRAIL_PURGE_NAME      => 'AUDIT_CLEANUP_CDB',
+  6     USE_LAST_ARCH_TIMESTAMP     => TRUE );
+  7  END;
+  8  /
+PL/SQL procedure successfully completed.
+
+SQL> alter session set container=pdb1;
+Session altered.
+
+SQL> -- creates a purge job to run every hour to purge the audit records
+SQL> -- in the pluggable database
+SQL> --
+SQL> BEGIN
+  2    DBMS_AUDIT_MGMT.CREATE_PURGE_JOB (
+  3     AUDIT_TRAIL_TYPE            => DBMS_AUDIT_MGMT.AUDIT_TRAIL_ALL,
+  4     AUDIT_TRAIL_PURGE_INTERVAL  => 1,
+  5     AUDIT_TRAIL_PURGE_NAME      => 'AUDIT_CLEANUP_PDB1',
+  6     USE_LAST_ARCH_TIMESTAMP     => TRUE );
+  7  END;
+  8  /
+PL/SQL procedure successfully completed.
+````
+
+5) Verify that the number of rows in audit tables drops
+
+````
+$ <copy>cleanup00_count.sh</copy>
+
+SQL> select count(*) from sys.aud$;
+  COUNT(*)
+----------
+         0
+
+SQL> select count(*) from unified_audit_trail;
+  COUNT(*)
+----------
+         5
+
+SQL> alter session set container=pdb1;
+Session altered.
+
+SQL> select count(*) from sys.aud$;
+  COUNT(*)
+----------
+         0
+
+SQL> select count(*) from unified_audit_trail;
+  COUNT(*)
+----------
+        15
+````
+
+This completes the Audit Vault lab.
 
 ## Acknowledgements ##
 
