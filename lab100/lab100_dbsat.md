@@ -289,7 +289,7 @@ Unzip the report file to be able to check the contents by opening it in Firefox.
 
 ### Explore Database Security Risk Assessment Report
 
-If you are inside the graphical environment connected through VNC, launch the browser and open the html file generated: **dbsat_pdb1_report.html**
+If you are inside the graphical environment connected through VNC, launch the browser and open the html file generated: **dbsat\_pdb1\_report.html**
 
 *Note: In case tou are working on the command line outside the VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle and specify the private key to authenticate.*
 
