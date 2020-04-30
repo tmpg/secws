@@ -1,4 +1,4 @@
-# Title #
+# Lab 8 - Audit Vault #
 
 This lab will demonstrate how to use Audit Vault to manage the audit data produced by an Oracle database.
 
