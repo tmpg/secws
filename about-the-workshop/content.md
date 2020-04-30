@@ -52,7 +52,7 @@ After all the remediations implemented on the previous labs, we run the DBSAT ag
 
 ### Optional for Day 2
 
-### [**Data Safe**](https://fpons.github.io/DataSafe/ "Data Safe Labs") labs
+### [**Data Safe**](../DataSafe/ "Data Safe Labs") labs
 Labs to use and demonstrate the functionalities of the Data Safe solution that we have on the Oracle Cloud Infrastructure to secure the databases.
 
 
