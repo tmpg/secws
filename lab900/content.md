@@ -107,8 +107,8 @@ PL/SQL procedure successfully completed.
 
 To enable advanced masking formats in our database, we also need to run a script, which adds the **DM_FMTLIB** package to the **DBSNMP** schema. The scripts (one for the package definition, the other for the package body) can be found on the EM13cR3 server in the following directory:
 
-* $PLUGIN_HOME/sql/db/latest/masking/dm_fmtlib_pkgdef.sql
-* $PLUGIN_HOME/sql/db/latest/masking/dm_fmtlib_pkgbody.sql
+* $PLUGIN\_HOME/sql/db/latest/masking/dm\_fmtlib\_pkgdef.sql
+* $PLUGIN\_HOME/sql/db/latest/masking/dm\_fmtlib\_pkgbody.sql
 
 These scripts have already been copied to secdb. Please run them by executing the following command.
 
@@ -173,7 +173,7 @@ Click on **Referential Relationships** and expand the tree of objects to show th
 
 ## Step 6 : Configure sensitive columns ##
 
-We are now going to discover the *sensitive columns* that are good candidates to be anonymized.
+We are now going to discover the **sensitive columns** that are good candidates to be anonymized.
 
 Click on the **sensitive columns** tab and in the **Actions** menu, select **Create Discovery Job** and run it immediately.
 
@@ -238,7 +238,7 @@ You should get the following table of columns to be masked. We can now click on 
 
 ![Alt text](./images/img23.png " ")
 
-Let us generate random values for **FIRST_NAME**, **LAST_NAME** and **SALARY**. Click on the little wrench and program the following rules:
+Let us generate random values for **FIRST\_NAME**, **LAST\_NAME** and **SALARY**. Click on the little wrench and program the following rules:
 
 **FIRST_NAME:**
 ![Alt text](./images/img24.png " ")
@@ -348,7 +348,7 @@ ajtztgeaar                     12824 awfrkcqdak@company.com    3717-3313-1007-43
 ````
 
 
-This completes the Data Masking lab.
+**This completes the Data Masking lab.**
 
 ## Acknowledgements ##
 

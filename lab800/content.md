@@ -1,6 +1,6 @@
-# Title #
+# Lab 8 - Audit Vault #
 
-This lab will demonstrate how to manage in an Audit Vault Server the audit data produced by an Oracle database.
+This lab will demonstrate how to use Audit Vault to manage the audit data produced by an Oracle database.
 
 ## Disclaimer ##
 The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
@@ -41,7 +41,7 @@ Go to **Hosts** > **Register** and enter the following values then click on **Sa
 *	Host name		: **secdb.localdomain**
 *	Host IP			: **10.0.0.2**
 
-Make note of the automatically generated **Agent Activation key** (e.g. copy and paste it to **Gedit**)
+Make note of the automatically generated **Agent Activation Key** (e.g. copy and paste it to **Gedit**)
 
 ![Alt text](./images/img03.png " ")
 
@@ -72,6 +72,8 @@ If deploying hostmonitor please refer to product documentation for additional in
 $ <copy>cd /u01/oracle/avagent/bin</copy>
 ````
 
+Run the following statement to enter the **Agent Activation Key** previously generated.
+
 ````
 $ <copy>./agentctl start -k</copy>
 
@@ -80,6 +82,8 @@ $ <copy>./agentctl start -k</copy>
 Enter Activation Key:
 Agent started successfully.
 ````
+
+The Audit Vault agent should now be running.
 
 ````
 $ <copy>./agentctl status</copy>
@@ -115,10 +119,10 @@ Please also accept to run Adobe Flash.
 
 We can now register secure targets and create the audit trails.
 
-Go to **Secured Targets** > **Target** > **Register** and create the following two secure targets.
+Go to **Secured Targets** > **Target** > **Register** and create the following two secure targets:
 
 *	New Secured Target Name: **cont**
-*	Description: Container **database**
+*	Description: **Container database**
 *	Secured Target Type: **Database**
 *	Host name: **secdb**
 *	Port: **1521**
@@ -129,7 +133,7 @@ Go to **Secured Targets** > **Target** > **Register** and create the following t
 Click on **Save** in the upper right corner.
 
 *	New Secured Target Name: **pdb1**
-*	Description: Pluggable **database**
+*	Description: **Pluggable database**
 *	Secured Target Type: **Database**
 *	Host name: **secdb**
 *	Port: **1521**
@@ -141,29 +145,35 @@ Click on **Save** in the upper right corner.
 
 ![Alt text](./images/img10.png " ")
 
-Let’s collect audit data created inside the database (view UNIFIED_AUDIT_TRAIL) and in operating system files (as per parameter audit_file_dest = /u01/oracle/admin/CONT/adump).
+Let’s collect audit data created inside the database (view UNIFIED\_AUDIT\_TRAIL) and in operating system files (as per parameter audit\_file\_dest = /u01/oracle/admin/CONT/adump).
 
-Go to **Secured Targets** > **Audit Trails** > **Add** and create the following three audit trails.
+Go to **Secured Targets** > **Audit Trails** > **Add** and create the following three audit trails:
+
+
+*Audit data stored in the Container database:*
 
 *	audit trail type: **TABLE**
 *	collection host: **secdb.localdomain**
 *	secured target: **cont**
-*	trail location: **UNIFIED_AUDIT_TRAIL**
+*	trail location: **UNIFIED\_AUDIT\_TRAIL**
 *	collection plugin: **com.oracle.av.plugin.oracle**
 
+*Audit data stored in the Pluggable database:*
 
 *	audit trail type: **TABLE**
 *	collection host: **secdb.localdomain**
 *	secured target: **pdb1**
-*	trail location: **UNIFIED_AUDIT_TRAIL**
+*	trail location: **UNIFIED\_AUDIT\_TRAIL**
 *	collection plugin: **com.oracle.av.plugin.oracle**
 
+*Audit data stored outside the database:*
 
 *	audit trail type: **DIRECTORY**
 *	collection host: **secdb.localdomain**
 *	secured target: **cont**
 *	trail location: **/u01/oracle/db/admin/CONT/adump**
 *	collection plugin: **com.oracle.av.plugin.oracle**
+
 
 The collection should start automatically after a few seconds. The Collection Status arrows will change from down (Red Arrow Down) to up (Green Arrow Up).
 
@@ -182,7 +192,7 @@ $ <copy>cd /home/oracle/HOL/lab08_av</copy>
 ````
 
 ````
-$ <copy>java -jar agent.jar -d /u01/oracle/avagent</copy>
+$ <copy>av_createrecords.sh</copy>
 
 [oracle@secdb lab08_av]$ av_createrecords.sh
 
@@ -202,7 +212,7 @@ To view the audit records just collected, logout from AVADMIN and login as AVAUD
 
 ![Alt text](./images/img12.png " ")
 
-Scroll down the Audit Vault and Database Firewall Home page and notice the graphs that will begin to populate as we move through the rest of the labs. Also, you will likely see an indication of failed logins at the far right of the Failed Logins graph. Sample output is shown below.
+Scroll down the Audit Vault and Database Firewall Home page and notice the graphs that will begin to populate as we move through the rest of the lab. Also, you will likely see an indication of failed logins at the far right of the Failed Logins graph. Sample output is shown below.
 
 ![Alt text](./images/img13.png " ")
 
@@ -254,7 +264,7 @@ First, retrieve user entitlement data for **pdb1**.
 
 ![Alt text](./images/img24.png " ")
 
-Click a couple of times on the “Jobs” link to show the status of the job.
+Click a couple of times on the **Jobs** link to show the status of the job.
 
 ![Alt text](./images/img25.png " ")
 
@@ -278,7 +288,7 @@ This report lets you look at the data for any of these snapshots.  You can also 
 
 The reports shown here are intended to help you meet your compliance reporting requirements as quickly as possible, across **GDPR**, **PCI**, **Sarbanes-Oxley**, **HIPAA** (healthcare-related) and other areas.  In order to generate compliance reports for a secured target, you must add it to a compliance report group.
 
-Let us start by adding our secure target **pdb1** as a member of a compliance group (e.g. **Payment Card Industry**).
+Let us start by adding our secure target **pdb1** as member of a compliance group (e.g. **Payment Card Industry**).
 
 Click on the **Compliance Reports** menu and open the **Payment Card Industry (PCI) Reports** category.  Click the **Go** button, as shown in the figure below.
 
@@ -295,7 +305,7 @@ Select the **Database Schema Changes** report in the **PCI** section, but this t
 ![Alt text](./images/img31.png " ")
 
 You can schedule a report to run immediately or on a regular basis.
-Click on Schedule to run this job immediately
+Click on Schedule to run this job immediately.
 
 ![Alt text](./images/img32.png " ")
 
@@ -310,13 +320,13 @@ Once the report has been generated (click on the **Jobs** link), you can save it
 
 ## Step 5 : Capturing All Activity ##
 
-One advantage of unified auditing is that all database activities are captured in the same audit trail, including **SQL*Loader Direct Mode** or **Data Pump**.
+One advantage of Unified Auditing is that all database activities are captured in the same audit trail, including **SQL*Loader Direct Mode** or **Data Pump**.
 
-Verify that **UNIFIED_AUDIT_TRAIL** does capture **DATA PUMP** activity.
+Let us verify that **UNIFIED\_AUDIT\_TRAIL** does capture **DATA PUMP** activity.
 
 In a default **Database Vault** environment, **SYSTEM** loses the **BECOME USER** privilege, which is required to run Data Pump jobs.
 
-Let us first give back this privilege to SYSTEM. Please note that it would not be sufficient to run Data Pump as SYSTEM on realm-protected data.
+We will first give back this privilege to SYSTEM. Please note that this change would not be sufficient to run Data Pump as SYSTEM on realm-protected data.
 
 Run the following scripts from a terminal window to the secdb server.
 
@@ -361,7 +371,7 @@ SQL> grant read, write on directory data_dir to system;
 Grant succeeded.
 ````
 
-We can now run a Data Pump import of the SCOTT schema as SYSTEM
+We can now run a Data Pump import of the SCOTT schema as SYSTEM:
 
 
 ````
@@ -392,21 +402,25 @@ You should see the audit trace of Data Pump workers (**DW00**) processes.
 
 ## Step 5 : Data Privacy Reports ##
 
-DBSAT Discoverer CSV output can be uploaded in order to run Data Privacy reports from Audit Vault (see Auditor's guide, chapter 6 - Data Privacy reports)
+DBSAT Discoverer CSV output can be uploaded in order to run Data Privacy reports from Audit Vault (see Auditor's guide, chapter 6 - Data Privacy reports).
+
 We will start by loading DBSAT Discoverer’s report into Audit Vault.
+
 From the desktop connection to secdb:
-•	login to Audit Vault as avadmin/Reganam_1
-•	go to Secure Targets
-•	click on pdb1 to show the Modify Secure Target page
-•	scroll  down to Sensitive Objects
+
+*	Login to Audit Vault as **AVADMIN/Reganam_1**
+*	Go to **Secure Targets**
+*	Click on **pdb1** to show the **Modify Secure Target** page
+*	Scroll  down to **Sensitive Objects**
 
 ![Alt text](./images/img37.png " ")
 
-* Browse to /home/oracle/HOL/lab01_dbsat/dbsat/install/pdb1sensitivedata_discover.csv
+* Browse to /home/oracle/HOL/lab01\_dbsat/dbsat/install/pdb1sensitivedata_discover.csv
 *	Upload the csv file
 *	click on **Save**
 
-We can now add **PDB1** to the **Data Privacy compliance** report group and view **Data Privacy** reports.
+We can now add **PDB1** to the **Data Privacy compliance** report
+group and view **Data Privacy** reports.
 
 *	Login to Audit Vault Server as **AVAUDITOR** / **Reganam_1**
 *	Go to **Reports** > **Built-in Reports** > **Compliance Reports**
@@ -447,7 +461,7 @@ Select the **Notifications** / **Email Templates** page.  From here will be able
 
 ![Alt text](./images/img42.png " ")
 
-Edit the **Alert Notification** Template, which is the default template used for sending emails.  You could create a new template, but for the purpose of this lab we will just edit the existing one.  Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the **Sav** button once completed.
+Edit the **Alert Notification** Template, which is the default template used for sending emails.  You could create a new template, but for the purpose of this lab we will just edit the existing one.  Add the **#AlertStatus#** field into the email subject, as shown in the screen below.  Click the **Save** button once completed.
 
 ![Alt text](./images/img43.png " ")
 
@@ -464,7 +478,7 @@ These values are used to maintain a status for each alert that is created in Aud
 
 We will be adding a new status to record that we are reviewing a given alert.  
 
-Click on the **Creat**’ button. Now add a new Alert Status:
+Click on the **Create** button. Now add a new Alert Status:
 
 * Status Value: **Reviewing**
 * Description: **Alert being reviewed**
@@ -531,9 +545,9 @@ Audit information should follow a full lifecycle:
 5. At the expiration of this retention time, audit data can be extracted from Audit Vault and archived;
 6. At the expiration of the archival time, the archive may be destroyed.
 
-Oracle AVDF is integrated with the **DBMS_AUDIT_MGMT** package in an Oracle Database. This integration automates the purging of audit records from **UNIFIED_AUDIT_TRAIL**, **AUD$**, and **FGA_LOG$** views and from the operating system **.aud** and **.xml** files after they have been successfully inserted into the Audit Vault Server repository.
+Oracle AVDF is integrated with the **DBMS\_AUDIT\_MGMT** package in an Oracle Database. This integration automates the purging of audit records from **UNIFIED\_AUDIT\_TRAIL**, **AUD$**, and **FGA\_LOG$** views and from the operating system **.aud** and **.xml** files after they have been successfully inserted into the Audit Vault Server repository.
 
-The Audit Vault Agent automatically sets a timestamp on audit data that has been collected. We can use the system procedure **DBMS_AUDIT_MGMT.CREATE_PURGE_JOB** to periodically purge audit data that has been already collected.
+The Audit Vault Agent automatically sets a timestamp on audit data that has been collected. We can use the system procedure **DBMS\_AUDIT\_MGMT.CREATE\_PURGE\_JOB** to periodically purge audit data that has been already collected.
 
 1) Let us count the existing rows in audit tables.
 
@@ -671,7 +685,7 @@ SQL> select count(*) from unified_audit_trail;
         15
 ````
 
-This completes the Audit Vault lab.
+**This completes the Audit Vault lab.**
 
 ## Acknowledgements ##
 
