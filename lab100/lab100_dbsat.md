@@ -504,9 +504,9 @@ The Discoverer CSV report can be loaded into Oracle Audit Vault and Database Fir
 
 This completes the DBSAT lab. You can continue with lab 2.
 
+## Acknowledgements ##
 
-## Credits
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
+- **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
 
-**Authors** 
 
-- Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
