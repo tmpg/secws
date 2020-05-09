@@ -1,13 +1,12 @@
-# Network Encryption #
+# Lab 2: Network Encryption
 
 One of the basic protection that you can set on the database is the **Network Encryption**. It is included with all editions since version 11gR2 so you can configure and start using it without any additional licensing. 
 
 On Cloud environments is configured by default. In this chapter, we will address the problem of cyber-attacks and network hijacking and we learn how to configure it in an On Premise environment.
 
-
 ## Requirements
 
-- Lab 0: "Accessing to Labs environment" completed. 
+- [Lab 1: "DBSAT"](../lab100/lab100_dbsat.md) completed. 
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
@@ -64,7 +63,7 @@ SQLNET.ALLOWED_LOGON_VERSION_SERVER = 12a
 [oracle@secdb lab02_network]$
 ```
 
-From ol68, verify that we can no longer connect from an 11gR2 client:
+From **dbclient**, verify that we can no longer connect from an 11gR2 client:
 
 ```
 [oracle@dbclient lab02_network]$ <copy>./check_client_11gR2.sh</copy>
@@ -80,8 +79,10 @@ ORA-28040: No matching authentication protocol
 However, we can still connect from the default 18c instant client:
 
 ```
-[oracle@dbclient HOL]$ cd /home/oracle/HOL
-[oracle@dbclient HOL]$ run_applic.sh
+[oracle@dbclient HOL]$ <copy>cd /home/oracle/HOL</copy>
+```
+```
+[oracle@dbclient HOL]$ <copy>run_applic.sh</copy>
 SQL*Plus: Release 19.0.0.0.0 - Production on Sat Apr 25 02:15:24 2020
 Version 19.6.0.0.0
 
@@ -142,7 +143,7 @@ The easiest way to verify whether a network encryption or a data integrity algor
 Run the following query from the **dbclient**:	
 
 ```
-[oracle@dbclient ~]$ cd <copy>HOL/lab02_network/</copy>
+[oracle@dbclient ~]$ <copy>cd ~/HOL/lab02_network/</copy>
 ```
 ``` 
 [oracle@dbclient lab02_network]$ <copy>./check_network_enc.sh</copy>
@@ -182,10 +183,10 @@ The three lines in the result just reflect the capabilities of the Oracle Net’
 It is possible to enforce Oracle Net encryption and set a data integrity algorithm by setting parameters in sqlnet.ora on the server side. Run the following commands from a terminal connection to the **secdb** server .
 
 ```
-[oracle@secdb ~]$ <copy>cd HOL/lab02_network/</copy>
+[oracle@secdb ~]$ <copy>cd ~/HOL/lab02_network/</copy>
 ```
 ```
-[oracle@secdb lab02_network]$ <copy>./net20_add_net_enc.sh<c/opy>
+[oracle@secdb lab02_network]$ <copy>./net20_add_net_enc.sh</copy>
 Add the following lines to sqlnet.ora:
 #
 # Network encryption algorithm
@@ -201,18 +202,20 @@ SQLNET.CRYPTO_CHECKSUM_SERVER = required
 SQLNET.CRYPTO_CHECKSUM_TYPES_SERVER= (SHA256)
 ```
 
-### check `network_service_banner` after configuring Network Encryption
+### Check `network_service_banner` after configuring Network Encryption
 
 Now run again the following query from the **dbclient**:
 
 ```
-[oracle@ol68 lab02_network]$ <copy>cd /home/oracle/HOL/lab02_network/</copy>
+[oracle@dbclient lab02_network]$ <copy>cd ~/HOL/lab02_network/</copy>
 ```
 ```
-[oracle@ol68 lab02_network]$ <copy>./check_network_enc.sh</copy>
+[oracle@dbclient lab02_network]$ <copy>./check_network_enc.sh</copy>
 
-SQL*Plus: Release 18.0.0.0.0 - Production on Wed Mar 6 11:54:19 2019
-Version 18.3.0.0.0
+SQL*Plus: Release 19.0.0.0.0 - Production on Sat May 9 01:16:20 2020
+Version 19.6.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
 
 Connected.
 SQL> set linesize 120
@@ -226,21 +229,23 @@ SQL> select i.network_service_banner
   7     s.username = 'SYSTEM';
 
 NETWORK_SERVICE_BANNER
-------------------------------------------------------------------------------
-TCP/IP NT Protocol Adapter for Linux: Version 18.0.0.0.0 - Production
-Encryption service for Linux: Version 18.0.0.0.0 - Production
-AES128 Encryption service adapter for Linux: Version 18.0.0.0.0 - Production
-Crypto-checksumming service for Linux: Version 18.0.0.0.0 - Production
-SHA256 Crypto-checksumming service adapter for Linux: Version 18.0.0.0.0 - Production
+-------------------------------------------------------------------------------------
+TCP/IP NT Protocol Adapter for Linux: Version 19.0.0.0.0 - Production
+Encryption service for Linux: Version 19.0.0.0.0 - Production
+AES128 Encryption service adapter for Linux: Version 19.0.0.0.0 - Production
+Crypto-checksumming service for Linux: Version 19.0.0.0.0 - Production
+SHA256 Crypto-checksumming service adapter for Linux: Version 19.0.0.0.0 - Production
 
 SQL> exit
-Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
-Version 18.5.0.0.0
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.6.0.0.0
+[oracle@dbclient lab02_network]$
+
 ```
 
 Here the lines highlighted in red in the result reflect the algorithms actually in use. 
 
-This completes the Network Encryption lab.
+This completes the **Network Encryption lab**. You can continue with [Lab 3: Transparent Data Encryption](../lab300/transparent_data_encryption.md)
 
 ## Acknowledgements ##
 

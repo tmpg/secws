@@ -15,7 +15,7 @@ You can use report findings to:
 
 ## Requirements ##
 
-- Lab 0: "Accessing to Labs environment" completed. 
+- [Lab 0: "Accessing to Labs environment"](../lab000/lab000_accessing.md) completed.
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**  
 

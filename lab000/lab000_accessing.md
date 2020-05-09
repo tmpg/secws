@@ -87,9 +87,7 @@ Use the actual IP address for each server, to open 2 terminals:
 
 You now can start the workshop labs.
 
+## Acknowledgements ##
 
-## Credits
-
-**Authors** 
-
-- Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
+- **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.

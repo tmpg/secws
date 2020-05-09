@@ -21,14 +21,14 @@
         {
             "title": "Lab 2: Network Encryption",
             "description":"Lab 2",
-            "publisheddate": "04/21/2020",
+            "publisheddate": "05/05/2020",
             "filename":"./lab200/lab200_network_encryption.md"
         },
         {
             "title": "Lab 3: Transparent Data Encryption",
             "description":"Lab 3",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab300/content.md"
+            "publisheddate": "05/08/2020",
+            "filename":"./lab300/lab300_transparent_data_encryption.md"
         },
         {
             "title": "Lab 4: Data Redaction",
