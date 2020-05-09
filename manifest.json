@@ -10,7 +10,7 @@
             "title": "Lab 0: Accessing the Labs environment",
             "description":"Accessing the Labs environment",
             "publisheddate": "04/21/2020",
-            "filename":"./lab000/lab000_acessing.md"
+            "filename":"./lab000/lab000_accessing.md"
         },
         {
             "title": "Lab 1: Database Security Assessment Tool",
@@ -20,37 +20,37 @@
         },
         {
             "title": "Lab 2: Network Encryption",
-            "description":"Lab 2",
+            "description":"Lab 2: Network Encryption",
             "publisheddate": "05/05/2020",
             "filename":"./lab200/lab200_network_encryption.md"
         },
         {
             "title": "Lab 3: Transparent Data Encryption",
-            "description":"Lab 3",
+            "description":"Lab 3: Transparent Data Encryption",
             "publisheddate": "05/08/2020",
             "filename":"./lab300/lab300_transparent_data_encryption.md"
         },
         {
             "title": "Lab 4: Data Redaction",
-            "description":"Lab 4",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab400/content.md"
+            "description":"Lab 4: Data Redaction",
+            "publisheddate": "05/08/2020",
+            "filename":"./lab400/lab400_data_redaction.md"
         },
         {
             "title": "Lab 5: Privilege Analysis",
             "description":"Lab 5",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab500/content.md"
+            "publisheddate": "05/08/2020",
+            "filename":"./lab500/lab500_privilege_analysis.md"
         },
         {
             "title": "Lab 6: Database Vault",
-            "description":"Lab 6",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab600/content.md"
+            "description":"Lab 6: Database Vault",
+            "publisheddate": "05/08/2020",
+            "filename":"./lab600/lab600_database_vault.md"
         },
         {
             "title": "Lab 7: Database Audit",
-            "description":"Lab 7",
+            "description":"Lab 7: Database Audit",
             "publisheddate": "04/21/2020",
             "filename":"./lab700/content.md"
         },
