@@ -75,5 +75,6 @@ Labs to use and demonstrate the functionalities of the Data Safe solution that w
 - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
 
 **Credits**
+
 - Data Safe Labs based on the materials from Oracle Database Security Product Management Team.
-- 
+

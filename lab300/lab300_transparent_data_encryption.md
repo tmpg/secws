@@ -15,7 +15,7 @@ In [Lab 01, DBSAT](../lab100/lab100_dbsat.md) we had the following finding:
 
 ![](./images/dbsat_tde.png)
 
-**Transparent Data Encryption** automatically encrypts data as it is stored and decrypts it upon retrieval. This protects sensitive data from attacks that bypass the database to read data files directly. Encryption keys may be stored in wallets on the database server itself, or stored remotely in Oracle Key Vault for improved security. The ENCRYPT_NEW_TABLESPACES parameter ensures that TDE tablespace encryption is applied to all newly created tablespaces.
+**Transparent Data Encryption** automatically encrypts data as it is stored and decrypts it upon retrieval. This protects sensitive data from attacks that bypass the database to read data files directly. Encryption keys may be stored in wallets on the database server itself, or stored remotely in Oracle Key Vault for improved security. The ENCRYPT\_NEW\_TABLESPACES parameter ensures that TDE tablespace encryption is applied to all newly created tablespaces.
 
 ## Configuring Transparent Data Encryption
 
