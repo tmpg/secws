@@ -419,7 +419,7 @@ The “with backup” clause means that the **previous keystore** is backed up b
 
 The presence of cwallet.sso indicates an **autologin wallet**.
 
-This completes the **Transparent Data Encryption** lab. You can continue with [Lab 4: Database Vault](../lab400/lab400_data_redaction.md)
+This completes the **Transparent Data Encryption** lab. You can continue with [Lab 4: Data Redaction](../lab400/lab400_data_redaction.md)
 
 
 ## Acknowledgements ##

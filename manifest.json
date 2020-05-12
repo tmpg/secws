@@ -38,7 +38,7 @@
         },
         {
             "title": "Lab 5: Privilege Analysis",
-            "description":"Lab 5",
+            "description":"Lab 5: Privilege Analysis",
             "publisheddate": "05/08/2020",
             "filename":"./lab500/lab500_privilege_analysis.md"
         },
@@ -52,25 +52,25 @@
             "title": "Lab 7: Database Audit",
             "description":"Lab 7: Database Audit",
             "publisheddate": "04/21/2020",
-            "filename":"./lab700/content.md"
+            "filename":"./lab700/lab700_database_audit.md"
         },
         {
             "title": "Lab 8: Audit Vault",
             "description":"Lab 8",
             "publisheddate": "04/21/2020",
-            "filename":"./lab800/content.md"
+            "filename":"./lab800/lab800_audit_vault.md"
         },
         {
             "title": "Lab 9: Data Masking",
-            "description":"Lab 9",
+            "description":"Lab 9: Data Masking",
             "publisheddate": "04/21/2020",
-            "filename":"./lab900/content.md"
+            "filename":"./lab900/lab900_data_masking.md"
         },
         {
             "title": "Lab 10: Running DBSAT and compare results",
             "description":"Lab 10",
             "publisheddate": "04/21/2020",
-            "filename":"./lab1000/content.md"
+            "filename":"./lab1000/lab1000_dbsat_compare.md"
         }
     ]
 }

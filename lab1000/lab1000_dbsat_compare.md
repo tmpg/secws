@@ -1,4 +1,4 @@
-# Title #
+# Lab 10: Running DBSAT and compare results
 
 Initial description 
 
@@ -32,7 +32,7 @@ Description of substep 1.2
 
 etc
 
-## Acknowledgements ##
+## Acknowledgements
 
-- **Author** - Robert Pastijn, Database Product Management, PTS EMEA - April 2020
-
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
+- **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.

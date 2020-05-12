@@ -685,9 +685,10 @@ SQL> select count(*) from unified_audit_trail;
         15
 ````
 
-**This completes the Audit Vault lab.**
+**This completes the Audit Vault lab.** You can continue with [Lab 9: Data Masking](../lab900/lab900_data_masking.md)
 
-## Acknowledgements ##
+## Acknowledgements
 
-- **Authors** - Adrian Galindo & François Pons, PTS EMEA - April 2020.
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
+

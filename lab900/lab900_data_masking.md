@@ -350,7 +350,7 @@ ajtztgeaar                     12824 awfrkcqdak@company.com    3717-3313-1007-43
 
 **This completes the Data Masking lab.**
 
-## Acknowledgements ##
+## Acknowledgements
 
-- **Authors** - Adrian Galindo & François Pons, PTS EMEA - April 2020.
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.

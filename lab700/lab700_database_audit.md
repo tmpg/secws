@@ -246,9 +246,9 @@ Let us use it to view recent audit records.
 $ <copy>aud_95_view_audit.sh</copy>
 ````
 
-**This completes the Database Audit.**
+**This completes the Database Audit.** You can contienue with [Lab 8: Audit Vault](../lab800/lab800_audit_vault.md)
 
-## Acknowledgements ##
+## Acknowledgements
 
-- **Authors** - Adrian Galindo & François Pons, PTS EMEA - April 2020.
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
