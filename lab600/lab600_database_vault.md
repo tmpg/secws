@@ -171,7 +171,7 @@ TRUE
 ````
 
 
-## Step 2 : Operations Control  ##  
+## Step 2 : Operations Control  ##
 
 **Operations Control** is a Database Vault **19c** new feature which makes very easy to restrict common users (e.g. **SYS** or **SYSTEM**) from accessing pluggable database (e.g. in **PDB1**) local data.
 
@@ -200,7 +200,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-Verify the status (**DV_APP_PROTECTION** is **ENABLED**).
+Verify the status (**DV\_APP\_PROTECTION** is **ENABLED**).
 
 ````
 $ <copy>opsctl_20_status.sh</copy>
