@@ -6,7 +6,7 @@ On Cloud environments is configured by default. In this chapter, we will address
 
 ## Requirements
 
-- [Lab 1: "DBSAT"](../lab100/lab100_dbsat.md) completed. 
+- **Lab 1: "DBSAT"** completed. 
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
@@ -245,7 +245,7 @@ Version 19.6.0.0.0
 
 Here the lines highlighted in red in the result reflect the algorithms actually in use. 
 
-This completes the **Network Encryption lab**. You can continue with [Lab 3: Transparent Data Encryption](../lab300/transparent_data_encryption.md)
+This completes the **Network Encryption** lab. You can continue with **Lab 3: Transparent Data Encryption**
 
 ## Acknowledgements ##
 

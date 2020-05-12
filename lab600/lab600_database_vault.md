@@ -1,4 +1,4 @@
-# Title #
+# Lab 6: Database Vault
 
 Initial description 
 
@@ -32,7 +32,10 @@ Description of substep 1.2
 
 etc
 
-## Acknowledgements ##
+This completes the **Database Vault** lab. You can continue with **Lab 7: Database Audit**
 
-- **Author** - Robert Pastijn, Database Product Management, PTS EMEA - April 2020
+## Acknowledgements
+
+- **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
+- **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
 

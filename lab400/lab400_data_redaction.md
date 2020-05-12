@@ -32,7 +32,7 @@ Description of substep 1.2
 
 etc
 
-This completes the **Data Redaction** lab. You can continue with [Lab 5: Privilege Analysis](../lab500/lab500_privilege_analysis.md)
+This completes the **Data Redaction** lab. You can continue with **Lab 5: Privilege Analysis**
 
 ## Acknowledgements
 

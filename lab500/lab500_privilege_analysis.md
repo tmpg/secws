@@ -32,7 +32,7 @@ Description of substep 1.2
 
 etc
 
-This completes the **Privilege Analysis** lab. You can continue with [Lab 6: Database Vault](../lab600/lab600_databas_vVault.md)
+This completes the **Privilege Analysis** lab. You can continue with **Lab 6: Database Vault**
 
 ## Acknowledgements
 

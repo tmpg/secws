@@ -685,7 +685,7 @@ SQL> select count(*) from unified_audit_trail;
         15
 ````
 
-**This completes the Audit Vault lab.** You can continue with [Lab 9: Data Masking](../lab900/lab900_data_masking.md)
+This completes the **Audit Vault** lab. You can continue with **Lab 9: Data Masking.**
 
 ## Acknowledgements
 

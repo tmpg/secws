@@ -5,13 +5,13 @@ Encryption of some sensitive data is a requirement in certain regulated environm
 
 ## Requirements
 
-- [Lab 02: "Network Encryption"](../lab200/lab200_network_encryption.md) completed. 
+- **Lab 02: "Network Encryption"** completed. 
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
 ## Review findings from DBSAT
 
-In [Lab 01, DBSAT](../lab100/lab100_dbsat.md) we had the following finding:
+In **Lab 01, DBSAT** we had the following finding:
 
 ![](./images/dbsat_tde.png)
 
@@ -419,8 +419,7 @@ The “with backup” clause means that the **previous keystore** is backed up b
 
 The presence of cwallet.sso indicates an **autologin wallet**.
 
-This completes the **Transparent Data Encryption** lab. You can continue with [Lab 4: Data Redaction](../lab400/lab400_data_redaction.md)
-
+This completes the **Transparent Data Encryption** lab. You can continue with **Lab 4: Data Redaction**
 
 ## Acknowledgements ##
 
