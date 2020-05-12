@@ -7,7 +7,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Requirements ##
 
-List of requirements
+Instructions in this lab expect that you have completed all the previous labs in the workshop.
 
 ## Introduction  ##
 
