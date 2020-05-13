@@ -470,6 +470,249 @@ ORA-00942: table or view does not exist
 (...)
 ````
 
+## Step 4 : Using Database Vault to enforce a trusted appliaction path  ##
+
+In Oracle Database Vault, you can create a **Secure Application Role** that you enable with an Oracle Database Vault rule set.
+
+Regular Oracle Database Secure Application Roles are enabled by custom PL/SQL procedures. You use Secure Application Roles to prevent users from accessing data from outside an application. This forces users to work within the framework of the application privileges that have been granted to the role.
+
+The advantage of basing database access for a role on a rule set is that you can store database security policies in one central place, as opposed to storing them in all your applications. Basing the role on a rule set provides a consistent and flexible method to enforce the security policies that the role provides. In this way, it is easy to enforce a trusted application path and reject all unexpected connections.
+
+In the following demo, we will allow connection as APPUSER2, but only when they come from **SQL*Plus** and from the **dbclient** client.
+
+Here is the outline of the configuration :
+*	Create **rules** to check a connection comes from **SQL*Plus** and from **dbclient**
+*	Group the rules in a **rule set**
+*	Create a **Secure Application Role** linked to this rule set
+*	Grant privileges to the Secure Role
+*	Test the Secure Application Role
+
+
+### Step 4a : Create the rules ###
+
+We will create three rules.
+
+````
+$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
+````
+
+````
+$ <copy>sar10_dbvo_rules.sh</copy>
+
+(...)
+SQL> /*
+SQL>  * Create rules
+SQL>  */
+SQL> begin
+  2    DBMS_MACADM.CREATE_RULE(
+  3      rule_name   => 'Check host',
+  4      rule_expr   => 'rtrim(SYS_CONTEXT(''USERENV'',''HOST''),''.localdomain'')=''olclient'''
+  5      );
+  6  end;
+  7  /
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2    DBMS_MACADM.CREATE_RULE(
+  3      rule_name   => 'Check program',
+  4      rule_expr   => 'SYS_CONTEXT(''USERENV'',''MODULE'')=''SQL*Plus'''
+  5      );
+  6  end;
+  7  /
+PL/SQL procedure successfully completed.
+
+SQL>
+SQL> begin
+  2    DBMS_MACADM.CREATE_RULE(
+  3      rule_name   => 'Check user',
+  4      rule_expr   => 'SYS_CONTEXT(''USERENV'',''SESSION_USER'')=''APPUSER2'''
+  5      );
+  6  end;
+  7  /
+PL/SQL procedure successfully completed.
+(...)
+````
+
+### Step 4b : Create a rule set ###
+
+````
+$ <copy>sar20_dbvo_ruleset.sh</copy>
+
+(...)
+SQL> /*
+SQL>  * Create rule set which can be used to enforce a trusted path for the application
+SQL>  */
+SQL> BEGIN
+  2    DBMS_MACADM.CREATE_RULE_SET(
+  3      rule_set_name => 'Can run application',
+  4      description   => 'This rule set enforces a trusted path for the application',
+  5      enabled         => 'Y',
+  6      eval_options    => 1,
+  7      audit_options   => 1,
+  8      fail_options    => 1,
+  9      fail_message    => '',
+ 10      fail_code       => '',
+ 11      handler_options => 0,
+ 12      handler         => '',
+ 13      is_static       => FALSE);
+ 14    DBMS_MACADM.ADD_RULE_TO_RULE_SET(
+ 15      rule_set_name   => 'Can run application',
+ 16      rule_name       => 'Check host',
+ 17      rule_order      => '1',
+ 18      enabled         => 'Y');
+ 19    DBMS_MACADM.ADD_RULE_TO_RULE_SET(
+ 20      rule_set_name   => 'Can run application',
+ 21      rule_name       => 'Check program',
+ 22      rule_order      => '1',
+ 23      enabled         => 'Y');
+ 24    DBMS_MACADM.ADD_RULE_TO_RULE_SET(
+ 25      rule_set_name   => 'Can run application',
+ 26      rule_name       => 'Check user',
+ 27      rule_order      => '1',
+ 28      enabled         => 'Y');
+ 29  END;
+ 30  /
+PL/SQL procedure successfully completed.
+(...)
+````
+
+### Step 4c : Create a Secure Application Role ###
+
+Now create the Secure Application Role linked to the ruleset. Also protect it by putting it into the realm.
+
+````
+$ <copy>sar30_dbvo_secapprole.sh</copy>
+
+(...)
+SQL> /*
+SQL>  * Create secure application role
+SQL>  */
+SQL> BEGIN
+  2    DVSYS.DBMS_MACADM.CREATE_ROLE(
+  3      role_name     => 'SECAPPROLE',
+  4      enabled       => 'Y',
+  5      rule_set_name => 'Can run application');
+  6  END;
+  7  /
+PL/SQL procedure successfully completed.
+
+SQL> show errors
+No errors.
+SQL>
+SQL> /*
+SQL>  * Protects role SECAPPROLE
+SQL>  * - putting role SECAPPROLE in the realm prevents DBA from granting the role to themselves
+SQL>  * - putting role SECAPPROLE as realm participant allows users granted this role to use their privileges
+SQL>  */
+SQL> BEGIN
+  2    DBMS_MACADM.ADD_OBJECT_TO_REALM(
+  3      realm_name      => 'HR Realm',
+  4      object_owner    => '%',
+  5      object_name     => 'SECAPPROLE',
+  6      object_type     => 'ROLE' );
+  7    DBMS_MACADM.ADD_AUTH_TO_REALM(
+  8      realm_name      => 'HR Realm',
+  9      grantee         => 'SECAPPROLE',
+ 10      rule_set_name   => '',
+ 11      auth_options    => DBMS_MACUTL.G_REALM_AUTH_PARTICIPANT );
+ 12  END;
+ 13  /
+PL/SQL procedure successfully completed.
+(...)
+````
+
+### Step 4d : Grant privileges to the Sec App Role ###
+
+Grant the privileges required to run the application to the Secure Application Role.
+
+````
+$ <copy>sar40_hr_roleprivs.sh</copy>
+
+(...)
+SQL> grant select, insert, update, delete on HR.regions to SECAPPROLE;
+Grant succeeded.
+
+SQL> grant select, insert, update, delete on HR.countries to SECAPPROLE;
+Grant succeeded.
+
+(...)
+
+SQL> grant select on hr.emp_details_view to SECAPPROLE,
+SQL> grant execute on hr.ADD_JOB_HISTORY to SECAPPROLE;
+Grant succeeded.
+
+SQL> grant execute on hr.SECURE_DML to SECAPPROLE;
+Grant succeeded.
+(...)
+````
+
+### Step 4e : Verification ###
+
+We can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
+
+````
+$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
+````
+
+````
+$ <copy>test_secapprole_appuser2.sh</copy>
+
+(...)
+SQL> --
+SQL> -- try to enable the secure application role
+SQL> --
+SQL> exec dbms_macsec_roles.set_role('SECAPPROLE')
+BEGIN dbms_macsec_roles.set_role('SECAPPROLE'); END;
+
+*
+ERROR at line 1:
+ORA-47305: Rule Set violation on SET ROLE (SECAPPROLE)
+ORA-06512: at "DVSYS.DBMS_MACUTL", line 49
+ORA-06512: at "DVSYS.DBMS_MACUTL", line 398
+ORA-06512: at "DVSYS.DBMS_MACSEC", line 286
+ORA-06512: at "DVSYS.ROLE_IS_ENABLED", line 4
+ORA-06512: at "DVSYS.DBMS_MACSEC_ROLES", line 53
+ORA-06512: at line 1
+
+SQL> select * from hr.regions;
+select * from hr.regions
+                 *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+(...)
+````
+
+… but it works from **dbclient** :
+
+````
+$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
+````
+
+````
+$ <copy>test_secapprole_appuser2.sh</copy>
+
+(...)
+SQL>
+SQL> --
+SQL> -- enable the secure application role
+SQL> --
+SQL> exec dbms_macsec_roles.set_role('SECAPPROLE')
+PL/SQL procedure successfully completed.
+
+SQL>
+SQL> select * from hr.regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+         1 Europe
+         2 Americas
+         3 Asia
+         4 Middle East and Africa
+(...)
+````
+
+Note: The scripts in subdirectory **z_cleanup** are for your information only. They document the SQL syntax to **remove** the Database Vault configuration that we have just built. **DO NOT RUN THESE SCRIPTS**.
+
 This completes the **Database Vault** lab. You can continue with **Lab 7: Database Audit**
 
 ## Acknowledgements
