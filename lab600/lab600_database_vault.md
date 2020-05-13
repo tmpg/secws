@@ -173,13 +173,13 @@ TRUE
 
 ## Step 2 : Operations Control  ##
 
-**Operations Control** is a Database Vault **19c** new feature which makes very easy to restrict common users (e.g. **SYS** or **SYSTEM**) from accessing pluggable database (e.g. in **PDB1**) local data.
+**Operations Control** is a Database Vault **19c** new feature which makes very easy to restrict common users (e.g. **SYS** or **SYSTEM**) from accessing pluggable database local data (e.g. **PDB1** local data).
 
 Ops Control is useful for situations where a database administrator must log in to the CDB root as a highly privileged user, but still not be able to access PDB customer data.
 
-Database operations control does not block PDB database administrators. To block these users, enable Oracle Database Vault in the PDB and then use the Database Vault features such as **realm control** to block theseusers, as we'll see in **Step 3**.
+Database operations control does not block PDB database administrators. To block these users, enable Oracle Database Vault in the PDB and then use other Database Vault features such as **realm control** to block these users, as we'll see in **Step 3**.
 
-Run the following scrit to enable Ops Control in the CDB.
+Run the following script to enable Ops Control in the CDB.
 
 ````
 $ <copy>cd /home/oracle/HOL/lab06_dbv/b_ops_control</copy>
@@ -217,7 +217,7 @@ DV_ENABLE_STATUS     TRUE
 (...)
 ````
 
-Let us verify that **SYS** or **SYSTEM** cannot access to local data in **PDB1**.
+Let us now verify that **SYS** or **SYSTEM** cannot access local data in **PDB1**.
 
 ````
 $ <copy>opsctl_30_test_access.sh</copy>
@@ -249,7 +249,7 @@ ORA-01031: insufficient privileges
 (...)
 ````
 
-For the rest of the workshop, we will however **disable Operations Control**.
+For the rest of the workshop, we will however **disable Operations Control**. Please run the following script.
 
 ````
 $ <copy>opsctl_90_disable.sh</copy>
@@ -265,17 +265,17 @@ PL/SQL procedure successfully completed.
 ````
 
 
-## Step 3 : Create a Database Vault Realm over HR schema in PDB1  ##  
+## Step 3 : Create a Database Vault Realm over HR schema in PDB1  ##
 
-A **realm** is a grouping of database schemas, database objects, and database roles that must be secured for a given application. Only users who have been granted realm authorization as either a realm owner or a realm participant can use their **system privileges** to access secured objects in the realm.
+A **realm** is a grouping of database schemas, database objects, and database roles that must be secured for a given application. Only users who have been granted **realm authorization** as either a realm **owner** or a realm **participant** can use their **system privileges** to access secured objects in the realm.
 
 In the following demo, we will execute the following scenario:
 
 *	Create  a realm over the **HR** schema in **PDB1** – done by the Database Vault Owner
 *	Create a **HR_ROLE** role to grant application privileges to users. We’ll need to also protect this role by putting in inside the realm to prevent privileged users (**SYS** or **SYSTEM**) to modify it or to grant it to themselves
-*	We’ll also create two **application users appuser1** and **appuser2** and grant the required role only to **appuser1**
+*	We’ll also create two application users **appuser1** and **appuser2** and grant the required role only to **appuser1**
 
-### Step 3a : Enable Database Vault in the Pluggable Database ###
+### Step 3a : Create a realm HR_REALM over the HR schema ###
 
 Create realm **HR_REALM** over the **HR** schema in **PDB1**. Run the following script from a terminal window to the secdb server
 
@@ -313,8 +313,162 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
+### Step 3b : Grant CREATE ROLE to the Application Manager ###
+
+It is important to not create the role as **SYS**, but as the **Application Manager**. Otherwise the DBA will be able to later modify the role or grant it to himself. Run the following script from a terminal window to the secdb server:
+
+````
+$ <copy>cd /home/oracle/HOL/lab06_dbv/c_role</copy>
+````
+
+````
+$ <copy>dbv20_sys_grant.sh</copy>
+
+(...)
+SQL> alter session set container=PDB1;
+Session altered.
+
+SQL> /*
+SQL>  * Role will be created by HR and protected in the realm
+SQL>  * => cannot be modified by DBAs
+SQL>  */
+SQL> grant create role to HR;
+Grant succeeded.
+(...)
+````
+
+### Step 3c : Create demo users ###
+
+Run the following script.
+
+````
+$ <copy>dbv30_dbvam_create_users.sh</copy>
+
+(...)
+SQL> --
+SQL> -- Need to be DBVAM to create users and grant CONNECT
+SQL> --
+SQL> create user appuser1 identified by MyDbPwd#1 account unlock;
+User created.
+
+SQL> create user appuser2 identified by MyDbPwd#1 account unlock;
+User created.
+
+SQL> grant create session to appuser1;
+Grant succeeded.
+
+SQL> grant create session to appuser2;
+Grant succeeded.
+(...)
+````
+
+### Step 3d :  Create an application role ###
+
+Connect as the **Application Manager (HR)** to create the application role **APPROLE**. Run the following script from a terminal window to the secdb server. Note that the role is only granted to **APPUSER1** and not to **APPUSER2**.
+
+````
+$ <copy>dbv40_hr_roleprivs.sh</copy>
+
+(...)
+SQL> create role APPROLE;
+Role created.
+
+SQL> grant select, insert, update, delete on HR.regions to APPROLE;
+Grant succeeded.
+
+SQL> grant select, insert, update, delete on HR.countries to APPROLE;
+Grant succeeded.
+
+SQL> grant select, insert, update, delete on HR.locations to APPROLE;
+Grant succeeded.
+
+(...)
+
+SQL> grant select, insert, update, delete on HR.job_history to APPROLE;
+Grant succeeded.
+
+SQL> grant execute on hr.ADD_JOB_HISTORY to APPROLE;
+Grant succeeded.
+
+SQL> grant execute on hr.SECURE_DML to APPROLE;
+Grant succeeded.
+
+SQL> grant APPROLE to appuser1;
+Grant succeeded.
+(...)
+````
+
+### Step 3e :  Protect the APPROLE role ###
+
+Protect role APPROLE by placing it in the realm to prevent privileged users such as DBAs from granting the role to themselves.
+
+Please note that because we created a **mandatory** realm, we also need to make it realm **participant** in order to allow users granted this role to use their privileges.
+
+````
+$ <copy>dbv50_dbvo_approle.sh</copy>
+
+(...)
+SQL> /*
+SQL>  * Protects role APPROLE
+SQL>  * - putting role APPROLE in the realm prevents DBA from granting the role to themselves
+SQL>  * - putting role APPROLE as realm participant allows users granted this role to use their privileges
+SQL>  */
+SQL> BEGIN
+  2    DBMS_MACADM.ADD_OBJECT_TO_REALM(
+  3      realm_name      => 'HR Realm',
+  4      object_owner    => '%',
+  5      object_name     => 'APPROLE',
+  6      object_type     => 'ROLE' );
+  7    DBMS_MACADM.ADD_AUTH_TO_REALM(
+  8      realm_name      => 'HR Realm',
+  9      grantee         => 'APPROLE',
+ 10      rule_set_name   => '',
+ 11      auth_options    => DBMS_MACUTL.G_REALM_AUTH_PARTICIPANT );
+ 12  END;
+ 13  /
+PL/SQL procedure successfully completed.
+(...)
+````
+
+### Step 3f : Verification ###
+
+We can now test from the dbclient client that only **APPUSER1** (and not **APPUSER2**) is able to run the application. Run the following script from a terminal window to the **dbclient** client.
+
+First from APPUSER1 :
+
+````
+$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
+````
+
+````
+$ <copy>run_applic_appuser1.sh</copy>
+
+(...)
+SQL> select * from hr.regions;
+
+ REGION_ID REGION_NAME
+---------- -------------------------
+         1 Europe
+         2 Americas
+         3 Asia
+         4 Middle East and Africa
+(...)
+````
 
 
+Then from APPUSER2 :
+
+````
+$ <copy>run_applic_appuser2.sh</copy>
+
+(...)
+SQL> select * from hr.regions;
+select * from hr.regions
+                 *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+(...)
+````
 
 This completes the **Database Vault** lab. You can continue with **Lab 7: Database Audit**
 
