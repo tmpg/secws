@@ -9,7 +9,7 @@ Encryption of some sensitive data is a requirement in certain regulated environm
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
-## Review findings from DBSAT
+## Step 1: Review findings from DBSAT
 
 In **Lab 01, DBSAT** we had the following finding:
 
@@ -17,7 +17,7 @@ In **Lab 01, DBSAT** we had the following finding:
 
 **Transparent Data Encryption** automatically encrypts data as it is stored and decrypts it upon retrieval. This protects sensitive data from attacks that bypass the database to read data files directly. Encryption keys may be stored in wallets on the database server itself, or stored remotely in Oracle Key Vault for improved security. The ENCRYPT\_NEW\_TABLESPACES parameter ensures that TDE tablespace encryption is applied to all newly created tablespaces.
 
-## Configuring Transparent Data Encryption
+## Step 2: Configuring Transparent Data Encryption
 
 A software keystore is a container that stores the Transparent Data Encryption master encryption key. 
 Before you can configure the keystore, you first must define a location for it in the sqlnet.ora file. There is one keystore per database, and the database locates this keystore by checking the keystore location that you define in the sqlnet.ora file. You can create other keystores, such as copies of the keystore and export files that contain keys, depending on your needs. However, you must never remove or delete the keystore that you configured in the sqlnet.ora location, nor replace it with a different keystore. 
@@ -209,7 +209,7 @@ Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Pr
 Version 19.6.0.0.0
 ```
 
-## Encrypting Existing Data Files
+## Step 3: Encrypting Existing Data Files
 
 We can now encrypt existing and future tablespaces. 
 
@@ -332,6 +332,7 @@ Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Pr
 Version 19.6.0.0.0
 ```
 
+## Step 4: Working with Wallet 
 
 ### Inspect keys in the Wallet
 

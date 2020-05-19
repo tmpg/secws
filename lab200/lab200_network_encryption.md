@@ -10,14 +10,14 @@ On Cloud environments is configured by default. In this chapter, we will address
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
-## Setting Minimum Client Authentication to version 12
+## Step 1: Setting Minimum Client Authentication to version 12
 
 Over time, Oracle releases have added support for increasingly secure versions of the algorithm used for password authentication of user accounts. For maximum security, we should restrict connections to 12c clients using the most advanced algorithms for password authentication.
 This would address the following DBSAT finding:
 
 ![](./images/authentication.png)
 
-### Check Default Configuration ###
+### Check Default Configuration
 
 Check that default configuration allows 11gr2 clients to connect
 
@@ -45,7 +45,7 @@ SQL> SQL>
 SQL> Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
 ```
 
-### Set minimum client authentication version to 12 ###
+### Set minimum client authentication version to 12
 
 Now run the following commands from a terminal connection to the database.
 
@@ -119,7 +119,7 @@ Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Pr
 Version 19.6.0.0.0
 ```
 
-## Configuring Network Encryption and Data Integrity Algorithms ##
+## Step 2:  Configuring Network Encryption and Data Integrity Algorithms
 
 DBSAT has produced the following finding:
 
@@ -240,7 +240,6 @@ SQL> exit
 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
 Version 19.6.0.0.0
 [oracle@dbclient lab02_network]$
-
 ```
 
 Here the lines highlighted in red in the result reflect the algorithms actually in use. 
