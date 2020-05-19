@@ -49,9 +49,9 @@ In unified auditing, the **unified audit trail** captures audit information from
 
 ## Step 1 : Configuring Unified Auditing ##
 
-The unified audit trail, which resides in a read-only table in the AUDSYS schema in the SYSAUX tablespace, makes audit information available in a uniform format in the **UNIFIED_AUDIT_TRAIL** data dictionary view, and is available in both single-instance and Oracle Database Real Application Clusters environments. In addition to the user SYS, users who have been granted the **AUDIT_ADMIN** and **AUDIT_VIEWER** roles can query these views.
+The unified audit trail, which resides in a read-only table in the AUDSYS schema in the SYSAUX tablespace, makes audit information available in a uniform format in the **UNIFIED\_AUDIT\_TRAIL** data dictionary view, and is available in both single-instance and Oracle Database Real Application Clusters environments. In addition to the user SYS, users who have been granted the **AUDIT\_ADMIN** and **AUDIT\_VIEWER** roles can query these views.
 
-If your users only need to query the views but do not create audit policies, then grant them the **AUDIT_VIEWER** role.
+If your users only need to query the views but do not create audit policies, then grant them the **AUDIT\_VIEWER** role.
 
 Run the following script from a terminal window to the secdb server to check its current auditing status:
 
