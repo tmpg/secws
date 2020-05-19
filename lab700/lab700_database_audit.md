@@ -212,7 +212,7 @@ SQL> AUDIT POLICY DDL_POL BY HR;
 Audit succeeded.
 ````
 
-## Step 3 : View audit records ##
+## Step 4 : View audit records ##
 
 Let us create some audit records by running aud_90_audit_records.sh, which creates a **login failure**, a **realm violation** and creates a **new table** in the HR schema (errors are expected!).
 
