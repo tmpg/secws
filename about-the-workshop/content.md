@@ -18,31 +18,25 @@ This workshop can be completed in one or two days, depending the labs executed. 
 
 ## Day 1
 
-- **Lab 1 (Database Security Assessment Tool)** : Assessing the security of an On-Premise database with the Database Security Assessment Tool (DBSAT).
+- **Lab 1 Database Security Assessment Tool** - Assessing the security of an On-Premise database with the Database Security Assessment Tool (DBSAT).
 
-- **Lab 2: Network encryption** \- Encrypting the network with Oracle Net.
+- **Lab 2: Network encryption** - Encrypting the network with Oracle Net.
 
 - **Lab 3: Transparent Data Encryption** - Encrypting On-Premise databases with Transparent Data Encryption.
 
-- **Lab 4: Data Redaction**
-Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
+- **Lab 4: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
 
-- **Lab 5: Privilege Analysis**
-Using Privilege Analysis to adopt a Least Privilege Model.
+- **Lab 5: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
 
-- **Lab 6: Database Vault**
-Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
+- **Lab 6: Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
 
 ## Day 2
 
-- **Lab 7: Database Audit**
-Configuring Unified Auditing and Unified Auditing policies.
+- **Lab 7: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
 
-- **Lab 8: Audit Vault**
-Using Audit Vault to manage audit data, view reports and create alerts.
+- **Lab 8: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
 
-- **Data Safe Lab 1 to 4**
-[**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4: Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault.
+- **Data Safe (Part 1)** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4.
 
 - **Lab 9: Data Masking**
 Using Enterprise Manager Cloud Control Data Masking to anonymize sensitive data.
