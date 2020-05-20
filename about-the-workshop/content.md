@@ -50,7 +50,9 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 ## Accessing the labs ##
 
-- Use the **Lab Contents** menu on your right to access the labs.
+- Use the **Lab Contents** menu on your right to access the labs 0 to 10.
+
+- Use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs.
 
 - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
 
