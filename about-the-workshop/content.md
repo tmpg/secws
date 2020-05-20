@@ -52,13 +52,13 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 - Use the **Lab Contents** menu on your right to access the labs 0 to 10.
 
-- Use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs.
-
 - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
 
 - From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
+
+- Use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs.
 
 ## Acknowledgments
 
