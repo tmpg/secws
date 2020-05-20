@@ -1,4 +1,4 @@
-# Database Security Solution Workshop #
+# Database Security Solutions Workshop #
 
 ## Workshop Overview ##
 
@@ -8,13 +8,16 @@ Learn directly from Oracle Database Product Management how to identify threats a
 
 ## Workshop Requirements
 
-- DBA experience with Oracle Database 11g, 12c or 18c.
-- Basic knowledge for Linux commands.
-- Understand how SSH and VNC work to connect to the servers.
+- DBA experience with Oracle Database.
+- Basic knowledge of Linux.
+- SSH and VNC to connect to remote hosts.
 
 ## Agenda
 
-This workshop can be completed in one or two days, depending the labs executed. Usually the structure of the agenda is according to the following layout:
+This workshop can be completed in one or two days, depending on the choice of labs to execute. Here are some possible agendas:
+* One day (Day1): When focussing on essentials (such as encryption and separation of duties).
+* A half day (Data Safe) when focussing on Cloud databases.
+* Two days (full workshop). The agenda for the full workshop is given below.
 
 ## Day 1
 
@@ -38,19 +41,16 @@ This workshop can be completed in one or two days, depending the labs executed. 
 
 - **Data Safe (Part 1)** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4.
 
-- **Lab 9: Data Masking**
-Using Enterprise Manager Cloud Control Data Masking to anonymize sensitive data.
+- **Lab 9: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
 
-- **Data Safe Lab 5**
-[**Data Safe**](../DataSafe/ "Data Safe Labs") Lab 5: Using Data Safe to anonymize sensitive data in Cloud databases.
+- **Data Safe (Part 2)** - Using Data Safe to discover and anonymize sensitive data in Cloud databases.  PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Lab 5.
 
-- **Lab 10: Re run DBSAT to compare results**
-Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
+- **Lab 10: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
 
-## Access the labs ##
+## Accessing the labs ##
 
-- Use **Lab Contents** menu on your right to access the labs.
+- Use the **Lab Contents** menu on your right to access the labs.
 
 - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
 
