@@ -8,9 +8,9 @@ Learn directly from Oracle Database Product Management how to identify threats a
 
 ## Workshop Requirements
 
-* DBA experience with Oracle Database 11g, 12c or 18c.
-* Basic knowledge for Linux commands.
-* Understand how SSH and VNC work to connect to the servers.
+- DBA experience with Oracle Database 11g, 12c or 18c.
+- Basic knowledge for Linux commands.
+- Understand how SSH and VNC work to connect to the servers.
 
 ## Agenda
 
@@ -18,63 +18,49 @@ This workshop can be completed in one or two days, depending the labs executed. 
 
 ## Day 1
 
-* **Lab 1: Database Security Assessment Tool**
+- **Lab 1 (Database Security Assessment Tool)** : Assessing the security of an On-Premise database with the Database Security Assessment Tool (DBSAT).
 
-Assessing the security of an On-Premise database with the Database Security Assessment Tool (DBSAT).
+- **Lab 2: Network encryption** \- Encrypting the network with Oracle Net.
 
-- **Lab 2: Network encryption**
-
-Encrypting the network with Oracle Net.
-
-- **Lab 3: Transparent Data Encryption**
-
-Encrypting On-Premise databases with Transparent Data Encryption.
+- **Lab 3: Transparent Data Encryption** - Encrypting On-Premise databases with Transparent Data Encryption.
 
 - **Lab 4: Data Redaction**
-
 Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
 
 - **Lab 5: Privilege Analysis**
-
 Using Privilege Analysis to adopt a Least Privilege Model.
 
 - **Lab 6: Database Vault**
-
 Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
 
 ## Day 2
 
 - **Lab 7: Database Audit**
-
 Configuring Unified Auditing and Unified Auditing policies.
 
 - **Lab 8: Audit Vault**
-
 Using Audit Vault to manage audit data, view reports and create alerts.
 
 - **Data Safe Lab 1 to 4**
-
 [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4: Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault.
 
 - **Lab 9: Data Masking**
-
 Using Enterprise Manager Cloud Control Data Masking to anonymize sensitive data.
 
 - **Data Safe Lab 5**
-
 [**Data Safe**](../DataSafe/ "Data Safe Labs") Lab 5: Using Data Safe to anonymize sensitive data in Cloud databases.
 
 - **Lab 10: Re run DBSAT to compare results**
-
 Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
 
 ## Access the labs ##
 
 - Use **Lab Contents** menu on your right to access the labs.
-- If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right  make it visible.
-- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
 
+- If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
+
+- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
