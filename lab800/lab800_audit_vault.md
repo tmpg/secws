@@ -331,7 +331,7 @@ We will first give back this privilege to SYSTEM. Please note that this change w
 Run the following scripts from a terminal window to the secdb server.
 
 ````
-$ <copy>/home/oracle/HOL/lab08_av/dp</copy>
+$ <copy>cd /home/oracle/HOL/lab08_av/dp</copy>
 ````
 
 ````
@@ -691,4 +691,3 @@ This completes the **Audit Vault** lab. You can continue with **Lab 9: Data Mask
 
 - **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
-
