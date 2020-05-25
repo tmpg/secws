@@ -35,7 +35,7 @@ Change to the lab directory
 
 Run `dbsat10_user.sh` to create a DBSAT local user with appropriate privileges.
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat10_user.sh</copy>
 
 (...)
@@ -71,7 +71,7 @@ SQL> -- 12c/18c/19c only
 SQL> grant select on audsys.aud$unified to dbsat;
 Grant succeeded.
 (...)
-```
+````
 
 We will now install and run DBSAT in the pluggable database PDB1.
 
@@ -79,7 +79,7 @@ We will now install and run DBSAT in the pluggable database PDB1.
 
 The installation is a simple process. Execute the `dbsat20_install.sh` script:
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat20_install.sh</copy>
 Archive:  dbsat.zip
   inflating: dbsat/install/dbsat
@@ -136,7 +136,7 @@ Archive:  dbsat.zip
   inflating: dbsat/install/Discover/conf/sensitive_nl.ini
   inflating: dbsat/install/Discover/conf/sensitive_el.ini
   [oracle@secdb lab01_dbsat]$
-```
+````
 
 
 ## Step 2: Run DBSAT Collector and Reporter
@@ -154,7 +154,7 @@ The time it takes to complete depends on the hardware and the data that needs to
 At the end of the process, you will be asked to provide a password (please use **oracle**) to protect the report file `dbsat_pdb1.zip`. Below is the expected output:
 
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat30_collect.sh</copy>
 
 Database Security Assessment Tool version 2.2.1 (May 2020)
@@ -175,7 +175,7 @@ Enter password: oracle
 Verify password: oracle
   adding: dbsat_pdb1.json (deflated 86%)
 zip completed successfully.
-```
+````
 
 
 ### Running DBSAT Reporter
@@ -188,14 +188,14 @@ Let us first unzip the output produced in the previous step. The password is **o
 [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
 ````
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>unzip dbsat_pdb1.zip</copy>
 
 [oracle@secdb install]$ unzip dbsat_pdb1.zip
 Archive:  dbsat_pdb1.zip
 [dbsat_pdb1.zip] dbsat_pdb1.json password: oracle
   inflating: dbsat_pdb1.json
-```
+````
 
 To run DBSAT reporter, we will use script `dbsat40_report.sh`, which contains the full command line:
 
@@ -207,7 +207,7 @@ To run DBSAT reporter, we will use script `dbsat40_report.sh`, which contains th
 
 Enter once again **oracle** as password to protect the zip file produced by DBSAT Reporter.
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat40_report.sh</copy>
 
 [oracle@secdb lab01_dbsat]$ dbsat40_report.sh
@@ -228,7 +228,7 @@ Verify password: oracle
   adding: dbsat_pdb1_report.xlsx (deflated 3%)
   adding: dbsat_pdb1_report.json (deflated 82%)
 zip completed successfully.
-```
+````
 
 Let us unzip the file produced by DBSAT Reporter in order to view the four files generated. Password is **oracle**.
 
@@ -236,7 +236,7 @@ Let us unzip the file produced by DBSAT Reporter in order to view the four files
 [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
 ````
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>unzip dbsat_pdb1_report.zip</copy>
 
 [oracle@secdb install]$ unzip dbsat_pdb1_report.zip
@@ -246,7 +246,7 @@ Archive:  dbsat_pdb1_report.zip
   inflating: dbsat_pdb1_report.html
   inflating: dbsat_pdb1_report.xlsx
   inflating: dbsat_pdb1_report.json
-```
+````
 
 
 ### Explore Database Security Risk Assessment Report
@@ -320,16 +320,16 @@ DBSAT discoverer will connect to the database and collect data needed for analys
 [oracle@secdb lab01_dbsat]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
 ````
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>cp sample_dbsat.config dbsat.config</copy>
-```
+````
 
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>chmod +w dbsat.config</copy>
-```
+````
 
 
-Now use the editor of your choice (e.g. vi, gedit) to set the database service name in dbsat.config. Update the value of parameter **DB_SERVICE_NAME** to **PDB1** as follows:
+Now use the editor of your choice (e.g. vi, gedit) to set the database service name in dbsat.config. Update the value of parameter **DB\_SERVICE\_NAME** to **PDB1** as follows:
 
 ![](./images/Lab100_Step3_1.png)
 
@@ -340,17 +340,14 @@ To run DBSAT discoverer, we will use script `dbsat50_discover.sh`, which contain
 ***dbsat discover -c Discover/conf/dbsat.config pdb1sensitivedata***
 
 
-```
+````
 [oracle@secdb conf]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
-```
+````
 
 Connect as **dbsat** with password **MyDbPwd#1** to run `dbsat50_discover.sh`. At the end of the script, enter **oracle** as password to protect the output file `pdb1sensitivedata_report.zip`.
 
 
-
-
-
-```
+````
 [oracle@secdb lab01_dbsat]$ <copy>./dbsat50_discover.sh</copy>
 
 [oracle@secdb lab01_dbsat]$ dbsat50_discover.sh
@@ -371,13 +368,13 @@ Verify password: oracle
   adding: pdb1sensitivedata_discover.csv (deflated 78%)
 Zip completed successfully.
 
-```
+````
 
 Unzip the report file to be able to check the contents by opening it the browser inside the Graphical Environment to **secdb**. You will be asked for the password to unzip. Enter **oracle** when requested.
 
 *Note: In case you are working on the command line outside VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle and specify the private key to authenticate.*
 
-```
+````
 [oracle@secdb install]$ <copy>cd /home/oracle/HOL/lab01_dbsat/dbsat/install</copy>
 ````
 
