@@ -56,11 +56,11 @@ Finally, and **only for secdb**, create the following **tunnel**. VNC connection
 *	Source port : 5902
 *	Destination : localhost:5902
 
-![Compression](./images/Lab000_Step1_6.png )
+![Tunnel](./images/Lab000_Step1_6.png )
 
 Do not forget to **save** each PuTTY configuration:
 
-![Compression](./images/Lab000_Step1_7.png )
+![Save](./images/Lab000_Step1_7.png )
 
 
 ### Connect from Linux or Mac
