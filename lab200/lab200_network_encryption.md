@@ -1,12 +1,12 @@
 # Lab 2: Network Encryption
 
-One of the basic protection that you can set on the database is the **Network Encryption**. It is included with all editions since version 11gR2 so you can configure and start using it without any additional licensing. 
+One of the basic protection that you can set on the database is the **Network Encryption**. It is included with all editions since version 11gR2 so you can configure and start using it without any additional licensing.
 
 On Cloud environments is configured by default. In this chapter, we will address the problem of cyber-attacks and network hijacking and we learn how to configure it in an On Premise environment.
 
 ## Requirements
 
-- **Lab 1: "DBSAT"** completed. 
+- **Lab 1: "DBSAT"** completed.
 - Session open to **secdb** with user **oracle**
 - session open to **dbclient** with user **oracle**   
 
@@ -21,7 +21,7 @@ This would address the following DBSAT finding:
 
 Check that default configuration allows 11gr2 clients to connect
 
-Use a terminal window to dbclient (as **oracle**) and run the following to verify that we can connect to the database from an old Oracle client (11gR2). 
+Use a terminal window to **dbclient** (as **oracle**) and run the following to verify that we can connect to the database from an old Oracle client (11gR2).
 
 ```
 [oracle@dbclient lab02_network]$ <copy>cd /home/oracle/HOL/lab02_network</copy>
@@ -90,19 +90,19 @@ Connected.
 SQL> select SYS_CONTEXT('USERENV','HOST') from dual;
 
 SYS_CONTEXT('USERENV','HOST')
-------------------------------------------------------------------------------
+-----------------------------
 ol68
 
 SQL> select SYS_CONTEXT('USERENV','MODULE') from dual;
 
 SYS_CONTEXT('USERENV','MODULE')
-------------------------------------------------------------------------------
+-------------------------------
 SQL*Plus
 
 SQL> select SYS_CONTEXT('USERENV','SESSION_USER') from dual;
 
 SYS_CONTEXT('USERENV','SESSION_USER')
-------------------------------------------------------------------------------
+-------------------------------------
 HR
 
 SQL> select * from regions;
@@ -125,12 +125,12 @@ DBSAT has produced the following finding:
 
 ![](./images/network_encryption.png)
 
-Encrypting network data provides data privacy so that unauthorized parties cannot view plaintext data as it passes over the network. 
+Encrypting network data provides data privacy so that unauthorized parties cannot view plaintext data as it passes over the network.
 To enforce a data integrity algorithm, a keyed, sequenced implementation of the Message Digest 5 (MD5) algorithm or the Secure Hash Algorithm (SHA-1 and SHA-2) should also be configured. Both of these hash algorithms create a checksum that changes if the data is altered in any way. This protection operates independently from the encryption process so you can enable data integrity with or without enabling encryption.
 
 Oracle Database therefore provides protection against two forms of active attacks:
 
-#### Data modification attack	
+#### Data modification attack
 An unauthorized party intercepting data in transit, altering it, and retransmitting it is a data modification attack. For example, intercepting a $100 bank deposit, changing the amount to $10,000, and retransmitting the higher amount is a data modification attack.
 
 #### Replay attack
@@ -140,12 +140,12 @@ The easiest way to verify whether a network encryption or a data integrity algor
 
 ### Check `network_service_banner` **Before** configuring Network Encryption
 
-Run the following query from the **dbclient**:	
+Run the following query from the **dbclient**:
 
 ```
 [oracle@dbclient ~]$ <copy>cd ~/HOL/lab02_network/</copy>
 ```
-``` 
+```
 [oracle@dbclient lab02_network]$ <copy>./check_network_enc.sh</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Thu May 7 23:56:48 2020
@@ -165,7 +165,7 @@ SQL> select i.network_service_banner
   7     s.username = 'SYSTEM';
 
 NETWORK_SERVICE_BANNER
----------------------------------------------------------------------------------
+----------------------
 TCP/IP NT Protocol Adapter for Linux: Version 19.0.0.0.0 - Production
 Encryption service for Linux: Version 19.0.0.0.0 - Production
 Crypto-checksumming service for Linux: Version 19.0.0.0.0 - Production
@@ -176,7 +176,7 @@ Version 19.6.0.0.0
 [oracle@dbclient lab02_network]$
 ```
 
-The three lines in the result just reflect the capabilities of the Oracle Net’s version currently in use. You will see how the output differs when reflecting what algorithms are actually in use. 
+The three lines in the result just reflect the capabilities of the Oracle Net’s version currently in use. You will see how the output differs when reflecting what algorithms are actually in use.
 
 ### Configuring Network Encryption and Data Integrity
 
@@ -229,7 +229,7 @@ SQL> select i.network_service_banner
   7     s.username = 'SYSTEM';
 
 NETWORK_SERVICE_BANNER
--------------------------------------------------------------------------------------
+----------------------
 TCP/IP NT Protocol Adapter for Linux: Version 19.0.0.0.0 - Production
 Encryption service for Linux: Version 19.0.0.0.0 - Production
 AES128 Encryption service adapter for Linux: Version 19.0.0.0.0 - Production
@@ -242,7 +242,10 @@ Version 19.6.0.0.0
 [oracle@dbclient lab02_network]$
 ```
 
-Here the lines highlighted in red in the result reflect the algorithms actually in use. 
+The following two lines in the result reflect the Oracle Net encryption algorithms actually in use:
+
+* AES128 Encryption service adapter for Linux: Version 19.0.0.0.0 - Production
+* SHA256 Crypto-checksumming service adapter for Linux: Version 19.0.0.0.0 - Production
 
 This completes the **Network Encryption** lab. You can continue with **Lab 3: Transparent Data Encryption**
 
