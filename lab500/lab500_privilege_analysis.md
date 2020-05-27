@@ -1,6 +1,6 @@
 # Lab 5: Privilege Analysis
 
-Privilege Analysis allows to determine the minimum set of privileges required by a user or role, thus enforcing a least privilege approach.
+**Privilege Analysis** allows to determine the minimum set of privileges required by a user or role, thus enforcing a least privilege approach.
 
 ## Disclaimer ##
 
