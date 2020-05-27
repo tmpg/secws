@@ -152,7 +152,10 @@ PL/SQL procedure successfully completed.
 
 These policies mandate to connect as **HCM** in order to see real values for the three redacted columns.
 
-However note that **SYSTEM** has the **EXP_FULL_DATABASE** role which includes the **EXEMPT REDACTION POLICY** system privilege. This means that the **SYS** and **SYSTEM** users can always bypass any existing Oracle Data Redaction policies and will always be able to view data from tables (or views) that have Data Redaction policies defined on them.
+However note that **SYSTEM** has the **EXP\_FULL\_DATABASE** role which includes the **EXEMPT REDACTION POLICY** system privilege. This means that the **SYS** and **SYSTEM** users can always bypass any existing Oracle Data Redaction policies and will always be able to view data from tables (or views) that have Data Redaction policies defined on them.
+
+
+## Step 3: Verify the redaction policy
 
 Let us run a quick test of our redaction policies.
 
