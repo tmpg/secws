@@ -1,6 +1,14 @@
 # Lab 1: Database Security Assessment Tool
 
-The Oracle Database Security Assessment Tool (DBSAT) identifies sensitive data, analyzes database configurations, users, their entitlements and security policies to uncover security risks and improve the security posture of Oracle Databases within your organization. You can use DBSAT to implement and enforce security best practices in your organization and accelerate compliance with regulations such as the EU GDPR.
+The Oracle Database Security Assessment Tool (**DBSAT**) identifies sensitive data, analyzes database configurations, users, their entitlements and security policies to uncover security risks and improve the security posture of Oracle Databases within your organization.
+
+## Disclaimer ##
+
+The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+
+## Introduction  ##
+
+You can use DBSAT to implement and enforce security best practices in your organization and accelerate compliance with regulations such as the EU GDPR.
 
 DBSAT reports on existing sensitive data, the state of user accounts, role and privilege grants, and policies that control the use of various security features in the database.
 
@@ -12,12 +20,10 @@ You can use report findings to:
 - Fix immediate short-term risks
 - Implement a comprehensive security strategy
 
-
 ## Requirements ##
 
 - **Lab 0: "Accessing to Labs environment"** completed.
 - Session open to **secdb** with user **oracle**
-
 
 ## Step 1: Installing DBSAT
 
@@ -81,6 +87,8 @@ The installation is a simple process. Execute the `dbsat20_install.sh` script:
 
 ````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat20_install.sh</copy>
+
+(...)
 Archive:  dbsat.zip
   inflating: dbsat/install/dbsat
   inflating: dbsat/install/dbsat.bat
@@ -135,7 +143,7 @@ Archive:  dbsat.zip
   inflating: dbsat/install/Discover/conf/sensitive_fr.ini
   inflating: dbsat/install/Discover/conf/sensitive_nl.ini
   inflating: dbsat/install/Discover/conf/sensitive_el.ini
-  [oracle@secdb lab01_dbsat]$
+(...)
 ````
 
 
@@ -213,7 +221,6 @@ Enter once again **oracle** as password to protect the zip file produced by DBSA
 [oracle@secdb lab01_dbsat]$ dbsat40_report.sh
 
 Database Security Assessment Tool version 2.2.1 (May 2020)
-
 (...)
 
 DBSAT Reporter ran successfully.
@@ -367,7 +374,7 @@ Verify password: oracle
   adding: pdb1sensitivedata_discover.html (deflated 81%)
   adding: pdb1sensitivedata_discover.csv (deflated 78%)
 Zip completed successfully.
-
+(...)
 ````
 
 Unzip the report file to be able to check the contents by opening it the browser inside the Graphical Environment to **secdb**. You will be asked for the password to unzip. Enter **oracle** when requested.
@@ -380,6 +387,7 @@ Unzip the report file to be able to check the contents by opening it the browser
 
 ````
 [oracle@secdb install]$ <copy>unzip pdb1sensitivedata_report.zip</copy>
+
 Archive:  pdb1sensitivedata_report.zip
 [pdb1sensitivedata_report.zip] pdb1sensitivedata_discover.html password:
   inflating: pdb1sensitivedata_discover.html
@@ -408,7 +416,8 @@ You can change many parameters in the configuration file:
 - **Pattern File(s) = [sensitive.ini (default), other.ini, …]**  By default, sensitive_en.ini is used and it contains patterns in English and will look for English based sensitive columns/comments. This parameter enables the end user to choose which pattern ini files to add to the search. We provide sample pattern files in other languages in ./dbsat/install/Discover/conf
 
 ````
-[oracle@secdb lab01_dbsat]$ ls -l /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf
+[oracle@secdb lab01_dbsat]$ <copy>ls -l /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
+
 total 236
 -rw-r--r--. 1 oracle oinstall  5907 Apr 28 00:10 dbsat.config
 -r--r--r--. 1 oracle oinstall  5902 Sep 11  2019 sample_dbsat.config

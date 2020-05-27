@@ -23,7 +23,7 @@ In **Lab 01, DBSAT** we had the following finding:
 ## Step 1: Configuring Transparent Data Encryption
 
 A software keystore is a container that stores the Transparent Data Encryption master encryption key.
-Before you can configure the keystore, you first must define a location for it in the sqlnet.ora file. There is one keystore per database, and the database locates this keystore by checking the keystore location that you define in the sqlnet.ora file. You can create other keystores, such as copies of the keystore and export files that contain keys, depending on your needs. However, you must never remove or delete the keystore that you configured in the sqlnet.ora location, nor replace it with a different keystore.
+Before you can configure the keystore, you first must define a location for it in the **sqlnet.ora** file. There is one keystore per database, and the database locates this keystore by checking the keystore location that you define in the sqlnet.ora file. You can create other keystores, such as copies of the keystore and export files that contain keys, depending on your needs. However, you must never remove or delete the keystore that you configured in the sqlnet.ora location, nor replace it with a different keystore.
 
 ### Set a location for the Wallet (TDE keystore)
 
@@ -184,7 +184,7 @@ We can now encrypt existing and future tablespaces.
 Run the following script from a terminal window to the **secdb** server:
 
 ````
-[oracle@secdb lab03_tde]$ <copy>./tde50_encrypt_ts.sh</copy>
+[oracle@secdb lab03_tde]$ <copy>tde50_encrypt_ts.sh</copy>
 
 (...)
 SQL> alter session set container=pdb1;
@@ -221,7 +221,7 @@ ENC_DATA                       YES
 (...)
 ````
 
-### Encrypt Sensitive Credential Data in the Dictionary
+### Encrypting Sensitive Credential Data in the Dictionary
 
 It is not recommended to encrypt database internal objects such as the SYSTEM, SYSAUX, UNDO, or TEMP tablespaces using TDE tablespace encryption. You should focus TDE tablespace encryption on tablespaces that hold application data, not on these core components of the Oracle database.
 
