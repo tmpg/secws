@@ -300,6 +300,8 @@ Select **pdb1**, click on **Add Members** and **save** the change.
 
 We can now review some reports.  Click on the **Logins Failures** link under the **Payment Card Industry (PCI)** Reports section.
 
+![Alt text](./images/img30.png " ")
+
 Select the **Database Schema Changes** report in the **PCI** section, but this time we will schedule the report so we can create a PDF version of a report, which can then be sent to people who require it.
 
 ![Alt text](./images/img31.png " ")
@@ -400,13 +402,13 @@ You should see the audit trace of Data Pump workers (**DW00**) processes.
 
 ![Alt text](./images/img36.png " ")
 
-## Step 5 : Data Privacy Reports ##
+## Step 6 : Data Privacy Reports ##
 
 DBSAT Discoverer CSV output can be uploaded in order to run Data Privacy reports from Audit Vault (see Auditor's guide, chapter 6 - Data Privacy reports).
 
 We will start by loading DBSAT Discoverer’s report into Audit Vault.
 
-From the desktop connection to secdb:
+From the desktop connection to **secdb** (using **VNC**):
 
 *	Login to Audit Vault as **AVADMIN/Reganam_1**
 *	Go to **Secure Targets**
@@ -441,7 +443,7 @@ For instance:
 
 ![Alt text](./images/img41.png " ")
 
-## Step 5 : Audit Vault Alerting ##
+## Step 7 : Audit Vault Alerting ##
 
 After monitoring and collecting database activity your organization may want to be alerted when certain activities occur.  It is possible to identify high-risk activities that the security team needs to be made aware of.  These may include account management and database structural changes.  The alerts will let the security team know when there has been activity in these areas
 
@@ -534,7 +536,7 @@ From the home page, you can now edit the **alert status**, for example to close 
 ![Alt text](./images/img49.png " ")
 
 
-## Step 5 : Archiving and Purging the Audit Trail ##
+## Step 8 : Archiving and Purging the Audit Trail ##
 
 Audit information should follow a full lifecycle:
 
