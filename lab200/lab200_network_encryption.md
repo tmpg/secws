@@ -146,7 +146,7 @@ Run the following query from the **dbclient**:
 ````
 
 ````
-[oracle@dbclient lab02_network]$ <copy>./check_network_enc.sh</copy>
+[oracle@dbclient lab02_network]$ <copy>check_network_enc.sh</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Thu May 7 23:56:48 2020
 Version 19.6.0.0.0

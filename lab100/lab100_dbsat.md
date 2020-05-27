@@ -218,8 +218,6 @@ Enter once again **oracle** as password to protect the zip file produced by DBSA
 ````
 [oracle@secdb lab01_dbsat]$ <copy>dbsat40_report.sh</copy>
 
-[oracle@secdb lab01_dbsat]$ dbsat40_report.sh
-
 Database Security Assessment Tool version 2.2.1 (May 2020)
 (...)
 
@@ -357,10 +355,7 @@ Connect as **dbsat** with password **MyDbPwd#1** to run `dbsat50_discover.sh`. A
 ````
 [oracle@secdb lab01_dbsat]$ <copy>./dbsat50_discover.sh</copy>
 
-[oracle@secdb lab01_dbsat]$ dbsat50_discover.sh
-
 Database Security Assessment Tool version 2.2.1 (May 2020)
-
 (...)
 
 Enter username: dbsat
