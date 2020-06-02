@@ -17,11 +17,11 @@ Specify the labs (and a longer explanation of the labs) here. Example:
 
 - **Lab 1 :** Provision an ATP-S instance and import data
 
-In this lab, you will provision an Automous Database instance and import demo data, inlcuding sensitive data (e.g. credit card numbers)
+In this lab, you will provision an Autonomous Database instance and import demo data, including sensitive data (e.g. credit card numbers)
 
 - **Lab 2 :** Register ATP-S instance to Data Safe
 
-This section will register the database with Data Safe, so that we can use Data Safe to manager security features in our database.
+This section will register the database with Data Safe, so that we can use Data Safe to manage security features in our database.
 
 - **Lab 3 :** Provision Audit and Alert Policies
 
