@@ -12,8 +12,6 @@ To complete this lab, you need to have the following:
 
 ## Agenda
 
-Specify the labs (and a longer explanation of the labs) here. Example:
-
 
 - **Lab 1 :** Provision an ATP-S instance and import data
 

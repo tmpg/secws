@@ -72,7 +72,7 @@ On the **Review and Provision Audit and Alert Policies** page, wait for check ma
 
 On the **Start Audit Collection** page, notice the following defaults:
 
-*	The audit trail location is automatically set to UNIFIED_AUDIT_TRAIL
+*	The audit trail location is automatically set to UNIFIED\_AUDIT\_TRAIL
 *	Audit collection is not yet started.
 *	The auto purge feature is enabled.
 
