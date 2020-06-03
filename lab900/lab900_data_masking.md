@@ -21,6 +21,10 @@ In this chapter, we will use EM13cR3 Data Masking & Subsetting Pack to anonymize
 
 Remove or lower the following network settings on secdb, which Enterprise Manager Cloud Control 13cR3 still does not support with a default installation.
 
+````
+$ <copy>cd /u01/oracle/db/prod/19c/ee/network/admin</copy>
+````
+
 Modify sqlnet.ora on secdb as shown below:
 
 ![Alt text](./images/img02.png " ")
@@ -253,7 +257,10 @@ Let us use a SQL Expression for **EMAIL** to construct it from the anonymized va
 
 Use the following expression:
 
-<copy>%FIRST_NAME%||'@company.com'</copy>
+````
+$ <copy>%FIRST_NAME%||'@myco.com'</copy>
+````
+
 
 **EMAIL:**
 ![Alt text](./images/img27.png " ")
