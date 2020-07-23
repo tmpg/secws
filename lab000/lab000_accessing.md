@@ -21,7 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 * Access to the OCI tenancy as provided by the instructor.
 * SSH client.
-* Private key to access client machines by SSH.
+* Private key to access client machines by SSH. (The keys can be found [here](./files/dbsec_keys.zip))
 * VNC client software.
 
 
