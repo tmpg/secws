@@ -28,14 +28,14 @@ Before you can configure the keystore, you first must define a location for it.
 In previous releases, the keystore location was specified in sqlnet.ora
 (SQLNET.ENCRYPTION\_WALLET\_LOCATION).
 
-In 19c, the best practice is to set the keystore location in instance parameter **wallet_root**, always specified at the CDB level. This location can include environment variables, for example be set to **$ORACLE_BASE/admin/$ORACLE_SID/wallet**. (A subdirectory **tde** will be added to this path.) The instance must be restarted after setting **wallet_root**.
+In 19c, the best practice is to set the keystore location in instance parameter **wallet\_root**, always specified at the CDB level. This location can include environment variables, for example be set to **$ORACLE\_BASE/admin/$ORACLE\_SID/wallet**. (A subdirectory **tde** will be added to this path.) The instance must be restarted after setting **wallet\_root**.
 
-The **type** of keystore (file, HSM, Oracle Key Vault) is then specified in  another instance parameter (**tde_encryption**).
+The **type** of keystore (file, HSM, Oracle Key Vault) is then specified in  another instance parameter (**tde\_encryption**).
 
 19c allows to create a shared keystore for the CDB and all its PDBs (**UNIFIED** mode) or a per-PDB keystore (**ISOLATED** mode).
 
-* To create a single keystore, specify **tde_encryption** at the CDB level and restart the database.
-* To create a per-PDB keystore, specify **tde_encryption** for each PDB after having set **wallet_location** and restarted the database. Also restart the PDB after setting **tde_encryption**.
+* To create a single keystore, specify **tde\_encryption** at the CDB level and restart the database.
+* To create a per-PDB keystore, specify **tde\_encryption** for each PDB after having set **wallet\_location** and restarted the database. Also restart the PDB after setting **tde\_encryption**.
 
 
 ### Setting a location for the Wallet (TDE keystore)
@@ -53,7 +53,7 @@ Run the following script from a terminal window to the **secdb** server:
 mkdir -p /u01/oracle/db/admin/CONT/wallet
 ````
 
-### Setting wallet_root
+### Setting wallet\_root
 
 Run the following script from a terminal window to the **secdb** server:
 
@@ -83,7 +83,7 @@ wallet_root              string      /u01/oracle/db/admin/CONT/wallet
 (...)
 ````
 
-### Setting tde_encryption
+### Setting tde\_encryption
 
 Run the following script from a terminal window to the **secdb** server:
 
