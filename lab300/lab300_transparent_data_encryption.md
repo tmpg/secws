@@ -23,43 +23,119 @@ In **Lab 01, DBSAT** we had the following finding:
 ## Step 1: Configuring Transparent Data Encryption
 
 A software keystore is a container that stores the Transparent Data Encryption master encryption key.
-Before you can configure the keystore, you first must define a location for it in the **sqlnet.ora** file. There is one keystore per database, and the database locates this keystore by checking the keystore location that you define in the sqlnet.ora file. You can create other keystores, such as copies of the keystore and export files that contain keys, depending on your needs. However, you must never remove or delete the keystore that you configured in the sqlnet.ora location, nor replace it with a different keystore.
+Before you can configure the keystore, you first must define a location for it.
 
-### Set a location for the Wallet (TDE keystore)
+In previous releases, the keystore location was specified in sqlnet.ora
+(SQLNET.ENCRYPTION\_WALLET\_LOCATION).
 
-Run the following script from a terminal window to the secdb server:
+In 19c, the best practice is to set the keystore location in instance parameter **wallet\_root**, always specified at the CDB level. This location can include environment variables, for example be set to **$ORACLE\_BASE/admin/$ORACLE\_SID/wallet**. (A subdirectory **tde** will be added to this path.) The instance must be restarted after setting **wallet\_root**.
+
+The **type** of keystore (file, HSM, Oracle Key Vault) is then specified in  another instance parameter (**tde\_encryption**).
+
+19c allows to create a shared keystore for the CDB and all its PDBs (**UNIFIED** mode) or a per-PDB keystore (**ISOLATED** mode).
+
+* To create a single keystore, specify **tde\_encryption** at the CDB level and restart the database.
+* To create a per-PDB keystore, specify **tde\_encryption** for each PDB after having set **wallet\_location** and restarted the database. Also restart the PDB after setting **tde\_encryption**.
+
+
+### Setting a location for the Wallet (TDE keystore)
+
+Run the following script from a terminal window to the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>cd ~/HOL/lab03_tde/</copy>
 ````
 
 ````
-[oracle@secdb lab03_tde]$ <copy>tde10_wallet_loc.sh</copy>
+[oracle@secdb lab03_tde]$ <copy>tde10_create_keystore_rootdir.sh</copy>
 
-Adding the following lines to sqlnet.ora:
-ENCRYPTION_WALLET_LOCATION =
-  (SOURCE =
-    (METHOD = FILE)
-    (METHOD_DATA =
-      (DIRECTORY=$ORACLE_BASE/admin/$ORACLE_SID/tde_wallet)
-    )
-  )
+[oracle@secdb lab03_tde]$ tde10_create_keystore_rootdir.sh
+mkdir -p /u01/oracle/db/admin/CONT/wallet
 ````
+
+### Setting wallet\_root
+
+Run the following script from a terminal window to the **secdb** server:
+
+````
+[oracle@secdb lab03_tde]$ <copy>tde11_set_wallet_root.sh</copy>
+
+(...)
+SQL> -- set wallet_root
+SQL> alter system set wallet_root='$ORACLE_BASE/admin/$ORACLE_SID/wallet' scope=spfile;
+System altered.
+
+SQL> --
+SQL> -- restart the instance
+SQL> --
+SQL> shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL> startup
+ORACLE instance started.
+(...)
+
+SQL> show parameter wallet_root
+NAME                     TYPE        VALUE
+------------------------ ----------- ------------------------------
+wallet_root              string      /u01/oracle/db/admin/CONT/wallet
+(...)
+````
+
+### Setting tde\_encryption
+
+Run the following script from a terminal window to the **secdb** server:
+
+````
+[oracle@secdb lab03_tde]$ <copy>tde12_set_tde_encryption.sh</copy>
+
+(...)
+SQL> --
+SQL> -- UNITED mode TDE keystore configuration (shared keystore)
+SQL> --
+SQL>
+SQL> -- set tde_encryption
+SQL> alter system set tde_configuration="KEYSTORE_CONFIGURATION=FILE" scope=both;
+System altered.
+
+SQL> --
+SQL> -- restart the instance
+SQL> --
+SQL> shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL> startup
+ORACLE instance started.
+(...)
+
+SQL> show parameter wallet_root
+NAME                        TYPE        VALUE
+--------------------------- ----------- ------------------------------
+wallet_root                 string      /u01/oracle/db/admin/CONT/wallet
+
+SQL> show parameter tde_configuration
+NAME                        TYPE        VALUE
+--------------------------- ----------- ------------------------------
+tde_configuration           string      KEYSTORE_CONFIGURATION=FILE
+(...)
+````
+
 
 ### Creating the Keystore
 
 Run the following script from a terminal window to the **secdb** server:
 
 ````
-[oracle@secdb lab03_tde]$ <copy>tde20_wallet_create.sh</copy>
+[oracle@secdb lab03_tde]$ <copy>tde20_keystore_create.sh</copy>
 
 (...)
 SQL> --
 SQL> -- create the keystore
 SQL> --
 SQL> administer key management
-  2    create keystore '$ORACLE_BASE/admin/$ORACLE_SID/tde_wallet'
-  3    identified by "MyWalletPwd#1";
+  2    create keystore identified by "MyWalletPwd#1";
 keystore altered.
 
 SQL> --
@@ -73,30 +149,27 @@ keystore altered.
 SQL> --
 SQL> -- view keystore status
 SQL> --
-SQL> select * from gv$encryption_wallet;
+SQL> connect / as sysdba
+Connected.
+SQL> set echo on
+SQL> select con_id, keystore_mode, wallet_type, status from v$encryption_wallet;
 
-   INST_ID WRL_TYPE
----------- --------------------
-WRL_PARAMETER
---------------------------------------------------------------------------------
-STATUS                         WALLET_TYPE          WALLET_OR KEYSTORE FULLY_BAC
------------------------------- -------------------- --------- -------- ---------
-    CON_ID
-----------
-         1 FILE
-/u01/oracle/db/admin/CONT/tde_wallet/
-OPEN_NO_MASTER_KEY             PASSWORD             SINGLE    NONE     UNDEFINED
-         1
+    CON_ID KEYSTORE WALLET_TYPE          STATUS
+---------- -------- -------------------- ------------------------------
+         1 NONE     PASSWORD             OPEN_NO_MASTER_KEY
+         2 UNITED   PASSWORD             OPEN_NO_MASTER_KEY
+         3 UNITED   PASSWORD             OPEN_NO_MASTER_KEY
 (...)
 ````
-As shown above, the wallet is created as password protected, but is still empty.
+As shown above, the wallet is created as password protected, but is still empty for the CDB and all PDBs.
 
-### Create a Master Key for PDB1
+
+### Creating Master Keys
 
 Run the following script from a terminal window to the **secdb** server:
 
 ````
-[oracle@secdb lab03_tde]$ <copy>tde30_create_keys.sh</copy>
+[oracle@secdb lab03_tde]$ <copy>tde30_create_master_keys.sh</copy>
 
 (...)
 SQL> --
@@ -111,28 +184,24 @@ keystore altered.
 SQL> --
 SQL> -- view keystore status
 SQL> --
-SQL> select * from gv$encryption_wallet;
+SQL> connect / as sysdba
+Connected.
+SQL> set echo on
+SQL> select con_id, keystore_mode, wallet_type, status from v$encryption_wallet;
 
-   INST_ID WRL_TYPE
----------- --------------------
-WRL_PARAMETER
---------------------------------------------------------------------------------
-STATUS                         WALLET_TYPE          WALLET_OR KEYSTORE FULLY_BAC
------------------------------- -------------------- --------- -------- ---------
-    CON_ID
-----------
-         1 FILE
-/u01/oracle/db/admin/CONT/tde_wallet/
-OPEN                           PASSWORD             SINGLE    NONE     NO
-         1
+    CON_ID KEYSTORE WALLET_TYPE          STATUS
+---------- -------- -------------------- ------------------------------
+         1 NONE     PASSWORD             OPEN
+         2 UNITED   PASSWORD             OPEN
+         3 UNITED   PASSWORD             OPEN
 (...)
 ````
 
 As shown above, the wallet is now open and a TDE master key has been created for PDB1.
 
-### Configure The Wallet as **autologin** for Ease of Management
+### Configure The Wallet as **auto-login** for Ease of Management
 
-A **LOCAL AUTOLOGIN** keystore might be a good tradeoff between security and ease of management. Run the following script from a terminal window to the **secdb** server:
+A **LOCAL AUTO-LOGIN** keystore might be a good tradeoff between security and ease of management. Run the following script from a terminal window to the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde40_wallet_autologin.sh</copy>
@@ -143,7 +212,7 @@ SQL> -- make keystore LOCAL AUTO_LOGIN
 SQL> --
 SQL> administer key management
   2    create local auto_login keystore
-  3    from keystore '$ORACLE_BASE/admin/$ORACLE_SID/tde_wallet'
+  3    from keystore
   4    identified by "MyWalletPwd#1";
 keystore altered.
 
@@ -158,28 +227,34 @@ keystore altered.
 SQL> --
 SQL> -- view keystore status
 SQL> --
-SQL> select * from gv$encryption_wallet;
+SQL> connect / as sysdba
+Connected.
+SQL> set echo on
+SQL> select con_id, keystore_mode, wallet_type, status from v$encryption_wallet;
 
-   INST_ID WRL_TYPE
----------- --------------------
-WRL_PARAMETER
---------------------------------------------------------------------------------
-STATUS                         WALLET_TYPE          WALLET_OR KEYSTORE FULLY_BAC
------------------------------- -------------------- --------- -------- ---------
-    CON_ID
-----------
-         1 FILE
-/u01/oracle/db/admin/CONT/tde_wallet/
-OPEN                           LOCAL_AUTOLOGIN      SINGLE    NONE     NO
-         1
+    CON_ID KEYSTORE WALLET_TYPE          STATUS
+---------- -------- -------------------- ------------------------------
+         1 NONE     LOCAL_AUTOLOGIN      OPEN
+         2 UNITED   LOCAL_AUTOLOGIN      OPEN
+         3 UNITED   LOCAL_AUTOLOGIN      OPEN
 (...)
 ````
 
 ## Step 2: Encrypting Existing Data Files
 
-We can now encrypt existing and future tablespaces.
+We can now encrypt existing tablespaces.
+Starting with Oracle Database 19c, the best practice is as follows:
 
-### Encrypting Existing Data Files
+For a PDB:
+* encrypt all application tablespaces
+* encrypt SYSTEM and SYSAUX
+* do not encrypt TEMP and UNDO as all data that is stored there will be already encrypted
+
+For CDB$ROOT:
+* do not encrypt SYSTEM, SYSAUX, TEMP or UNDO. SYSTEM and SYSAUX tablespaces in a root are different from SYSTEM and SYSAUX in a PDB ... and should not contain any sensitive data that is processed in the PDBs.
+
+
+### Encrypting Existing tablespaces
 
 Run the following script from a terminal window to the **secdb** server:
 
@@ -207,67 +282,27 @@ SQL> -- 12cR2 allows online encryption of existing user tablespaces
 SQL> alter tablespace users encryption online encrypt;
 Tablespace altered.
 
+SQL> -- SYSTEM and SYSAUX encryption fully supported from 19c on
+SQL> alter tablespace SYSTEM encryption online encrypt;
+Tablespace altered.
+
+SQL> alter tablespace SYSAUX encryption online encrypt;
+Tablespace altered.
+
 SQL> -- check which tablespaces have been encrypted
 SQL> select tablespace_name, encrypted from dba_tablespaces;
-
 TABLESPACE_NAME                ENC
 ------------------------------ ---
-SYSTEM                         NO
-SYSAUX                         NO
+SYSTEM                         YES
+SYSAUX                         YES
 UNDOTBS1                       NO
 TEMP                           NO
 USERS                          YES
 ENC_DATA                       YES
+6 rows selected.
 (...)
 ````
 
-### Encrypting Sensitive Credential Data in the Dictionary
-
-It is not recommended to encrypt database internal objects such as the SYSTEM, SYSAUX, UNDO, or TEMP tablespaces using TDE tablespace encryption. You should focus TDE tablespace encryption on tablespaces that hold application data, not on these core components of the Oracle database.
-
-Instead of encrypting the SYSTEM tablespace as a whole, one should encrypt sensitive credentials data in the dictionary. (By default, the credential data in the **SYS.LINK$** and **SYS.SCHEDULER$\_CREDENTIAL** system tables is simply obfuscated.)
-To do this, simply execute `ALTER DATABASE DICTIONARY ENCRYPT CREDENTIALS`.
-
-_No TDE license is required for this, however a keystore must exist, be open and one needs to have the SYSKM privilege._
-
-Let’s do this in our PDB1 database. Run the following script from a terminal window to the **secdb** server:
-
-````
-[oracle@secdb lab03_tde]$ <copy>tde60_encrypt_system.sh</copy>
-
-(...)
-SQL> alter session set container=pdb1;
-Session altered.
-
-SQL> -- SYSKM is required to encrypt sensitive dictionary data
-SQL> -- (and a keystore must exist and be open)
-SQL> grant syskm to dba_debra;
-Grant succeeded.
-
-SQL>
-SQL> connect dba_debra/MyDbPwd#1@pdb1 as syskm
-Connected.
-SQL> set echo on
-SQL>
-SQL> -- check encryption status of sensitive data in the dictionary
-SQL> select * from DICTIONARY_CREDENTIALS_ENCRYPT;
-ENFORCEM
---------
-DISABLED
-
-SQL>
-SQL> -- encrypt sensitive data in the dctionary
-SQL> ALTER DATABASE DICTIONARY ENCRYPT CREDENTIALS;
-Database dictionary altered.
-
-SQL>
-SQL> -- check status again
-SQL> select * from DICTIONARY_CREDENTIALS_ENCRYPT;
-ENFORCEM
---------
-ENABLED
-(...)
-````
 
 ## Step 3: Working with Wallet
 
@@ -292,9 +327,9 @@ SQL> select pdb.name pdb, e.key_id,
   7  where pdb.con_id=e.con_id and pdb.dbid = e.activating_pdbuid
   8  order by pdb.name desc, created ;
 
-PDB        KEY_ID                                                CREATED            ACTIVATED          CREATOR     ACTED_FROM
+PDB        KEY_ID                                                CREATED            ACTIVATED          CREATOR      ACTED_FROM
 ---------- ----------------------------------------------------- ------------------ ------------------ ------------ ------------
-PDB1       AXjCNiSR+k+Lv5WK+roTwMQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  08-MAY-20 23:23:00 08-MAY-20 23:23:00 SYSKM       PDB1
+PDB1       AdpQ/ENA5k/7v4TdZMwRJSUAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  24-JUL-20 12:43:08 24-JUL-20 12:43:08 SYSKM        PDB1
 (...)
 ````
 
@@ -327,19 +362,22 @@ keystore altered.
 The **with backup** clause means that the **previous keystore** is backed up before the new TDE key is added.
 
 ````
-[oracle@secdb lab03_tde]$ <copy>cd $ORACLE_BASE/admin/$ORACLE_SID/tde_wallet</copy>
+[oracle@secdb lab03_tde]$ <copy>cd $ORACLE_BASE/admin/$ORACLE_SID/wallet/tde</copy>
 ````
 
 ````
 [oracle@secdb lab03_tde]$ <copy>ls -l</copy>
 
--rw------- 1 oracle oinstall 8408 Mar  6 12:19 cwallet.sso
--rw------- 1 oracle oinstall 2555 Mar  6 12:09 ewallet_2019030611095013_backup.p12
--rw------- 1 oracle oinstall 5467 Mar  6 12:19 ewallet_2019030611192096_pre_newkey.p12
--rw------- 1 oracle oinstall 8347 Mar  6 12:19 ewallet.p12
+[oracle@secdb lab03_tde]$ cd $ORACLE_BASE/admin/$ORACLE_SID/wallet/tde
+[oracle@secdb tde]$ ll
+total 36
+-rw-------. 1 oracle oinstall 8408 Jul 24 14:59 cwallet.sso
+-rw-------. 1 oracle oinstall 2555 Jul 24 14:43 ewallet_2020072412430787_backup.p12
+-rw-------. 1 oracle oinstall 5467 Jul 24 14:59 ewallet_2020072412594996_pre_newkey.p12
+-rw-------. 1 oracle oinstall 8347 Jul 24 14:59 ewallet.p12
 ````
 
-The presence of cwallet.sso indicates an **autologin wallet**.
+The presence of cwallet.sso indicates an **auto-login wallet**.
 
 This completes the **Transparent Data Encryption** lab. You can continue with **Lab 4: Data Redaction**
 
