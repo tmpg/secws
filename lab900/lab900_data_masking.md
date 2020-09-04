@@ -35,7 +35,7 @@ You can then connect to EM13cR3 at the following URL:
 
 **https://&lt EM CC PUBLIC IP &gt:7803/em**
 
-Allow a security exception as we are just using a self-signed certificate and connect as **sysman**, password **MyDbPwd#1**.
+Allow a security exception as we are just using a self-signed certificate and connect as **sysman**, password **MyDbPwd#1**
 
 ![Alt text](./images/img03.png " ")
 
