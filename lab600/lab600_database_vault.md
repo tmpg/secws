@@ -470,7 +470,7 @@ ORA-00942: table or view does not exist
 (...)
 ````
 
-## Step 4 : Using Database Vault to enforce a trusted appliaction path  ##
+## Step 4 : Using Database Vault to enforce a trusted application path  ##
 
 In Oracle Database Vault, you can create a **Secure Application Role** that you enable with an Oracle Database Vault rule set.
 
@@ -490,7 +490,7 @@ Here is the outline of the configuration :
 
 ### Step 4a : Create the rules ###
 
-We will create three rules.
+Execute the following commands from **secdb** to create three rules.
 
 ````
 [oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
@@ -506,7 +506,7 @@ SQL>  */
 SQL> begin
   2    DBMS_MACADM.CREATE_RULE(
   3      rule_name   => 'Check host',
-  4      rule_expr   => 'rtrim(SYS_CONTEXT(''USERENV'',''HOST''),''.localdomain'')=''olclient'''
+  4      rule_expr   => 'rtrim(SYS_CONTEXT(''USERENV'',''HOST''),''.localdomain'')=''dbclient'''
   5      );
   6  end;
   7  /
