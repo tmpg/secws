@@ -53,7 +53,7 @@ Enter all required details:
 * CPU Core Count :	1
 * Storage (TB) : 1
 * Auto scaling : **Leave Unchecked**
-* Password :	**OraclePTS#2020**
+* Password :	**OraCumulus#2020**
 * Network access : Leave default selection
 * License Type : BYOL (My Organization Already owns Oracle Database…)
 
@@ -160,6 +160,28 @@ Use SQL Developer to view HCM data. We will anonymize this data in Lab 5.
 
 
 ![Page](./images/img14.png " ")
+
+Continue with **Lab 2**.
+
+## STEP 8: Fix the database time zone if necessary
+
+An ATP-S instance is provisioned as a PDB which inherits its time zone from the OCI region. If you are in the same time zone as your OCI Data Center (region), you do not have to do anything.
+
+However, if you are in a different region, it is recommended to update the ATP time zone to reflect your own. For example, if you work from Tokyo but have provisioned an ATP-S instance in the US, execute the following to update the time zone.
+
+````
+<copy>
+ALTER DATABASE SET TIME_ZONE ='Asia/Tokyo';
+</copy>
+````
+
+Now restart the database from the OCI Console and check the new time zone by executing:
+
+````
+<copy>
+SELECT DBTIMEZONE FROM DUAL;
+</copy>
+````
 
 Continue with **Lab 2**.
 
