@@ -73,10 +73,13 @@ To connect to the dbclient or secdb servers from command line, use the following
 
     $ cd /<path-to-keys-folder>/
 
-Use the actual IP address for each server, to open 2 terminals:
+Use the actual IP address for each server to create each terminal session:
 
     $ ssh -i dbseckey oracle@ip.address
 
+The syntax to create an SSH tunnel to secdb enabling a VNC connection should be:
+
+  ssh -L 5902:localhost:5902 -i .ssh/dbseckey oracle@ip.address
 
 ## Step 2: Create a GUI connection to secdb's desktop
 
