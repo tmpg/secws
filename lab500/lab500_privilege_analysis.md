@@ -18,14 +18,14 @@ In our example, we will reduce the privileges granted to **DBA\_NICOLE** to the 
 
 ## Step 1 : Check DBA\_NICOLE's current role ##
 
-**DBA\_NICOLE** is a junior DBA who was initially granted the full **DBA** role. Run the following script from a terminal window to the secdb server.
+**DBA\_NICOLE** is a junior DBA who was initially granted the full **DBA** role. Run the following script from a terminal window to the **secdb** server.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab05_pa</copy>
+[oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab05_pa</copy>
 ````
 
 ````
-$ <copy>pa10_show_nicole_privs.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa10_show_nicole_privs.sh</copy>
 
 (...)
 SQL> --
@@ -44,7 +44,7 @@ DBA_NICOLE           DBA
 **DBA\_DEBRA** is the main **DBA**. Before beginning, let us make sure she has the **CAPTURE\_ADMIN** role required to execute a privilege analysis.
 
 ````
-$ <copy>pa11_show_debra_privs.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa11_show_debra_privs.sh</copy>
 
 (...)
 SQL> --
@@ -64,7 +64,7 @@ TRUE
 We can now create a privilege analysis job to capture the privileges used by **DBA\_NICOLE**.
 
 ````
-$ <copy>pa20_create_capture.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa20_create_capture.sh</copy>
 
 (...)
 SQL> --
@@ -94,7 +94,7 @@ NICOLE_PRIVS_ANALYSIS     CONTEXT         N
 **DBA\_DEBRA** can now start the capture process.
 
 ````
-$ <copy>pa21_start_capture.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa21_start_capture.sh</copy>
 
 (...)
 SQL> --
@@ -115,7 +115,7 @@ PL/SQL procedure successfully completed.
 Now that the capture process is running, **Nicole** can connect and do her task. For instance, she may work as some SQL tuning tasks.
 
 ````
-$ <copy>pa30_work_nicole.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa30_work_nicole.sh</copy>
 
 (...)
 SQL> --
@@ -139,7 +139,7 @@ Explained.
 When **Debra** is sure **Nicole** has executed a representative subset of her tasks, she can stop the capture process.
 
 ````
-$ <copy>pa40_stop_capture.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa40_stop_capture.sh</copy>
 
 (...)
 SQL> --
@@ -178,7 +178,7 @@ NICOLE_PRIVS_ANALYSIS     CONTEXT         N
 
 
 ````
-$ <copy>pa50_generate_result.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa50_generate_result.sh</copy>
 
 (...)
 SQL>
@@ -205,7 +205,7 @@ We can then revoke **DBA** from **NICOLE** and replace it by this **DBA\_TUNING\
 
 
 ````
-$ <copy>pa60_show_used_privs.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa60_show_used_privs.sh</copy>
 
 (...)
 SQL> -- Show privileges required by Nicole
@@ -259,7 +259,7 @@ GRANT READ ON SYSTEM.PRODUCT_PRIVS to dba_tuning_role;
 Rn the following script to create and grant an ad hoc role to NICOLE
 
 ````
-$ <copy>pa70_set_new_role.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa70_set_new_role.sh</copy>
 
 (...)
 SQL> -- Create and grant an ad hoc role to NICOLE
@@ -309,7 +309,7 @@ Grant succeeded.
 Finally, we can run verify that Nicole is still able to complete her tasks
 
 ````
-$ <copy>pa30_work_nicole.sh</copy>
+[oracle@secdb lab05_pa]$ <copy>pa30_work_nicole.sh</copy>
 
 (...)
 SQL> --
