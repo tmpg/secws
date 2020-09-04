@@ -246,7 +246,7 @@ Let us use it to view recent audit records.
 $ <copy>aud_95_view_audit.sh</copy>
 ````
 
-**This completes the Database Audit.** You can contienue with [Lab 8: Audit Vault](../lab800/lab800_audit_vault.md)
+**This completes the Database Audit.** You can continue with [Lab 8: Audit Vault](../lab800/lab800_audit_vault.md)
 
 ## Acknowledgements
 
