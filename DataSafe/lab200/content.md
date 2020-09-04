@@ -44,6 +44,14 @@ Data Safe uses a pre-created ATP user (DS$ADMIN) that is enabled when the instan
 The features that you can use depend on the roles granted to the Oracle Data Safe service account on that target database.
 Note that some basic roles are granted by default, allowing ADMIN to run simple security and user assessments.
 
+Change the TimeZome accordingly
+
+`` 
+ALTER DATABASE SET TIME_ZONE ='Asia/Tokyo'
+`` 
+
+and restart the database from the OCI Console
+
 To enable all other Data Safe features, connect to ATP-S with SQL Developer as user **ADMIN** and execute the following GRANTs:
 
 ````
