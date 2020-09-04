@@ -28,11 +28,11 @@ We first create (as **SYS**) the common users which will become the **Database V
 Run the following script from a terminal window to the secdb server.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/a_setup</copy>
+[oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab06_dbv/a_setup</copy>
 ````
 
 ````
-$ <copy>dbvsetup10_config.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup10_config.sh</copy>
 
 (...)
 SQL> --
@@ -58,7 +58,7 @@ PL/SQL procedure successfully completed.
 We now need to **enable** Database Vault in the CDB.
 
 ````
-$ <copy>dbvsetup11_enable.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup11_enable.sh</copy>
 
 (...)
 SQL> begin
@@ -72,7 +72,7 @@ PL/SQL procedure successfully completed.
 Finally we need to **restart** the instance.
 
 ````
-$ <copy>dbvsetup12_restart.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup12_restart.sh</copy>
 
 (...)
 SQL> shutdown immediate
@@ -101,7 +101,7 @@ We need to run similar scripts for the pluggable database **PDB1**.
 Create common users to become the **Database Vault Owner** and the **Database Account Manager**.
 
 ````
-$ <copy>dbvsetup20_configPDB1.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup20_configPDB1.sh</copy>
 
 (...)
 SQL> alter session set container=pdb1;
@@ -132,7 +132,7 @@ PL/SQL procedure successfully completed.
 **Enable** Database Vault in PDB1.
 
 ````
-$ <copy>dbvsetup21_enablePDB1.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup21_enablePDB1.sh</copy>
 
 (...)
 SQL> begin
@@ -146,7 +146,7 @@ PL/SQL procedure successfully completed.
 **Restart** PDB1.
 
 ````
-$ <copy>dbvsetup22_restartPDB1.sh</copy>
+[oracle@secdb a_setup]$ <copy>dbvsetup22_restartPDB1.sh</copy>
 
 (...)
 SQL> alter session set container=pdb1;
@@ -182,11 +182,11 @@ Database operations control does not block PDB database administrators. To block
 Run the following script to enable Ops Control in the CDB.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/b_ops_control</copy>
+[oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/b_ops_control</copy>
 ````
 
 ````
-$ <copy>opsctl_10_enable.sh</copy>
+[oracle@secdb b_ops_control]$ <copy>opsctl_10_enable.sh</copy>
 
 (...)
 SQL*Plus: Release 19.0.0.0.0 - Production on Tue May 12 14:33:47 2020
@@ -203,7 +203,7 @@ PL/SQL procedure successfully completed.
 Verify the status (**DV\_APP\_PROTECTION** is **ENABLED**).
 
 ````
-$ <copy>opsctl_20_status.sh</copy>
+[oracle@secdb b_ops_control]$ <copy>opsctl_20_status.sh</copy>
 
 (...)
 SQL> select * from dba_dv_status;
@@ -220,7 +220,7 @@ DV_ENABLE_STATUS     TRUE
 Let us now verify that **SYS** or **SYSTEM** cannot access local data in **PDB1**.
 
 ````
-$ <copy>opsctl_30_test_access.sh</copy>
+[oracle@secdb b_ops_control]$ <copy>opsctl_30_test_access.sh</copy>
 
 (...)
 SQL> connect system/"MyDbPwd#1"@secdb/pdb1
@@ -252,7 +252,7 @@ ORA-01031: insufficient privileges
 For the rest of the workshop, we will however **disable Operations Control**. Please run the following script.
 
 ````
-$ <copy>opsctl_90_disable.sh</copy>
+[oracle@secdb b_ops_control]$ <copy>opsctl_90_disable.sh</copy>
 
 (...)
 SQL> begin
@@ -280,11 +280,11 @@ In the following demo, we will execute the following scenario:
 Create realm **HR_REALM** over the **HR** schema in **PDB1**. Run the following script from a terminal window to the secdb server
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/b_realm</copy>
+[oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/b_realm</copy>
 ````
 
 ````
-$ <copy>dbv10_dbvo_realm.sh</copy>
+[oracle@secdb b_realm]$ <copy>dbv10_dbvo_realm.sh</copy>
 
 (...)
 SQL> /*
@@ -318,11 +318,11 @@ PL/SQL procedure successfully completed.
 It is important to not create the role as **SYS**, but as the **Application Manager**. Otherwise the DBA will be able to later modify the role or grant it to himself. Run the following script from a terminal window to the secdb server:
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/c_role</copy>
+[oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/c_role</copy>
 ````
 
 ````
-$ <copy>dbv20_sys_grant.sh</copy>
+[oracle@secdb c_role]$ <copy>dbv20_sys_grant.sh</copy>
 
 (...)
 SQL> alter session set container=PDB1;
@@ -342,7 +342,7 @@ Grant succeeded.
 Run the following script.
 
 ````
-$ <copy>dbv30_dbvam_create_users.sh</copy>
+[oracle@secdb c_role]$ <copy>dbv30_dbvam_create_users.sh</copy>
 
 (...)
 SQL> --
@@ -367,7 +367,7 @@ Grant succeeded.
 Connect as the **Application Manager (HR)** to create the application role **APPROLE**. Run the following script from a terminal window to the secdb server. Note that the role is only granted to **APPUSER1** and not to **APPUSER2**.
 
 ````
-$ <copy>dbv40_hr_roleprivs.sh</copy>
+[oracle@secdb c_role]$ <copy>dbv40_hr_roleprivs.sh</copy>
 
 (...)
 SQL> create role APPROLE;
@@ -405,7 +405,7 @@ Protect role APPROLE by placing it in the realm to prevent privileged users such
 Please note that because we created a **mandatory** realm, we also need to make it realm **participant** in order to allow users granted this role to use their privileges.
 
 ````
-$ <copy>dbv50_dbvo_approle.sh</copy>
+[oracle@secdb c_role]$ <copy>dbv50_dbvo_approle.sh</copy>
 
 (...)
 SQL> /*
@@ -437,11 +437,11 @@ We can now test from the dbclient client that only **APPUSER1** (and not **APPUS
 First from APPUSER1 :
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
+[oracle@dbclient ~]$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
 ````
 
 ````
-$ <copy>run_applic_appuser1.sh</copy>
+[oracle@dbclient lab06_dbv]$ <copy>run_applic_appuser1.sh</copy>
 
 (...)
 SQL> select * from hr.regions;
@@ -459,7 +459,7 @@ SQL> select * from hr.regions;
 Then from APPUSER2 :
 
 ````
-$ <copy>run_applic_appuser2.sh</copy>
+[oracle@dbclient lab06_dbv]$ <copy>run_applic_appuser2.sh</copy>
 
 (...)
 SQL> select * from hr.regions;
@@ -470,7 +470,7 @@ ORA-00942: table or view does not exist
 (...)
 ````
 
-## Step 4 : Using Database Vault to enforce a trusted appliaction path  ##
+## Step 4 : Using Database Vault to enforce a trusted application path  ##
 
 In Oracle Database Vault, you can create a **Secure Application Role** that you enable with an Oracle Database Vault rule set.
 
@@ -490,14 +490,14 @@ Here is the outline of the configuration :
 
 ### Step 4a : Create the rules ###
 
-We will create three rules.
+Execute the following commands from **secdb** to create three rules.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
+[oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
 ````
 
 ````
-$ <copy>sar10_dbvo_rules.sh</copy>
+[oracle@secdb d_secapprole]$ <copy>sar10_dbvo_rules.sh</copy>
 
 (...)
 SQL> /*
@@ -506,7 +506,7 @@ SQL>  */
 SQL> begin
   2    DBMS_MACADM.CREATE_RULE(
   3      rule_name   => 'Check host',
-  4      rule_expr   => 'rtrim(SYS_CONTEXT(''USERENV'',''HOST''),''.localdomain'')=''olclient'''
+  4      rule_expr   => 'rtrim(SYS_CONTEXT(''USERENV'',''HOST''),''.localdomain'')=''dbclient'''
   5      );
   6  end;
   7  /
@@ -536,7 +536,7 @@ PL/SQL procedure successfully completed.
 ### Step 4b : Create a rule set ###
 
 ````
-$ <copy>sar20_dbvo_ruleset.sh</copy>
+[oracle@secdb d_secapprole]$ <copy>sar20_dbvo_ruleset.sh</copy>
 
 (...)
 SQL> /*
@@ -581,7 +581,7 @@ PL/SQL procedure successfully completed.
 Now create the Secure Application Role linked to the ruleset. Also protect it by putting it into the realm.
 
 ````
-$ <copy>sar30_dbvo_secapprole.sh</copy>
+[oracle@secdb d_secapprole]$ <copy>sar30_dbvo_secapprole.sh</copy>
 
 (...)
 SQL> /*
@@ -626,7 +626,7 @@ PL/SQL procedure successfully completed.
 Grant the privileges required to run the application to the Secure Application Role.
 
 ````
-$ <copy>sar40_hr_roleprivs.sh</copy>
+[oracle@secdb d_secapprole]$ <copy>sar40_hr_roleprivs.sh</copy>
 
 (...)
 SQL> grant select, insert, update, delete on HR.regions to SECAPPROLE;
@@ -651,11 +651,11 @@ Grant succeeded.
 We can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
+[oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
 ````
 
 ````
-$ <copy>test_secapprole_appuser2.sh</copy>
+[oracle@secdb d_secapprole]$ <copy>test_secapprole_appuser2.sh</copy>
 
 (...)
 SQL> --
@@ -685,11 +685,11 @@ ORA-00942: table or view does not exist
 … but it works from **dbclient** :
 
 ````
-$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
+[oracle@dbclient ]$ <copy>cd /home/oracle/HOL/lab06_dbv</copy>
 ````
 
 ````
-$ <copy>test_secapprole_appuser2.sh</copy>
+[oracle@dbclient lab06_dbv]$ <copy>test_secapprole_appuser2.sh</copy>
 
 (...)
 SQL>
