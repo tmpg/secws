@@ -39,9 +39,6 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 - **Lab 8: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
--  **Extra: Data Safe** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. Please use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 5.
-
-
 ## Accessing the labs ##
 
 - Use the **Lab Contents** menu on your right to access the labs 0 to 10.
