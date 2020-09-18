@@ -37,11 +37,9 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 - **Lab 7: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
 
-- **Data Safe (Part 1)** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4.
-
-- **Data Safe (Part 2)** - Using Data Safe to discover and anonymize sensitive data in Cloud databases.  PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Lab 5.
-
 - **Lab 8: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
+
+-  **Extra: Data Safe** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. Please use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 5.
 
 
 ## Accessing the labs ##
