@@ -1,6 +1,6 @@
 # Lab 0: Accessing Labs Environment
 
-In this chapter, we will create connections to the labs environment and make sure we are ready for the hands-on.  Test Bob - 9/18
+In this chapter, we will create connections to the labs environment and make sure we are ready for the hands-on.
 
 Your environment is hosted on Oracle Cloud Infrastructure with the following compute instances (virtual machines):
 
