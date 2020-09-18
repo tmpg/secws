@@ -57,6 +57,8 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
 
+- Robert Ross & Tim Pirog, A Tech PreSales - Named-MM ECA - September 2020
+
 **Credits**
 
 - Data Safe Labs based on the materials from Oracle Database Security Product Management Team.
