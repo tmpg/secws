@@ -29,23 +29,19 @@ This workshop can be completed in one or two days, depending on the choice of la
 
 - **Lab 4: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
 
-- **Lab 5: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
-
-- **Lab 6: Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
+- **Lab 5: Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
 
 ## Day 2
 
-- **Lab 7: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
+- **Lab 6: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
 
-- **Lab 8: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
+- **Lab 7: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
 
 - **Data Safe (Part 1)** - Using Data Safe to bring DBSAT to Cloud databases and replace Audit Vault. PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Labs 1 to 4.
 
-- **Lab 9: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
-
 - **Data Safe (Part 2)** - Using Data Safe to discover and anonymize sensitive data in Cloud databases.  PLease use the following link for [**Data Safe**](../DataSafe/ "Data Safe Labs") Lab 5.
 
-- **Lab 10: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
+- **Lab 8: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
 
 ## Accessing the labs ##

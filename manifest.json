@@ -37,40 +37,28 @@
             "filename":"./lab400/lab400_data_redaction.md"
         },
         {
-            "title": "Lab 5: Privilege Analysis",
-            "description":"Lab 5: Privilege Analysis",
+            "title": "Lab 5: Database Vault",
+            "description":"Lab 5: Database Vault",
             "publisheddate": "05/08/2020",
-            "filename":"./lab500/lab500_privilege_analysis.md"
+            "filename":"./lab500/lab500_database_vault.md"
         },
         {
-            "title": "Lab 6: Database Vault",
-            "description":"Lab 6: Database Vault",
-            "publisheddate": "05/08/2020",
-            "filename":"./lab600/lab600_database_vault.md"
-        },
-        {
-            "title": "Lab 7: Database Audit",
-            "description":"Lab 7: Database Audit",
+            "title": "Lab 6: Database Audit",
+            "description":"Lab 6: Database Audit",
             "publisheddate": "04/21/2020",
-            "filename":"./lab700/lab700_database_audit.md"
+            "filename":"./lab600/lab600_database_audit.md"
         },
         {
-            "title": "Lab 8: Audit Vault",
-            "description":"Lab 8",
+            "title": "Lab 7: Audit Vault",
+            "description":"Lab 7: Audit Vault",
             "publisheddate": "04/21/2020",
-            "filename":"./lab800/lab800_audit_vault.md"
+            "filename":"./lab700/lab700_audit_vault.md"
         },
         {
-            "title": "Lab 9: Data Masking",
-            "description":"Lab 9: Data Masking",
+            "title": "Lab 8: Running DBSAT and compare results",
+            "description":"Lab 8: Running DBSAT and compare results",
             "publisheddate": "04/21/2020",
-            "filename":"./lab900/lab900_data_masking.md"
-        },
-        {
-            "title": "Lab 10: Running DBSAT and compare results",
-            "description":"Lab 10",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab1000/lab1000_dbsat_compare.md"
+            "filename":"./lab800/lab800_dbsat_compare.md"
         }
     ]
 }
