@@ -17,13 +17,13 @@ For maximum transparency, redaction preserves the type and formatting of column 
 Users can redact column data in one of the following methods:
 
 * **Full redaction** obfuscates all content contained in the column data. 
-  * The redacted value returned to the querying user depends on the data type of the column. 
-  * For example, columns of the NUMBER data type are redacted with a zero (0) and character data types are redacted with a blank space.
+    * The redacted value returned to the querying user depends on the data type of the column. 
+    * For example, columns of the NUMBER data type are redacted with a zero (0) and character data types are redacted with a blank space.
 * **Partial redaction** only obfuscates a portion of the column data. 
-  * For example, you can redact most of a Social Security number with asterisks (*), except for the last four digits.
+    * For example, you can redact most of a Social Security number with asterisks (*), except for the last four digits.
 * **Regular expressions** utilizes regular expressions for either full and partial redaction. 
-  * This enables users to redact data based on a search pattern. 
-  * For example, users can use regular expressions to redact specific phone numbers or email addresses found in the columns.
+    * This enables users to redact data based on a search pattern. 
+    * For example, users can use regular expressions to redact specific phone numbers or email addresses found in the columns.
 * **Random redaction** obfuscates data presented to the querying user employing randomly-generated values each time it is displayed in accordance to the data type of the column.
 
 The Oracle Database applies redaction at query execution-time (the moment users attempt to access data). This solution excels in dynamic production systems which data is constantly changing. During the  redaction process, users can expect normal operation. Data processing will continue as expected and the back-end referential integrity constraints are preserved.  
