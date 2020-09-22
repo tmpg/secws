@@ -25,7 +25,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 ## Step 1: Get IP addresses for your workshop VM environment. ##
 
-To get IP addresses to your own workshop environment, visit **http://holadmin.oraclepts.nl** and enter your email and the secret code provided by the instructor.  Then hit *Submit*.
+To get IP addresses to your own workshop environment, visit **[http://holadmin.oraclepts.nl](http://holadmin.oraclepts.nl)** and enter your email and the secret code provided by the instructor.  Then hit *Submit*.
 
 ![Get your VM IP addresses](./images/Lab000_Step0_1.png "")
 
@@ -37,8 +37,8 @@ A PDF file should download where you will see the public IPs for your workshop e
 
 ![IP addresses Welcome](./images/Lab000_Step0_3.png "")
 
-- Database server - **secdb**
-- Database client - **dbclient**
+- Database server = **secdb**
+- Database client = **dbclient**
 
 ## Step 2: Create SSH connections to secdb and dbclient ##
 
@@ -80,21 +80,19 @@ Do not forget to **save** each PuTTY configuration:
 
 ### Connect from Linux or Mac
 
-If you are using Linux, Mac or some bash terminal, you will need to use the private key in Open SSH format.
+If you are using Linux, Mac or some bash terminal, you will need to use the private key in Open SSH format (dbseckey.pub).
 
-The file containing the private key to use in that case is dbseckey (without extension).
-
-To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the labkey file):
+To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the dbseckey.pub file):
 
     $ cd /<path-to-keys-folder>/
 
 Use the actual IP address for each server to create each terminal session:
 
-    $ ssh -i dbseckey oracle@ip.address
+    $ ssh -i dbseckey.pub oracle@ip.address
 
 The syntax to create an SSH tunnel to secdb enabling a VNC connection should be:
 
-  ssh -L 5902:localhost:5902 -i .ssh/dbseckey oracle@ip.address
+  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@ip.address
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
@@ -108,7 +106,7 @@ When asked for a password, enter **oracle**.
 
 *Note: In case you need to work on the command line outside VNC, you can use WinSCP or another tool to copy files to your local computer. Connect as oracle and specify the private key to authenticate.*
 
-You now can start the workshop labs.
+Now, you can start the workshop labs.
 
 ## Acknowledgements
 
