@@ -21,8 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 * Access to the OCI tenancy as provided by the instructor.
 * SSH client. **[Download Putty](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
-* VNC Viewer client software.  **[Download VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)**.
-
+* TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.
 
 ## Step 1: Create SSH connections to secdb and dbclient ##
 
@@ -90,9 +89,9 @@ When asked for a password, enter **oracle**.
 
 ![Compression](./images/Lab000_Step1_9.png )
 
+*Note: In case you need to work on the command line outside VNC, you can use WinSCP or another tool to copy files to your local computer. Connect as oracle and specify the private key to authenticate.*
+
 You now can start the workshop labs.
-
-
 
 ## Acknowledgements
 
