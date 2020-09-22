@@ -1,4 +1,4 @@
-# Lab 0: Accessing Labs Environment
+# Lab 0: Accessing the Labs Environment
 
 In this chapter, we will create connections to the lab environment VMs and make sure we are ready for the hands-on.
 
