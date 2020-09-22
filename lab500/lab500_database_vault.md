@@ -3,7 +3,8 @@
 In many cases, it is no longer acceptable that over-privileged users (e.g. DBAs) see sensitive data in the system they manage. For instance, DBAs managing a health care system should not be able to see patients data. In this chapter, we will see how Database Vault can enforce these rules.
 
 ## Disclaimer ##
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+
+<em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Requirements ##
 

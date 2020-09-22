@@ -1,6 +1,6 @@
 # Lab 4: Data Redaction
 
-**Oracle Data Redaction** enables data obfuscation at the data layer, freeing developers from these responsibilities.
+**Oracle Data Redaction** enables data obfuscation at the database level (through DBAs), freeing developers from these responsibilities.
 
 ![](./images/REDACTED_DATA_EXAMPLE.png)
 
