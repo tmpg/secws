@@ -48,6 +48,3 @@ This workshop will cover the following Database Security topics.
 
 - Robert Ross & Tim Pirog, NA Tech PreSales - Named-MM ECA - September 2020
 
-**Credits**
-
-- Data Safe Labs based on the materials from Oracle Database Security Product Management Team.
