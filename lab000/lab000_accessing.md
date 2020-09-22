@@ -4,7 +4,7 @@ In this chapter, we will create connections to the lab environment VMs and make 
 
 Your environment is hosted on Oracle Cloud Infrastructure with the following compute instances (virtual machines):
 
-* **secdb**: a Linux box hosting an Oracle Database 19c with a pluggable database PDB1 and most of the lab scripts. They are designed to be easily re-usable and are included in your [**Student's Package**](./files/Package.zip) for your reference or use in future projects.
+* **secdb**: a Linux box hosting an Oracle 19C Database with a pluggable database PDB1 and most of the lab scripts. They are designed to be easily re-usable and are included in your [**Student's Package**](./files/Package.zip) for your reference or use in future projects.
 
 * **dbclient**: a simple client machine with both 11gR2, 12cR2 and 18c instant clients. We can use it for some of the labs (e.g. when setting up network encryption).
 
@@ -18,16 +18,31 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 ## Requirements
 
-* Access to the OCI tenancy as provided by the instructor.
+* Access to the Oracle Cloud (OCI) tenancy. 
 * SSH client. **[Download Putty](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
 * TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.
 
-## Step 1: Create SSH connections to secdb and dbclient ##
+## Step 1: Get IP addresses for your workshop VM environment. ##
 
-The instructor will explain how to identify the public IPs to the four virtual machines to be used.
+To get IP addresses to your own workshop environment, visit **http://holadmin.oraclepts.nl** and enter your email and the secret code provided by the instructor.  Then hit *Submit*.
 
-### From Windows
+![Get your VM IP addresses](./images/Lab000_Step0_1.png "")
+
+You will see a Welcome page where you click on "Connection Details Download".
+
+![IP addresses Welcome](./images/Lab000_Step0_2.png "")
+
+A PDF file should download where you will see the public IPs for your workshop environment.  
+
+![IP addresses Welcome](./images/Lab000_Step0_3.png "")
+
+- Database server - **secdb**
+- Database client - **dbclient**
+
+## Step 2: Create SSH connections to secdb and dbclient ##
+
+### For Windows Users using Putty
 
 Using the Public IPs, open a SSH client like **Putty** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
 
@@ -79,7 +94,7 @@ The syntax to create an SSH tunnel to secdb enabling a VNC connection should be:
 
   ssh -L 5902:localhost:5902 -i .ssh/dbseckey oracle@ip.address
 
-## Step 2: Create a GUI connection to secdb's desktop
+## Step 3: Create a GUI connection to secdb's desktop
 
 For some labs, it will be easier to use a VNC connection to secdb. To do this, first connect using PuTTY to create the SSH tunnel and then launch a VNC client such as TigerVNC Viewer and connect to **localhost:2**
 
