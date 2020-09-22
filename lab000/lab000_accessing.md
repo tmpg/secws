@@ -10,19 +10,18 @@ Your environment is hosted on Oracle Cloud Infrastructure with the following com
 
 * **av**: an Audit Vault Server 12.2 which will be configured as part of the labs.
 
-* **emcc**: an Enterprise Manager Cloud Control 13cR2 whose agent is deployed on secdb.
+* **emcc**: an Enterprise Manager Cloud Control 13cR2 installation.  There is a repository database with an agent that is deployed on secdb.
 
 The virtual machines can be accessed by using an **SSH** client (**Putty**, **MobaXterm**) or with `ssh` from a terminal (bash, Mac or Linux).
 
 For secdb, **VNC** has also been configured to provide a GUI to the desktop.
-
 
 ## Requirements
 
 * Access to the OCI tenancy as provided by the instructor.
 * SSH client.
 * Private key to access client machines by SSH. (The keys can be found [here](./files/dbsec_keys.zip))
-* VNC client software.
+* VNC client software.  **[Download VNC} (https://www.realvnc.com/en/connect/download/viewer/)**
 
 
 ## Step 1: Create SSH connections to secdb and dbclient ##
