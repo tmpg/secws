@@ -1,6 +1,6 @@
-# Lab 10: Running DBSAT again and comparing results to a baseline
+# Lab 8: Repeating DBSAT to Compare to Baseline
 
-It you still have time, you might want to run DBSAT again and compare the results with the initial run.
+This lab takes the User through running DBSAT again and comparing the results with the initial run.
 
 ## Disclaimer ##
 
@@ -133,7 +133,7 @@ Database Version
 (...)
 ````
 
-Congratulations: you have now completed the workshop!
+Congratulations: The Workshop is now complete!
 
 ## Acknowledgements
 

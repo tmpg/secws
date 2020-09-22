@@ -1,6 +1,8 @@
-# Lab 8 - Audit Vault #
+# Lab 7: Oracle Audit Vault #
 
-This lab will demonstrate how to use Audit Vault to manage the audit data produced by an Oracle database.
+This lab will demonstrate how to use Audit Vault to manage the audit data produced by an Oracle Database.
+
+![](./images/ORACLE_AUDIT_EXAMPLE.png)
 
 ## Disclaimer ##
 
@@ -21,13 +23,17 @@ This is also recommended by DBSAT findings such as the following one:
 
 ![Alt text](./images/img01.png " ")
 
-The Audit Vault Server solves these problems by collecting and consolidating audit data, providing comprehensive reports and alerts for forensic and compliance purposes and managing its retention over time.
+The **Audit Vault** Server solves these problems by collecting and consolidating audit data, providing comprehensive reports and alerts for forensic and compliance purposes and managing its retention over time.
 
-In this lab, an Audit Vault Server has already been provisioned in virtual machine **av**. We will register **secdb** as a Secure Target, deploy the **Audit Vault agent** to **secdb** and configure Audit Trails to collect audit data from **secdb**.
+### Additional Resources
+* [Oracle Audit Vault and Database Firewall Technical Report](https://www.oracle.com/a/tech/docs/dbsec/avdf20-technical-report.pdf)
+* [Oracle Audit Vault and Database Firewall Documentation](https://docs.oracle.com/cd/E37100_01/index.htm) 
 
 ## Step 1 : Registering host and deploying the agent ##
 
-First thing to do is to register secdb as a secure target and deploy the agent.
+In this lab, an Audit Vault Server has already been provisioned in virtual machine **av**. We will register **secdb** as a Secure Target, deploy the **Audit Vault agent** to **secdb** and configure Audit Trails to collect audit data from **secdb**.
+
+First thing to do is to register **secdb** as a secure target and deploy the agent.
 
 From the **VNC connection to secdb**, start Firefox and connect to the Audit Vault as Super Administrator:
 
@@ -688,7 +694,7 @@ SQL> select count(*) from unified_audit_trail;
         15
 ````
 
-This completes the **Audit Vault** lab. You can continue with **Lab 9: Data Masking.**
+This completes the **Audit Vault** lab. Users can continue to **Lab 8: Repeating DBSAT to Compare to Baseline**
 
 ## Acknowledgements
 

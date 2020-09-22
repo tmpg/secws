@@ -1,6 +1,6 @@
-# Lab 7 - Unified Database Auditing #
+# Lab 6: Unified Database Auditing #
 
-In this chapter, we will address the problem of enforcing strong internal controls and meeting regulatory compliance by auditing the database.
+In this lab, we will address the problem of enforcing strong internal controls and meeting regulatory compliance by auditing the database.
 
 ## Disclaimer ##
 
@@ -47,6 +47,10 @@ In unified auditing, the **unified audit trail** captures audit information from
 *	Oracle Data Mining records
 *	Oracle Data Pump
 *	Oracle SQL*Loader Direct Load
+
+
+### Additional Resources
+* [Oracle Database Documentation - Security Guide: Introduction to Auditing](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/introduction-to-auditing.html) 
 
 ## Step 1 : Configuring Unified Auditing ##
 
@@ -247,7 +251,7 @@ Let us use it to view recent audit records.
 $ <copy>aud_95_view_audit.sh</copy>
 ````
 
-**This completes the Database Audit.** You can continue with [Lab 8: Audit Vault](../lab800/lab800_audit_vault.md)
+**This completes the Database Audit.** Users can continue to [Lab 7: Oracle Audit Vault](../lab800/lab800_audit_vault.md)
 
 ## Acknowledgements
 

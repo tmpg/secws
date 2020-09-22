@@ -309,7 +309,7 @@ Kimberely            Grant                              0
 ````
 Users can also verify that the data is not redacted for **SYSTEM**.
 
-This completes the **Data Redaction** lab. You can continue with **Lab 5: Privilege Analysis**
+This completes the **Data Redaction** lab. Users can continue to **Lab 5: Oracle Database Vault**
 
 ## Acknowledgements
 

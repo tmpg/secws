@@ -1,6 +1,8 @@
-# Lab 6: Database Vault
+# Lab 5: Database Vault
 
-In many cases, it is no longer acceptable that over-privileged users (e.g. DBAs) see sensitive data in the system they manage. For instance, DBAs managing a health care system should not be able to see patients data. In this chapter, we will see how Database Vault can enforce these rules.
+Security best practices dictates that it is **no longer acceptable** for over-privileged users (e.g. DBAs) to see sensitive data in the systems they manage. For instance, DBAs managing a health care system should not be able to see patients data. In this lab, we will see how Oracle Database Vault enforces these practices.
+
+![](./images/DB_VAULT_EXAMPLE.png)
 
 ## Disclaimer ##
 
@@ -18,15 +20,18 @@ DBSAT has detected that Database Vault was not yet is use in our database.
 
 ![Alt text](./images/img01.png " ")
 
-In this chapter, we will configure Database Vault for both the Container Database **CONT** and **PDB1**.
+### Additional Resources
+* [Oracle Database Documentation - Administrator's Guide: Oracle® Database Vault](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/index.html)
+* [Oracle Database Vault Whitepaper](https://www.oracle.com/a/tech/docs/dbsec/dbv/wp-dv-19c.pdf)
 
 ## Step 1 : Configure Database Vault ##
 
 ### Step 1a : Enable Database Vault in the Container Database ###
+In this Lab, users will configure Oracle Database Vault for the Container Database **CONT** and **PDB1**.
 
-We first create (as **SYS**) the common users which will become the **Database Vault Owner** and the **Database Vault Account Manager** and then call **configure_dv** to configure Database Vault.
+Users first create (as **SYS**) the common database-users which will become the **Database Vault Owner** and the **Database Vault Account Manager** and then call **configure_dv** to configure Database Vault.
 
-Run the following script from a terminal window to the secdb server.
+Run the following script on the **secdb** server.
 
 ````
 [oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab06_dbv/a_setup</copy>
@@ -56,7 +61,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-We now need to **enable** Database Vault in the CDB.
+Users now need to **enable** Database Vault in the **CDB**.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup11_enable.sh</copy>
@@ -70,7 +75,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-Finally we need to **restart** the instance.
+Finally users need to **restart** the instance.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup12_restart.sh</copy>
@@ -97,9 +102,9 @@ TRUE
 
 ### Step 1b : Enable Database Vault in the Pluggable Database ###
 
-We need to run similar scripts for the pluggable database **PDB1**.
+Users need to run similar scripts for the pluggable database **PDB1**.
 
-Create common users to become the **Database Vault Owner** and the **Database Account Manager**.
+Create common database-users to become the **Database Vault Owner** and the **Database Account Manager**.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup20_configPDB1.sh</copy>
@@ -130,7 +135,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-**Enable** Database Vault in PDB1.
+**Enable** Database Vault in **PDB1**.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup21_enablePDB1.sh</copy>
@@ -144,7 +149,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-**Restart** PDB1.
+Restart **PDB1**.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup22_restartPDB1.sh</copy>
@@ -174,13 +179,13 @@ TRUE
 
 ## Step 2 : Operations Control  ##
 
-**Operations Control** is a Database Vault **19c** new feature which makes very easy to restrict common users (e.g. **SYS** or **SYSTEM**) from accessing pluggable database local data (e.g. **PDB1** local data).
+**Operations Control** is a Database Vault **19c** new feature which makes very easy to restrict common database-users (e.g. **SYS** or **SYSTEM**) from accessing pluggable database local data (e.g. **PDB1** local data).
 
 Ops Control is useful for situations where a database administrator must log in to the CDB root as a highly privileged user, but still not be able to access PDB customer data.
 
 Database operations control does not block PDB database administrators. To block these users, enable Oracle Database Vault in the PDB and then use other Database Vault features such as **realm control** to block these users, as we'll see in **Step 3**.
 
-Run the following script to enable Ops Control in the CDB.
+Run the following script to enable Ops Control in the **CDB**.
 
 ````
 [oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/b_ops_control</copy>
@@ -218,7 +223,7 @@ DV_ENABLE_STATUS     TRUE
 (...)
 ````
 
-Let us now verify that **SYS** or **SYSTEM** cannot access local data in **PDB1**.
+Verify that **SYS** or **SYSTEM** cannot access local data in **PDB1**.
 
 ````
 [oracle@secdb b_ops_control]$ <copy>opsctl_30_test_access.sh</copy>
@@ -250,7 +255,10 @@ ORA-01031: insufficient privileges
 (...)
 ````
 
-For the rest of the workshop, we will however **disable Operations Control**. Please run the following script.
+For the rest of the Lab, users will disable **Operations Control**. 
+<br/>
+<br/>
+Please run the following script.
 
 ````
 [oracle@secdb b_ops_control]$ <copy>opsctl_90_disable.sh</copy>
@@ -268,17 +276,17 @@ PL/SQL procedure successfully completed.
 
 ## Step 3 : Create a Database Vault Realm over HR schema in PDB1  ##
 
-A **realm** is a grouping of database schemas, database objects, and database roles that must be secured for a given application. Only users who have been granted **realm authorization** as either a realm **owner** or a realm **participant** can use their **system privileges** to access secured objects in the realm.
+A **realm** is a grouping of database schemas, database objects, and database roles that must be secured for a given application. Only database-users who have been granted **realm authorization** as either a realm **owner** or a realm **participant** can use their **system privileges** to access secured objects in the realm.
 
 In the following demo, we will execute the following scenario:
 
 *	Create  a realm over the **HR** schema in **PDB1** – done by the Database Vault Owner
-*	Create a **HR_ROLE** role to grant application privileges to users. We’ll need to also protect this role by putting in inside the realm to prevent privileged users (**SYS** or **SYSTEM**) to modify it or to grant it to themselves
-*	We’ll also create two application users **appuser1** and **appuser2** and grant the required role only to **appuser1**
+*	Create a **HR_ROLE** role to grant application privileges to database-users. We’ll need to also protect this role by putting in inside the realm to prevent privileged database-users (**SYS** or **SYSTEM**) to modify it or to grant it to themselves
+*	Users also create two application-users **appuser1** and **appuser2** and grant the required role only to **appuser1**
 
 ### Step 3a : Create a realm HR_REALM over the HR schema ###
 
-Create realm **HR_REALM** over the **HR** schema in **PDB1**. Run the following script from a terminal window to the secdb server
+Create realm **HR_REALM** over the **HR** schema in **PDB1**. Run the following script on the **secdb** server.
 
 ````
 [oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/b_realm</copy>
@@ -316,7 +324,7 @@ PL/SQL procedure successfully completed.
 
 ### Step 3b : Grant CREATE ROLE to the Application Manager ###
 
-It is important to not create the role as **SYS**, but as the **Application Manager**. Otherwise the DBA will be able to later modify the role or grant it to himself. Run the following script from a terminal window to the secdb server:
+It is important to not create the role as **SYS**, but as the **Application Manager**. Otherwise the DBA will be able to later modify the role or grant it to himself. Run the following script on the **secdb** server:
 
 ````
 [oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/c_role</copy>
@@ -365,7 +373,7 @@ Grant succeeded.
 
 ### Step 3d :  Create an application role ###
 
-Connect as the **Application Manager (HR)** to create the application role **APPROLE**. Run the following script from a terminal window to the secdb server. Note that the role is only granted to **APPUSER1** and not to **APPUSER2**.
+Connect as the **Application Manager (HR)** to create the application role **APPROLE**. Run the following script on the **secdb** server. Note that the role is only granted to **APPUSER1** and not to **APPUSER2**.
 
 ````
 [oracle@secdb c_role]$ <copy>dbv40_hr_roleprivs.sh</copy>
@@ -401,7 +409,7 @@ Grant succeeded.
 
 ### Step 3e :  Protect the APPROLE role ###
 
-Protect role APPROLE by placing it in the realm to prevent privileged users such as DBAs from granting the role to themselves.
+Protect role APPROLE by placing it in the realm to prevent privileged database-users such as DBAs from granting the role to themselves.
 
 Please note that because we created a **mandatory** realm, we also need to make it realm **participant** in order to allow users granted this role to use their privileges.
 
@@ -433,7 +441,7 @@ PL/SQL procedure successfully completed.
 
 ### Step 3f : Verification ###
 
-We can now test from the dbclient client that only **APPUSER1** (and not **APPUSER2**) is able to run the application. Run the following script from a terminal window to the **dbclient** client.
+We can now test from the dbclient client that only **APPUSER1** (and not **APPUSER2**) is able to run the application. Run the following script on the **dbclient** client.
 
 First from APPUSER1 :
 
@@ -475,7 +483,7 @@ ORA-00942: table or view does not exist
 
 In Oracle Database Vault, you can create a **Secure Application Role** that you enable with an Oracle Database Vault rule set.
 
-Regular Oracle Database Secure Application Roles are enabled by custom PL/SQL procedures. You use Secure Application Roles to prevent users from accessing data from outside an application. This forces users to work within the framework of the application privileges that have been granted to the role.
+Regular Oracle Database Secure Application Roles are enabled by custom PL/SQL procedures. You use Secure Application Roles to prevent database-users from accessing data from outside an application. This forces database-users to work within the framework of the application privileges that have been granted to the role.
 
 The advantage of basing database access for a role on a rule set is that you can store database security policies in one central place, as opposed to storing them in all your applications. Basing the role on a rule set provides a consistent and flexible method to enforce the security policies that the role provides. In this way, it is easy to enforce a trusted application path and reject all unexpected connections.
 
@@ -649,7 +657,7 @@ Grant succeeded.
 
 ### Step 4e : Verification ###
 
-We can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
+Users can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
 
 ````
 [oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
@@ -712,9 +720,9 @@ SQL> select * from hr.regions;
 (...)
 ````
 
-Note: The scripts in subdirectory **z_cleanup** are for your information only. They document the SQL syntax to **remove** the Database Vault configuration that we have just built. **DO NOT RUN THESE SCRIPTS**.
+Note: The scripts in subdirectory **z_cleanup** are for your information only. They document the SQL syntax to **remove** the Database Vault configuration that was just built. **DO NOT RUN THESE SCRIPTS**.
 
-This completes the **Database Vault** lab. You can continue with **Lab 7: Database Audit**
+This completes the **Database Vault** lab. Users can continue to **Lab 6: Database Audit**
 
 ## Acknowledgements
 
