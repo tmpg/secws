@@ -21,7 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 * Access to the OCI tenancy as provided by the instructor.
 * SSH client.
 * Private key to access client machines by SSH. (The keys can be found [here](./files/dbsec_keys.zip))
-* VNC client software.  **[Download VNC} (https://www.realvnc.com/en/connect/download/viewer/)**
+* VNC client software.  **[Download VNC](https://www.realvnc.com/en/connect/download/viewer/)**.
 
 
 ## Step 1: Create SSH connections to secdb and dbclient ##
