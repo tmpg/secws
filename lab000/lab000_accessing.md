@@ -1,6 +1,6 @@
 # Lab 0: Accessing Labs Environment
 
-In this chapter, we will create connections to the labs environment and make sure we are ready for the hands-on.
+In this chapter, we will create connections to the lab environment VMs and make sure we are ready for the hands-on.
 
 Your environment is hosted on Oracle Cloud Infrastructure with the following compute instances (virtual machines):
 
@@ -21,7 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 * Access to the OCI tenancy as provided by the instructor.
 * SSH client. **[Download Putty](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
-* VNC client software.  **[Download VNC](https://www.realvnc.com/en/connect/download/viewer/)**.
+* VNC Viewer client software.  **[Download VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)**.
 
 
 ## Step 1: Create SSH connections to secdb and dbclient ##
@@ -30,7 +30,7 @@ The instructor will explain how to identify the public IPs to the four virtual m
 
 ### From Windows
 
-Using the Public IPs, open a SSH client like **Putty** and configure two connections to **secdb** and **dbclient**. Here is an example for **secdb**:
+Using the Public IPs, open a SSH client like **Putty** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
 
 ![Connect to the instance](./images/Lab000_Step1_1.png "")
 
