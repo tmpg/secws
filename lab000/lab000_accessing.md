@@ -89,9 +89,9 @@ When asked for a password, enter **oracle**.
 
 ![Compression](./images/Lab000_Step1_9.png )
 
+*Note: In case you need to work on the command line outside VNC, you can use WinSCP or another tool to copy files to your local computer. Connect as oracle and specify the private key to authenticate.*
+
 You now can start the workshop labs.
-
-
 
 ## Acknowledgements
 
