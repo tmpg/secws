@@ -1,36 +1,46 @@
 # Lab 4: Data Redaction
 
-**Oracle Data Redaction** enables you to move redaction capabilities out of applications and into the database.
+**Oracle Data Redaction** enables data obfuscation at the data layer, freeing developers from these responsibilities.
+
+![](./images/REDACTED_DATA_EXAMPLE.png)
 
 ## Disclaimer ##
 
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+<em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Introduction  ##
 
-**Oracle Data Redaction** provides an easy way to protect sensitive information that is displayed in applications by replacing it on-the-fly with valid redacted data, while keeping the applications running. Sensitive information is concealed according to flexible policies that provide conditional redaction and that are managed directly within the database.
+**Oracle Data Redaction** provides an easy way to protect sensitive information displayed in applications by replacing it on-the-fly with valid redacted data transparently to the applications running. Sensitive information is concealed according to flexible policies that provide conditional redaction and that are managed directly within the database.
 
 For maximum transparency, redaction preserves the type and formatting of column data returned to applications, and it does not alter the underlying database blocks on disk or in cache.
 
+Users can redact column data in one of the following methods:
 
-You can redact column data by using one of the following methods:
+* **Full redaction** obfuscates all content contained in the column data. 
+  * The redacted value returned to the querying user depends on the data type of the column. 
+  * For example, columns of the NUMBER data type are redacted with a zero (0) and character data types are redacted with a blank space.
+* **Partial redaction** only obfuscates a portion of the column data. 
+  * For example, you can redact most of a Social Security number with asterisks (*), except for the last four digits.
+* **Regular expressions** utilizes regular expressions for either full and partial redaction. 
+  * This enables users to redact data based on a search pattern. 
+  * For example, users can use regular expressions to redact specific phone numbers or email addresses found in the columns.
+* **Random redaction** obfuscates data presented to the querying user employing randomly-generated values each time it is displayed in accordance to the data type of the column.
 
-* **Full redaction**. You redact all the contents of the column data. The redacted value returned to the querying user depends on the data type of the column. For example, columns of the NUMBER data type are redacted with a zero (0) and character data types are redacted with a blank space.
-* **Partial redaction**. You redact a portion of the column data. For example, you can redact most of a Social Security number with asterisks (*), except for the last four digits.
-* **Regular expressions**. You can use regular expressions in both full and partial redaction. This enables you to redact data based on a search pattern for the data. For example, you can use regular expressions to redact specific phone numbers or email addresses in your data.
-* **Random redaction**. The redacted data presented to the querying user appears as randomly-generated values each time it is displayed, depending on the data type of the column.
+The Oracle Database applies redaction at query execution-time (the moment users attempt to access data). This solution excels in dynamic production systems which data is constantly changing. During the  redaction process, users can expect normal operation. Data processing will continue as expected and the back-end referential integrity constraints are preserved.  
 
-Oracle Database applies the redaction at run time, at the moment users attempt to access the data (that is, at query-execution time). This solution works well in a dynamic production system in which data is constantly changing. During the time that the data is being redacted, all data processing is performed normally, and the back-end referential integrity constraints are preserved.  
+Data redaction can help users to comply with **industry regulations** found in: 
+* Payment Card Industry
+* Data Security Standard (PCI DSS)
+* Sarbanes-Oxley Act
+* etc...
 
-Data redaction can help you to comply with industry regulations such as Payment Card Industry Data Security Standard (PCI DSS) and the Sarbanes-Oxley Act.
-
-Redaction can be implemented via Enterprise Manager (which benefits from pre-defined redaction templates), SQL\*Developer and via the PL/SQL API (so SQL\*Plus or other client).
+Redaction can be enabled via Oracle Enterprise Manager (which benefits from pre-defined redaction templates), SQL\*Developer and via the PL/SQL API (so SQL\*Plus or other client).
 
 
-## Requirements ##
+## Lab Requirements ##
 
-* Session open to **secdb** with user **oracle**
-* session open to **dbclient** with user **oracle**   
+* SSH Session connected to **secdb** as user **oracle**
+* SSH Session connected to **dbclient** as user **oracle**   
 
 ## Creating a Simple Redaction Policy
 
@@ -42,9 +52,9 @@ DBSAT had identified a number of sensitive columns in the HCM schema:
 
 Let us create simple redaction policies for low privileged users on these three columns.
 
-## Step 1: Create a low privileged user
+## Step 1: Create a User with Minimal Privileges
 
-Run the following script from a terminal window to the **secdb** server to create a low privileged user `hcm_clerk`:
+Run the following script on the **secdb** server to create `hcm_clerk` (a user with minimal privileges):
 
 ````
 [oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab04_redaction</copy>
@@ -86,9 +96,9 @@ Grant succeeded.
 (...)
 ````
 
-## Step 2: Create a redaction policy
+## Step 2: Create a Redaction Policy
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script on the **secdb** server:
 
 ````
 [oracle@secdb lab04_redaction]$ <copy>redac20_add_pol.sh</copy>
@@ -150,16 +160,13 @@ SQL> BEGIN
 PL/SQL procedure successfully completed.
 ````
 
-These policies mandate to connect as **HCM** in order to see real values for the three redacted columns.
+These policies mandate to connect as **HCM** in order to see the true values for the three redacted columns.
 
-However note that **SYSTEM** has the **EXP\_FULL\_DATABASE** role which includes the **EXEMPT REDACTION POLICY** system privilege. This means that the **SYS** and **SYSTEM** users can always bypass any existing Oracle Data Redaction policies and will always be able to view data from tables (or views) that have Data Redaction policies defined on them.
+NOTE: **SYSTEM** has the **EXP\_FULL\_DATABASE** role which includes the **EXEMPT REDACTION POLICY** system privilege. This means that the **SYS** and **SYSTEM** users can always bypass any existing Oracle Data Redaction policies and will be able to view the true values of the tables (or views) which have Data Redaction Policies defined.
 
+## Step 3: Validate the Redaction Policy
 
-## Step 3: Verify the redaction policy
-
-Let us run a quick test of our redaction policies.
-
-Run the following script from a terminal window to the **secdb** server:
+To test the redaction policies. Run the following script on the **secdb** server:
 
 ````
 [oracle@secdb lab04_redaction]$ <copy>redac30_test_pol.sh</copy>
@@ -216,11 +223,9 @@ William              Gietz                              0 XXX-XX-6206     XXXXXX
 9 rows selected.
 ````
 
-Let us also test our redaction policies from the client machine **dbclient**.
+To test the redaction policies on the client machine **dbclient**, users will use a **Window SQL** query to retrieve the highest salary in each department. Please take the time to understand the query and understand the syntax!
 
-We will use an interesting **Window SQL** query which retrieves the highest salary in each department. Take the time to read the query and understand the syntax!
-
-Use a terminal window to **dbclient** (as oracle) and run the following:
+On **dbclient** (as user **oracle**) run the following:
 
 ````
 [oracle@dbclient ~]$ <copy>cd /home/oracle/HOL/lab04_redaction</copy>
@@ -262,8 +267,7 @@ Kimberely            Grant                           7000
 (...)
 ````
 
-As we connected as **HCM**, the data was not redacted.
-Now let us run the same query as **HCM_CLERK** and the data will be redacted:
+Connected as **HCM** users will see that the data is not redacted. If users run the same query as **HCM_CLERK** the data will now be redacted:
 
 ````
 [oracle@dbclient lab04_redaction]$ <copy>get_highest_sal.sh HCM_CLERK</copy>
@@ -300,7 +304,7 @@ Kimberely            Grant                              0
 12 rows selected.
 (...)
 ````
-You can also verify that the same data is not redacted for **SYSTEM**.
+Users can also verify that the data is not redacted for **SYSTEM**.
 
 This completes the **Data Redaction** lab. You can continue with **Lab 5: Privilege Analysis**
 
