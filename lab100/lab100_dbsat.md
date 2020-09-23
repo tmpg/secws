@@ -33,7 +33,7 @@ We will now install and run DBSAT on PDB1 in Container Database CONT.
 
 ### Create a DBSAT user with appropiate privileges
 
-Go to the session opened to the **secdb** server.
+Go to the session opened on the **secdb** server.
 
 Change to the lab directory
 
@@ -337,7 +337,6 @@ DBSAT discoverer will connect to the database and collect data needed for analys
 ````
 [oracle@secdb lab01_dbsat]$ <copy>chmod +w dbsat.config</copy>
 ````
-
 
 Now use the editor of your choice (e.g. vi, gedit) to set the database service name in dbsat.config. Update the value of parameter **DB\_SERVICE\_NAME** to **PDB1** as follows:
 

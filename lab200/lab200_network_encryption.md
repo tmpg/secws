@@ -175,7 +175,7 @@ The three lines in the result just reflect the capabilities of the Oracle Net’
 
 ### Configuring Network Encryption and Data Integrity
 
-It is possible to enforce Oracle Net encryption and set a data integrity algorithm by setting parameters in sqlnet.ora on the server side. Run the following commands from a terminal connection to the **secdb** server .
+It is possible to enforce Oracle Net encryption and set a data integrity algorithm by setting parameters in sqlnet.ora on the server side. Run the following commands from a terminal connection on the **secdb** server .
 
 ````
 [oracle@secdb ~]$ <copy>cd ~/HOL/lab02_network/</copy>
