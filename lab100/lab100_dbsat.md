@@ -258,7 +258,9 @@ Archive:  dbsat_pdb1_report.zip
 If you are inside the graphical environment connected through VNC, launch the browser and open the html file generated: **dbsat\_pdb1\_report.html**
 
 You can use the following location in your browser command line.  
-````<copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/dbsat_pdb1_report.html </copy>
+
+````
+<copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/dbsat_pdb1_report.html </copy>
 ````
 
 *Note: In case you are working on the command line outside VNC, you can use WinSCP or another tool to copy the file to your local computer and view the file in your own desktop browser. Connect as oracle and specify the private key to authenticate.*
