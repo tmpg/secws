@@ -302,7 +302,7 @@ De Haan
 LDEHAAN
 515.123.4569
 ````
-Notice that you see the data in the USERS tablespace in an unencrpyted format.
+Notice that you **CAN** see the data in the USERS tablespace in an unencrpyted format.
 
 ### Encrypting Existing tablespaces
 
@@ -400,7 +400,7 @@ p       3+L
 X-IL
 9o2n
 ````
-Notice that you see **CANNOT** see the data in the USERS tablespace that is encrpyted.
+Notice that you **CANNOT** see the data in the USERS tablespace that is encrpyted.
 
 ## Step 3: Working with Wallet
 
