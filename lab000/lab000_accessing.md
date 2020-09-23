@@ -6,7 +6,7 @@ Your environment is hosted on Oracle Cloud Infrastructure with the following com
 
 * **secdb**: a Linux box hosting an Oracle 19C Database with a pluggable database PDB1 and most of the lab scripts. They are designed to be easily re-usable and are included in your [**Student's Package**](./files/Package.zip) for your reference or use in future projects.
 
-* **dbclient**: a simple client machine with both 11gR2, 12cR2 and 18c instant clients. We can use it for some of the labs (e.g. when setting up network encryption).
+* **dbclient**: a simple client machine with both 11gR2 and 19c instant clients. We will use it for some of the labs (e.g. when setting up network encryption).
 
 * **av**: an Audit Vault Server 12.2 which will be configured as part of the labs.
 
