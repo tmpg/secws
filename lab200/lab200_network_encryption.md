@@ -9,7 +9,7 @@ One of the basic protection that you can set on the database is the **Network En
 ## Requirements
 
 * SSH Session connected to **secdb** as user **oracle**
-* SSH Session connected to **dbclient** as user **oracle*
+* SSH Session connected to **dbclient** as user **oracle**
 
 ## Introduction  ##
 
