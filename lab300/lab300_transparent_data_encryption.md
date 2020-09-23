@@ -260,17 +260,22 @@ Run the following sqlplus script to generate a unix strings command we can run t
 
 ````
 [oracle@secdb lab03_tde]$ SQL> <copy>set linesize 120 </copy>
-SQL> <copy>alter session set container=pdb1; </copy>
 SQL> <copy>alter session set container=PDB1; </copy>
 SQL> <copy>select 'strings '|| name as FILE_NAME from v$datafile where name like '%user%'; </copy>
+
+FILE_NAME
+------------------------------------------------------------------------------------------------------------------------
+strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf
+
+SQL> exit;
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.6.0.0.0
 SQL> <copy>exit; </copy>
-
 ````
-
-SQL> alter session set container=pdb1;
-Session altered.
-
-
+Now run the output "strings filename" command at the Linux prompt.
+````
+<copy>[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf </copy>
+````
 
 ### Encrypting Existing tablespaces
 
