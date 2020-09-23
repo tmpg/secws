@@ -52,7 +52,9 @@ Set user to **oracle** in **Connection** -> **Data** -> **Auto-login username** 
 
 ![Connect with oracle User](./images/Lab000_Step1_2.png "")
 
-You should have downloaded the Security Keys into a file named dbsec\_keys.zip.  Typically this is in your Downloads directory.  Unzip dbsec\_keys.zip.  
+Download the **[Security SSH keys](./files/dbsec_keys.zip)**.  This is typically a file named dbsec\_keys.zip in your Downloads directory.  
+
+Unzip dbsec\_keys.zip.  For PuTTY, locate the file *dbseckey.ppk*.
 
 In Putty, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file dbseckey.ppk which you just unzipped. 
 
