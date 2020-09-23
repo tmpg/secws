@@ -9,18 +9,17 @@ One of the basic protection that you can set on the database is the **Network En
 ## Requirements
 
 - Session open to **secdb** with user **oracle**
-- session open to **dbclient** with user **oracle**   
+- Session open to **dbclient** with user **oracle**   
 
 ## Introduction  ##
 
-**Network Encryption** is included with all editions since version 11gR2 so you can configure and start using it without any additional licensing.
+**Network Encryption** is included with all Oracle DB editions since version 11gR2 so you can configure and start using it without any additional licensing.
 
-On Cloud environments is configured by default. In this chapter, we will address the problem of cyber-attacks and network hijacking and we learn how to configure it in an On Premise environment.
+On Cloud environments, network encryption is configured by default. In this chapter, we will address the problem of cyber-attacks and network hijacking and we will learn how to configure it in an on-premise environment.
 
 ## Step 1: Setting Minimum Client Authentication to version 12
 
-Over time, Oracle releases have added support for increasingly secure versions of the algorithm used for password authentication of user accounts. For maximum security, we should restrict connections to 12c clients using the most advanced algorithms for password authentication.
-This would address the following DBSAT finding:
+Over time, Oracle releases have added support for increasingly secure versions of the algorithm used for user password authentication. For maximum security, we should restrict connections to 12c clients using the most advanced algorithms for password authentication. This would address the following DBSAT finding:
 
 ![](./images/authentication.png)
 
@@ -79,7 +78,7 @@ SQL> ERROR:
 ORA-28040: No matching authentication protocol
 ````
 
-However, we can still connect from the default 18c instant client:
+However, we can still connect from the default 19c instant client:
 
 ````
 [oracle@dbclient HOL]$ <copy>cd /home/oracle/HOL</copy>
