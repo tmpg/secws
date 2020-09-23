@@ -12,7 +12,7 @@ Instructions in this lab expect that you have completed all the previous labs in
 
 ## Step 1 : Unzip DBSAT Companion Utilities ##
 
-Run dbsat60_prepare.sh to copy locally previous DBSAT reports and unzip DBSAT companion utilities including the dbsat_diff tool.
+Run **dbsat60\_prepare.sh** to copy locally previous DBSAT reports and unzip DBSAT companion utilities including the **dbsat\_diff tool**.
 
 ````
 $ <copy>cd /home/oracle/HOL/lab10_dbsat</copy>
