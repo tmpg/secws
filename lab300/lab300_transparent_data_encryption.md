@@ -275,6 +275,7 @@ SQL> <copy>exit; </copy>
 Now run the output "strings filename" command at the Linux prompt.
 ````
 <copy>[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf </copy>
+Example Data Output truncated for viewing:
 USERS
 AAAAAAAA
 Zimbabwe
