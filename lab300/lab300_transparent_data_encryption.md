@@ -257,7 +257,6 @@ Run the following sqlplus script to generate a unix strings command we can run t
 ````
 [oracle@secdb lab03_tde]$ <copy>sqlplus / as sysdba</copy>
 ````
-
 ````
 [oracle@secdb lab03_tde]$ SQL> <copy>set linesize 120 </copy>
 SQL> <copy>alter session set container=PDB1; </copy>
@@ -362,7 +361,70 @@ ENC_DATA                       YES
 6 rows selected.
 (...)
 ````
+### Look at the ENCRYPTED tablespace USERS
 
+Lets look at the tablespace USERS again using the linux "strings" command.
+
+Run the following sqlplus script to generate a unix strings command we can run to see the ENCRYPTED datafile.
+
+````
+[oracle@secdb lab03_tde]$ <copy>sqlplus / as sysdba</copy>
+````
+````
+[oracle@secdb lab03_tde]$ SQL> <copy>set linesize 120 </copy>
+SQL> <copy>alter session set container=PDB1; </copy>
+SQL> <copy>select 'strings '|| name as FILE_NAME from v$datafile where name like '%user%'; </copy>
+
+FILE_NAME
+------------------------------------------------------------------------------------------------------------------------
+strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf
+
+SQL> exit;
+Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.6.0.0.0
+SQL> <copy>exit; </copy>
+````
+Now run the output "strings filename" command at the Linux prompt.
+````
+[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf 
+
+Example Data Output truncated for viewing:
+USERS
+AAAAAAAA
+Zimbabwe
+Zambia
+United States of America
+United Kingdom
+        Singapore
+Netherlands
+Nigeria
+Mexico
+... more
+AAAAAAAA
+Steven
+King
+SKING
+515.123.4567
+AD_PRES
+Neena
+Kochhar
+NKOCHHAR
+515.123.4568
+AD_VP
+De Haan
+LDEHAAN
+515.123.4569
+... more
+AHUTTON
+AHUNOLD
+AFRIPP
+AERRAZUR
+ACABRIO
+ABULL
+ABANDAX
+
+````
+Notice that you see the data in the USERS tablespace in an unencrpyted format.
 
 ## Step 3: Working with Wallet
 
