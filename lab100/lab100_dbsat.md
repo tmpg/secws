@@ -398,7 +398,7 @@ Archive:  pdb1sensitivedata_report.zip
 Open the file with the Sensitive Data Assessment Report: **pdb1sensitivedata_discover.html**
 
 ````
-<copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/dbsat_pdb1_report.html </copy>
+<copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/pdb1sensitivedata_discover.html </copy>
 ````
 
 At the top of the report, you will find information about the Discoverer run details as the Date of *DBSAT Report Generation* along with the DBSAT *Discoverer version*.
