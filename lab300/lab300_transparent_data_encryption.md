@@ -282,7 +282,7 @@ Zimbabwe
 Zambia
 United States of America
 United Kingdom
-        Singapore
+Singapore
 Netherlands
 Nigeria
 Mexico
@@ -301,15 +301,6 @@ AD_VP
 De Haan
 LDEHAAN
 515.123.4569
-... more
-AHUTTON
-AHUNOLD
-AFRIPP
-AERRAZUR
-ACABRIO
-ABULL
-ABANDAX
-
 ````
 Notice that you see the data in the USERS tablespace in an unencrpyted format.
 
