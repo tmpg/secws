@@ -264,7 +264,7 @@ SQL> <copy>select 'strings '|| name as FILE_NAME from v$datafile where name like
 
 FILE_NAME
 ------------------------------------------------------------------------------------------------------------------------
-strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf
+strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf
 
 SQL> exit;
 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
@@ -273,7 +273,7 @@ SQL> <copy>exit; </copy>
 ````
 Now run the output "strings filename" command at the Linux prompt.  Use the output from the previous sqlplus command.
 ````
-[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf 
+[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf 
 
 Example Data Output truncated for viewing:
 USERS
@@ -354,7 +354,7 @@ ENC_DATA                       YES
 ````
 ### Look at the ENCRYPTED tablespace USERS
 
-Lets look at the tablespace USERS again using the linux "strings" command.
+Lets again look at the tablespace USERS using the linux "strings" command.  Note: the datafile name changes during the encryption process.
 
 Run the following sqlplus script to generate a unix strings command we can run to see the ENCRYPTED datafile.
 
@@ -406,8 +406,7 @@ Notice that you see **CANNOT** see the data in the USERS tablespace that is encr
 
 ### Inspect keys in the Wallet
 
-You may want to inspect existing keys in the TDE wallet.
-Run the following script from a terminal window on the **secdb** server:
+You may want to inspect existing keys in the TDE wallet. Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde70_inspect_keys.sh</copy>
