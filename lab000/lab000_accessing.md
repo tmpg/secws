@@ -80,9 +80,9 @@ Do not forget to **save** each PuTTY configuration:
 ![Save](./images/Lab000_Step1_7.png )
 
 
-### Connect from Linux or Mac
+### Connect from Mac or Linux or Windows 10 Power Shell
 
-If you are using Linux, Mac or some bash terminal, you will need to use the private key in Open SSH format (dbseckey.pub).
+If you are using Linux, Mac or some bash terminal, you will need to use the downloaded private key in Open SSH format (*dbseckey.pub*).
 
 To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the dbseckey.pub file):
 
@@ -90,11 +90,11 @@ To connect to the dbclient or secdb servers from command line, use the following
 
 Use the actual IP address for each server to create each terminal session:
 
-    $ ssh -i dbseckey.pub oracle@ip.address
+    $ ssh -i dbseckey.pub oracle@129.213.112.147
 
-The syntax to create an SSH tunnel to secdb enabling a VNC connection should be:
+The syntax to create an SSH tunnel to secdb enabling a VNC connection should be (**Remember to use your own IP address**):
 
-  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@ip.address
+  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
