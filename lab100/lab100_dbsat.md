@@ -20,10 +20,12 @@ You can use report findings to:
 - Fix immediate short-term risks
 - Implement a comprehensive security strategy
 
+For the latest information on DBSAT, please visit https://www.oracle.com/database/technologies/security/dbsat.html
+
 ## Requirements ##
 
-- **Lab 0: "Accessing the Labs environment"** completed.
-- VM Session terminal window open to **secdb** as user **oracle**
+- **Lab 0: Accessing the Labs environment** completed.
+- A session terminal window open to VM **secdb** as user **oracle**
 
 ## Step 1: Installing DBSAT
 
