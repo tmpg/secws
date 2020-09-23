@@ -275,11 +275,46 @@ SQL> <copy>exit; </copy>
 Now run the output "strings filename" command at the Linux prompt.
 ````
 <copy>[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf </copy>
+USERS
+AAAAAAAA
+Zimbabwe
+Zambia
+United States of America
+United Kingdom
+        Singapore
+Netherlands
+Nigeria
+Mexico
+... more
+AAAAAAAA
+Steven
+King
+SKING
+515.123.4567
+AD_PRES
+Neena
+Kochhar
+NKOCHHAR
+515.123.4568
+AD_VP
+De Haan
+LDEHAAN
+515.123.4569
+... more
+AHUTTON
+AHUNOLD
+AFRIPP
+AERRAZUR
+ACABRIO
+ABULL
+ABANDAX
+
 ````
+Notice that you see the data in the USERS tablespace in an unencrpyted format.
 
 ### Encrypting Existing tablespaces
 
-Run the following script from a terminal window on the **secdb** server:
+Now lets encrypt the tablespaces to prevent anyone from reading database data.  Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde50_encrypt_ts.sh</copy>
