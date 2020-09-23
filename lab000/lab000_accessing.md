@@ -6,20 +6,20 @@ Your environment is hosted on Oracle Cloud Infrastructure with the following com
 
 * **secdb**: a Linux box hosting an Oracle 19C Database with a pluggable database PDB1 and most of the lab scripts. They are designed to be easily re-usable and are included in your [**Student's Package**](./files/Package.zip) for your reference or use in future projects.
 
-* **dbclient**: a simple client machine with both 11gR2, 12cR2 and 18c instant clients. We can use it for some of the labs (e.g. when setting up network encryption).
+* **dbclient**: a simple client machine with both 11gR2 and 19c instant clients. We will use it for some of the labs (e.g. when setting up network encryption).
 
 * **av**: an Audit Vault Server 12.2 which will be configured as part of the labs.
 
 * **emcc**: an Enterprise Manager Cloud Control 13cR2 installation.  There is a repository database with an agent that is deployed on secdb.
 
-The virtual machines can be accessed by using an **SSH** client (**Putty**, **MobaXterm**) or with `ssh` from a terminal (bash, Mac or Linux).
+The virtual machines can be accessed by using an **SSH** client (**PuTTY**, **MobaXterm**) or with `ssh` from a terminal (bash, Mac or Linux).
 
 For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 ## Requirements
 
 * Access to the Oracle Cloud (OCI) tenancy. 
-* SSH client. **[Download Putty](https://www.putty.org/)**.
+* SSH client. **[Download PuTTY](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
 * TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.
 
@@ -42,9 +42,9 @@ A PDF file should download where you will see the public IPs for your workshop e
 
 ## Step 2: Create SSH connections to secdb and dbclient ##
 
-### For Windows Users using Putty
+### For Windows Users using PuTTY
 
-Using the Public IPs, open a SSH client like **Putty** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
+Using the Public IPs, open a SSH client like **PuTTY** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
 
 ![Connect to the instance](./images/Lab000_Step1_1.png "")
 
@@ -52,9 +52,11 @@ Set user to **oracle** in **Connection** -> **Data** -> **Auto-login username** 
 
 ![Connect with oracle User](./images/Lab000_Step1_2.png "")
 
-You should have downloaded the Security Keys into a file named dbsec\_keys.zip.  Typically this is in your Downloads directory.  Unzip dbsec\_keys.zip.  
+Download the **[Security SSH keys](./files/dbsec_keys.zip)**.  This is typically a file named dbsec\_keys.zip in your Downloads directory.  
 
-In Putty, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file dbseckey.ppk which you just unzipped. 
+Unzip dbsec\_keys.zip.  For PuTTY, locate the file *dbseckey.ppk*.
+
+In PuTTY, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file *dbseckey.ppk* which you just unzipped. 
 
 ![Choose private key](./images/Lab000_Step1_3.png )
 
@@ -78,9 +80,9 @@ Do not forget to **save** each PuTTY configuration:
 ![Save](./images/Lab000_Step1_7.png )
 
 
-### Connect from Linux or Mac
+### Connect from Mac or Linux or Windows 10 Power Shell
 
-If you are using Linux, Mac or some bash terminal, you will need to use the private key in Open SSH format (dbseckey.pub).
+If you are using Linux, Mac or some bash terminal, you will need to use the downloaded private key in Open SSH format (*dbseckey.pub*).
 
 To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the dbseckey.pub file):
 
@@ -88,11 +90,11 @@ To connect to the dbclient or secdb servers from command line, use the following
 
 Use the actual IP address for each server to create each terminal session:
 
-    $ ssh -i dbseckey.pub oracle@ip.address
+    $ ssh -i dbseckey.pub oracle@129.213.112.147
 
-The syntax to create an SSH tunnel to secdb enabling a VNC connection should be:
+The syntax to create an SSH tunnel to secdb enabling a VNC connection should be (**Remember to use your own IP address**):
 
-  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@ip.address
+  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
