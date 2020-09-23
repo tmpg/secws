@@ -121,8 +121,6 @@ NAME                        TYPE        VALUE
 tde_configuration           string      KEYSTORE_CONFIGURATION=FILE
 (...)
 ````
-
-
 ### Creating the Keystore
 
 Run the following script from a terminal window on the **secdb** server:
@@ -162,7 +160,6 @@ SQL> select con_id, keystore_mode, wallet_type, status from v$encryption_wallet;
 (...)
 ````
 As shown above, the wallet is created as password protected, but is still empty for the CDB and all PDBs.
-
 
 ### Creating Master Keys
 
@@ -252,6 +249,27 @@ For a PDB:
 
 For CDB$ROOT:
 * do not encrypt SYSTEM, SYSAUX, TEMP or UNDO. SYSTEM and SYSAUX tablespaces in a root are different from SYSTEM and SYSAUX in a PDB ... and should not contain any sensitive data that is processed in the PDBs.
+
+### Let's look at the tablespace USERS
+
+Run the following sqlplus script to generate a unix strings command we can run to see the UNENCRYPTED datafile.
+
+````
+[oracle@secdb lab03_tde]$ <copy>sqlplus / as sysdba</copy>
+````
+
+````
+[oracle@secdb lab03_tde]$ SQL> <copy>set linesize 120 </copy>
+SQL> <copy>alter session set container=pdb1; </copy>
+SQL> <copy>alter session set container=PDB1; </copy>
+SQL> <copy>select 'strings '|| name as FILE_NAME from v$datafile where name like '%user%'; </copy>
+SQL> <copy>exit; </copy>
+
+````
+
+SQL> alter session set container=pdb1;
+Session altered.
+
 
 
 ### Encrypting Existing tablespaces
