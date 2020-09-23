@@ -349,7 +349,6 @@ To run DBSAT discoverer, we will use script `dbsat50_discover.sh`, which contain
 
 ***dbsat discover -c Discover/conf/dbsat.config pdb1sensitivedata***
 
-
 ````
 [oracle@secdb conf]$ <copy>cd /home/oracle/HOL/lab01_dbsat</copy>
 ````
