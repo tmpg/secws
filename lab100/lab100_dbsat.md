@@ -356,7 +356,6 @@ To run DBSAT discoverer, we will use script `dbsat50_discover.sh`, which contain
 
 Connect as **dbsat** with password **MyDbPwd#1** to run `dbsat50_discover.sh`. At the end of the script, enter **oracle** as password to protect the output file `pdb1sensitivedata_report.zip`.
 
-
 ````
 [oracle@secdb lab01_dbsat]$ <copy>./dbsat50_discover.sh</copy>
 
@@ -377,7 +376,7 @@ Zip completed successfully.
 (...)
 ````
 
-Unzip the report file to be able to check the contents by opening it the browser inside the Graphical Environment to **secdb**. You will be asked for the password to unzip. Enter **oracle** when requested.
+Unzip the report file to be able to check the contents by opening it in the browser inside the Graphical Environment to **secdb**. You will be asked for the password to unzip. Enter **oracle** when requested.
 
 *Note: In case you are working on the command line outside VNC, you can use WinSCP or another tool to copy the file to your local computer. Connect as oracle and specify the private key to authenticate.*
 
@@ -397,6 +396,10 @@ Archive:  pdb1sensitivedata_report.zip
 ### Explore the Sensitive Data Assessment Report
 
 Open the file with the Sensitive Data Assessment Report: **pdb1sensitivedata_discover.html**
+
+````
+<copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/dbsat_pdb1_report.html </copy>
+````
 
 At the top of the report, you will find information about the Discoverer run details as the Date of *DBSAT Report Generation* along with the DBSAT *Discoverer version*.
 
