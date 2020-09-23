@@ -32,7 +32,7 @@ In 19c, the best practice is to set the keystore location in instance parameter 
 
 The **type** of keystore (file, HSM, Oracle Key Vault) is then specified in  another instance parameter (**tde\_encryption**).
 
-19c allows to create a shared keystore for the CDB and all its PDBs (**UNIFIED** mode) or a per-PDB keystore (**ISOLATED** mode).
+19c allows the creation of a shared keystore for the CDB and all its PDBs (**UNIFIED** mode) or a per-PDB keystore (**ISOLATED** mode).
 
 * To create a single keystore, specify **tde\_encryption** at the CDB level and restart the database.
 * To create a per-PDB keystore, specify **tde\_encryption** for each PDB after having set **wallet\_location** and restarted the database. Also restart the PDB after setting **tde\_encryption**.
@@ -40,7 +40,7 @@ The **type** of keystore (file, HSM, Oracle Key Vault) is then specified in  ano
 
 ### Setting a location for the Wallet (TDE keystore)
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>cd ~/HOL/lab03_tde/</copy>
@@ -55,7 +55,7 @@ mkdir -p /u01/oracle/db/admin/CONT/wallet
 
 ### Setting wallet\_root
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde11_set_wallet_root.sh</copy>
@@ -85,7 +85,7 @@ wallet_root              string      /u01/oracle/db/admin/CONT/wallet
 
 ### Setting tde\_encryption
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde12_set_tde_encryption.sh</copy>
@@ -125,7 +125,7 @@ tde_configuration           string      KEYSTORE_CONFIGURATION=FILE
 
 ### Creating the Keystore
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde20_keystore_create.sh</copy>
@@ -166,7 +166,7 @@ As shown above, the wallet is created as password protected, but is still empty 
 
 ### Creating Master Keys
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde30_create_master_keys.sh</copy>
@@ -201,7 +201,7 @@ As shown above, the wallet is now open and a TDE master key has been created for
 
 ### Configure The Wallet as **auto-login** for Ease of Management
 
-A **LOCAL AUTO-LOGIN** keystore might be a good tradeoff between security and ease of management. Run the following script from a terminal window to the **secdb** server:
+A **LOCAL AUTO-LOGIN** keystore might be a good tradeoff between security and ease of management. Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde40_wallet_autologin.sh</copy>
@@ -256,7 +256,7 @@ For CDB$ROOT:
 
 ### Encrypting Existing tablespaces
 
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde50_encrypt_ts.sh</copy>
@@ -309,7 +309,7 @@ ENC_DATA                       YES
 ### Inspect keys in the Wallet
 
 You may want to inspect existing keys in the TDE wallet.
-Run the following script from a terminal window to the **secdb** server:
+Run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde70_inspect_keys.sh</copy>
@@ -341,7 +341,7 @@ Rotate the master encryption key only if it was compromised or as per the securi
 
 Do not perform a rotation operation of the master key concurrently with an online tablespace rekey operation.
 
-If you want to rotate the TDE master key, run the following script from a terminal window to the **secdb** server:
+If you want to rotate the TDE master key, run the following script from a terminal window on the **secdb** server:
 
 ````
 [oracle@secdb lab03_tde]$ <copy>tde80_rotate_keys.sh</copy>
