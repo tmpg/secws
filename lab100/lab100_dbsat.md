@@ -20,7 +20,7 @@ You can use report findings to:
 - Fix immediate short-term risks
 - Implement a comprehensive security strategy
 
-For the latest information on DBSAT, please visit https://www.oracle.com/database/technologies/security/dbsat.html
+For the latest information on DBSAT, please visit **[https://www.oracle.com/database/technologies/security/dbsat.html](https://www.oracle.com/database/technologies/security/dbsat.html)**
 
 ## Requirements ##
 
