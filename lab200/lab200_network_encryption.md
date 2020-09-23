@@ -8,8 +8,8 @@ One of the basic protection that you can set on the database is the **Network En
 
 ## Requirements
 
-- Session open to **secdb** with user **oracle**
-- Session open to **dbclient** with user **oracle**   
+* SSH Session connected to **secdb** as user **oracle**
+* SSH Session connected to **dbclient** as user **oracle*
 
 ## Introduction  ##
 

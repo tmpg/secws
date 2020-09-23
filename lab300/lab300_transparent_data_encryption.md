@@ -9,8 +9,8 @@ In this lab, we will address the problem of protecting against data theft or los
 ## Requirements
 
 * **Lab 02: Network Encryption** completed.
-* Session open to **secdb** with user **oracle**
-* Session open to **dbclient** with user **oracle**   
+* SSH Session connected to **secdb** as user **oracle**
+* SSH Session connected to **dbclient** as user **oracle**
 
 ## Introduction  ##
 

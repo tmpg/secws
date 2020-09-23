@@ -24,8 +24,8 @@ For the latest information on DBSAT, please visit **[https://www.oracle.com/data
 
 ## Requirements ##
 
-- **Lab 0: Accessing the Labs environment** completed.
-- A session terminal window open to VM **secdb** as user **oracle**
+* **Lab 0: Accessing the Labs environment** completed.
+* SSH Session connected to **secdb** as user **oracle**
 
 ## Step 1: Installing DBSAT
 
