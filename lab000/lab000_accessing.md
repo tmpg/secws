@@ -12,14 +12,14 @@ Your environment is hosted on Oracle Cloud Infrastructure with the following com
 
 * **emcc**: an Enterprise Manager Cloud Control 13cR2 installation.  There is a repository database with an agent that is deployed on secdb.
 
-The virtual machines can be accessed by using an **SSH** client (**Putty**, **MobaXterm**) or with `ssh` from a terminal (bash, Mac or Linux).
+The virtual machines can be accessed by using an **SSH** client (**PuTTY**, **MobaXterm**) or with `ssh` from a terminal (bash, Mac or Linux).
 
 For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 ## Requirements
 
 * Access to the Oracle Cloud (OCI) tenancy. 
-* SSH client. **[Download Putty](https://www.putty.org/)**.
+* SSH client. **[Download PuTTY](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
 * TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.
 
@@ -42,9 +42,9 @@ A PDF file should download where you will see the public IPs for your workshop e
 
 ## Step 2: Create SSH connections to secdb and dbclient ##
 
-### For Windows Users using Putty
+### For Windows Users using PuTTY
 
-Using the Public IPs, open a SSH client like **Putty** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
+Using the Public IPs, open a SSH client like **PuTTY** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
 
 ![Connect to the instance](./images/Lab000_Step1_1.png "")
 
@@ -56,7 +56,7 @@ Download the **[Security SSH keys](./files/dbsec_keys.zip)**.  This is typically
 
 Unzip dbsec\_keys.zip.  For PuTTY, locate the file *dbseckey.ppk*.
 
-In Putty, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file dbseckey.ppk which you just unzipped. 
+In PuTTY, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file *dbseckey.ppk* which you just unzipped. 
 
 ![Choose private key](./images/Lab000_Step1_3.png )
 
