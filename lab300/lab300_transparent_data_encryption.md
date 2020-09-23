@@ -271,7 +271,7 @@ Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Pr
 Version 19.6.0.0.0
 SQL> <copy>exit; </copy>
 ````
-Now run the output "strings filename" command at the Linux prompt.
+Now run the output "strings filename" command at the Linux prompt.  Use the output from the previous sqlplus command.
 ````
 [oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/A1985E50000013/datafile/o1_mf_users_h7mt3svk_.dbf 
 
@@ -384,47 +384,32 @@ Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Pr
 Version 19.6.0.0.0
 SQL> <copy>exit; </copy>
 ````
-Now run the output "strings filename" command at the Linux prompt.
+Now run the output "strings filename" command at the Linux prompt.  Use the output from the previous sqlplus command.
 ````
 [oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf 
 
 Example Data Output truncated for viewing:
-USERS
-AAAAAAAA
-Zimbabwe
-Zambia
-United States of America
-United Kingdom
-        Singapore
-Netherlands
-Nigeria
-Mexico
-... more
-AAAAAAAA
-Steven
-King
-SKING
-515.123.4567
-AD_PRES
-Neena
-Kochhar
-NKOCHHAR
-515.123.4568
-AD_VP
-De Haan
-LDEHAAN
-515.123.4569
-... more
-AHUTTON
-AHUNOLD
-AFRIPP
-AERRAZUR
-ACABRIO
-ABULL
-ABANDAX
-
+Vci'P
+ttw{
+J'xa
+hiZJ
+OBqv|
+g+w\
+nbG'
+.=-v
+.L3!2=
+jaqXXa
+NGxa
+Ne2V
+671@d
+&S`@
+?hZ9
+#=*5H.n5
+p       3+L
+X-IL
+9o2n
 ````
-Notice that you see the data in the USERS tablespace in an unencrpyted format.
+Notice that you see **CANNOT** see the data in the USERS tablespace that is encrpyted.
 
 ## Step 3: Working with Wallet
 
