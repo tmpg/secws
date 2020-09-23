@@ -368,7 +368,7 @@ SQL> <copy>select 'strings '|| name as FILE_NAME from v$datafile where name like
 
 FILE_NAME
 ------------------------------------------------------------------------------------------------------------------------
-strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf
+strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_hpq5lfov_.dbf
 
 SQL> exit;
 Disconnected from Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
@@ -377,7 +377,7 @@ SQL> <copy>exit; </copy>
 ````
 Now run the output "strings filename" command at the Linux prompt.  Use the output from the previous sqlplus command.
 ````
-[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_h7mt3svk_.dbf 
+[oracle@secdb lab03_tde]$ strings /u01/oracle/oradata/CONT/B1958E500001398/datafile/o1_mf_users_hpq5lfov_.dbf 
 
 Example Data Output truncated for viewing:
 Vci'P
