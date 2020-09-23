@@ -22,8 +22,8 @@ You can use report findings to:
 
 ## Requirements ##
 
-- **Lab 0: "Accessing to Labs environment"** completed.
-- Session open to **secdb** with user **oracle**
+- **Lab 0: "Accessing the Labs environment"** completed.
+- VM Session terminal window open to **secdb** as user **oracle**
 
 ## Step 1: Installing DBSAT
 
