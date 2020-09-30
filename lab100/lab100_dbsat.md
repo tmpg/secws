@@ -393,7 +393,9 @@ Archive:  pdb1sensitivedata_report.zip
 
 ### Explore the Sensitive Data Assessment Report
 
-Open the file with the Sensitive Data Assessment Report: **pdb1sensitivedata_discover.html**
+Open the file with the Sensitive Data Assessment Report: **pdb1sensitivedata\_discover.html**
+
+You can use the following location in your VNC window's firefox browser address line.  
 
 ````
 <copy> file:///home/oracle/HOL/lab01_dbsat/dbsat/install/pdb1sensitivedata_discover.html </copy>
