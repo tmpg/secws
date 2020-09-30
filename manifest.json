@@ -59,6 +59,19 @@
             "description":"Lab 8: Running DBSAT and compare results",
             "publisheddate": "04/21/2020",
             "filename":"./lab800/lab800_dbsat_compare.md"
+        },
+        {
+            "title": "Lab 9: Privilege Analysis",
+            "description":"Lab 9: Privilege Analysis",
+            "publisheddate": "05/08/2020",
+            "filename":"./lab900/lab900_privilege_analysis.md"
+        },
+        {
+            "title": "Lab 10: Data Masking",
+            "description":"Lab 10: Data Masking",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab1000/lab1000_data_masking.md"
         }
+
     ]
 }

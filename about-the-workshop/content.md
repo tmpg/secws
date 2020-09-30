@@ -30,6 +30,10 @@ This workshop will cover the following Database Security topics.
 
 - **Lab 8: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
+- **Lab 9: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
+
+- **Lab : Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
+
 ## Accessing the labs ##
 
 - Use the **Lab Contents** menu on your right to access the labs 0 to 8.
