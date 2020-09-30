@@ -1,6 +1,6 @@
 # Lab 8: Repeating DBSAT to Compare to Baseline
 
-This lab takes the User through running DBSAT again and comparing the results with the initial run.
+This lab takes the Participates through running DBSAT again and comparing the results with the initial run.
 
 ## Disclaimer ##
 

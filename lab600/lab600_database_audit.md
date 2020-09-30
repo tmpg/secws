@@ -1,6 +1,6 @@
 # Lab 6: Unified Database Auditing #
 
-In this lab, we will address the problem of enforcing strong internal controls and meeting regulatory compliance by auditing the database.
+In this lab, Participates will address the problem of enforcing strong internal controls and meeting regulatory compliance by auditing the database.
 
 ## Disclaimer ##
 
@@ -58,7 +58,7 @@ The unified audit trail, which resides in a read-only table in the AUDSYS schema
 
 If your users only need to query the views but do not create audit policies, then grant them the **AUDIT\_VIEWER** role.
 
-Run the following script from a terminal window to the secdb server to check its current auditing status:
+Run the following script from a terminal window to the **secdb** server to check its current auditing status:
 
 ````
 $ <copy>cd /home/oracle/HOL/lab07_audit</copy>
@@ -251,7 +251,7 @@ Let us use it to view recent audit records.
 $ <copy>aud_95_view_audit.sh</copy>
 ````
 
-**This completes the Database Audit.** Users can continue to [Lab 7: Oracle Audit Vault](../lab800/lab800_audit_vault.md)
+**This completes the Database Audit.** Participates can continue to [Lab 7: Oracle Audit Vault](../lab800/lab800_audit_vault.md)
 
 ## Acknowledgements
 

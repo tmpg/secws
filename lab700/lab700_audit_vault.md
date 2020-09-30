@@ -694,7 +694,7 @@ SQL> select count(*) from unified_audit_trail;
         15
 ````
 
-This completes the **Audit Vault** lab. Users can continue to **Lab 8: Repeating DBSAT to Compare to Baseline**
+This completes the **Audit Vault** lab. Participates can continue to **Lab 8: Repeating DBSAT to Compare to Baseline**
 
 ## Acknowledgements
 

@@ -27,9 +27,9 @@ DBSAT has detected that Database Vault was not yet is use in our database.
 ## Step 1 : Configure Database Vault ##
 
 ### Step 1a : Enable Database Vault in the Container Database ###
-In this Lab, users will configure Oracle Database Vault for the Container Database **CONT** and **PDB1**.
+In this Lab, Participates will configure Oracle Database Vault for the Container Database **CONT** and **PDB1**.
 
-Users first create (as **SYS**) the common database-users which will become the **Database Vault Owner** and the **Database Vault Account Manager** and then call **configure_dv** to configure Database Vault.
+Participates first create (as **SYS**) the common database-users which will become the **Database Vault Owner** and the **Database Vault Account Manager** and then call **configure_dv** to configure Database Vault.
 
 Run the following script on the **secdb** server.
 
@@ -61,7 +61,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-Users now need to **enable** Database Vault in the **CDB**.
+Participates now need to **enable** Database Vault in the **CDB**.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup11_enable.sh</copy>
@@ -75,7 +75,7 @@ PL/SQL procedure successfully completed.
 (...)
 ````
 
-Finally users need to **restart** the instance.
+Finally Participates need to **restart** the instance.
 
 ````
 [oracle@secdb a_setup]$ <copy>dbvsetup12_restart.sh</copy>
@@ -102,7 +102,7 @@ TRUE
 
 ### Step 1b : Enable Database Vault in the Pluggable Database ###
 
-Users need to run similar scripts for the pluggable database **PDB1**.
+Participates need to run similar scripts for the pluggable database **PDB1**.
 
 Create common database-users to become the **Database Vault Owner** and the **Database Account Manager**.
 
@@ -255,7 +255,7 @@ ORA-01031: insufficient privileges
 (...)
 ````
 
-For the rest of the Lab, users will disable **Operations Control**. 
+For the rest of the Lab, Participates will disable **Operations Control**. 
 <br/>
 <br/>
 Please run the following script.
@@ -282,7 +282,7 @@ In the following demo, we will execute the following scenario:
 
 *	Create  a realm over the **HR** schema in **PDB1** – done by the Database Vault Owner
 *	Create a **HR_ROLE** role to grant application privileges to database-users. We’ll need to also protect this role by putting in inside the realm to prevent privileged database-users (**SYS** or **SYSTEM**) to modify it or to grant it to themselves
-*	Users also create two application-users **appuser1** and **appuser2** and grant the required role only to **appuser1**
+*	Participates also create two application-users **appuser1** and **appuser2** and grant the required role only to **appuser1**
 
 ### Step 3a : Create a realm HR_REALM over the HR schema ###
 
@@ -657,7 +657,7 @@ Grant succeeded.
 
 ### Step 4e : Verification ###
 
-Users can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
+Participates can now verify that it is not possible to connect as **APPUSER2** from **secdb**.
 
 ````
 [oracle@secdb ]$ <copy>cd /home/oracle/HOL/lab06_dbv/d_secapprole</copy>
@@ -722,7 +722,7 @@ SQL> select * from hr.regions;
 
 Note: The scripts in subdirectory **z_cleanup** are for your information only. They document the SQL syntax to **remove** the Database Vault configuration that was just built. **DO NOT RUN THESE SCRIPTS**.
 
-This completes the **Database Vault** lab. Users can continue to **Lab 6: Database Audit**
+This completes the **Database Vault** lab. Participates can continue to **Lab 6: Database Audit**
 
 ## Acknowledgements
 
