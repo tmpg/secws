@@ -32,7 +32,7 @@ This workshop will cover the following Database Security topics.
 
 - **Lab 9: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
 
-- **Lab : Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
+- **Lab 10: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
 
 ## Accessing the labs ##
 
