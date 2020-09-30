@@ -40,7 +40,7 @@ This workshop will cover the following Database Security topics.
 
 - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
 
-- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 8.
+- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
