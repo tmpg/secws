@@ -2,6 +2,8 @@
 
 In this lab, we will address the problem of protecting against data theft or loss of disks and backups by encrypting all database files.
 
+![](./images/tde_example.png)
+
 ## Disclaimer ##
 
 <em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
@@ -19,6 +21,10 @@ In **Lab 01, DBSAT** we had the following finding:
 ![](./images/dbsat_tde.png)
 
 **Transparent Data Encryption** automatically encrypts data as it is stored and decrypts it upon retrieval. This protects sensitive data from attacks that bypass the database to read data files directly. Encryption keys may be stored in wallets on the database server itself, or stored remotely in Oracle Key Vault for improved security. The ENCRYPT\_NEW\_TABLESPACES parameter ensures that TDE tablespace encryption is applied to all newly created tablespaces.
+
+### Additional Resources ###
+* [Introduction to Transparent Data Encryption](https://docs.oracle.com/en/database/oracle/oracle-database/19/asoag/introduction-to-transparent-data-encryption.html#GUID-62AA9447-FDCD-4A4C-B563-32DE04D55952)
+* [Managing TDE with Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/cloud-control/enterprise-manager-cloud-control/13.4/emlcm/managing-oracle-transparent-data-encryption.html#GUID-02EEF5D8-FBAD-49F7-B9C2-F1868F558929)
 
 ## Step 1: Configuring Transparent Data Encryption
 
