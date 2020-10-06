@@ -18,7 +18,7 @@ Many regulations require that privileged users such as DBAs not be able to read 
 
 ![Alt text](./images/img01.png " ")
 
-### Additional Resources
+### Additional Resources ###
 * [Oracle Database Documentation - Administrator's Guide: Oracle® Database Vault](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/index.html)
 * [Oracle Database Vault Whitepaper](https://www.oracle.com/a/tech/docs/dbsec/dbv/wp-dv-19c.pdf)
 

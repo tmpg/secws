@@ -16,6 +16,10 @@ The Privilege Analysis feature may be helpful to determine the minimum set of pr
 
 In our example, we will reduce the privileges granted to **DBA\_NICOLE** to the minimum she really needs.
 
+### Additional Resources
+* [Oracle Database Security Privilege Analysis](https://www.oracle.com/database/technologies/security/priv-analysis.html)
+* [Performing Privilege Analysis to Find Privilege Use](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
+
 ## Step 1 : Check DBA\_NICOLE's current role ##
 
 **DBA\_NICOLE** is a junior DBA who was initially granted the full **DBA** role. Run the following script from a terminal window to the **secdb** server.
