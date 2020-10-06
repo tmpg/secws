@@ -7,7 +7,9 @@ In this lab, Participates will address the problem of enforcing strong internal 
 <em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Requirements ##
-Instructions in this lab expect that you have completed all the previous labs in the workshop.
+
+* Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* SSH Session connected to **secdb** as user **oracle**
 
 ## Introduction  ##
 
@@ -60,11 +62,11 @@ If your users only need to query the views but do not create audit policies, the
 Run the following script from a terminal window to the **secdb** server to check its current auditing status:
 
 ````
-$ <copy>cd /home/oracle/HOL/lab07_audit</copy>
+[oracle@secdb]$ <copy>cd /home/oracle/HOL/lab07_audit</copy>
 ````
 
 ````
-$ <copy>aud_10_check.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_10_check.sh</copy>
 
 (...)
 SQL> SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';
@@ -77,7 +79,7 @@ FALSE
 To configure Unified Auditing , we will first shutdown the database and its listener:
 
 ````
-$ <copy>aud_20_shutdown.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_20_shutdown.sh</copy>
 
 (...)
 SQL> Database closed.
@@ -89,7 +91,7 @@ ORACLE instance shut down.
 Then we can relink the kernel, switching it to **pure unified auditing** (traditional auditing will be disabled).
 
 ````
-$ <copy>aud_30_relink.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_30_relink.sh</copy>
 
 (...)
 Linking Oracle
@@ -99,13 +101,13 @@ Linking Oracle
 Restart database and listener.
 
 ````
-$ <copy>aud_40_restart.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_40_restart.sh</copy>
 ````
 
 Let us verify that **pure Unified Auditing** has now been configured.
 
 ````
-$ <copy>aud_10_check.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_10_check.sh</copy>
 
 SQL*Plus: Release 18.0.0.0.0 - Production on Thu Mar 7 09:23:33 2019
 Connected.
@@ -122,7 +124,7 @@ TRUE
 Run the following script to list the pre-created unified auditing policies.
 
 ````
-$ <copy>aud_50_check_policies.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_50_check_policies.sh</copy>
 
 SQL> select distinct policy_name from audit_unified_policies order by policy_name;
 
@@ -143,7 +145,7 @@ ORA_SECURECONFIG
 Check which ones of these policies are actually in use (enabled).
 
 ````
-$ <copy>aud_60_enabled_policies.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_60_enabled_policies.sh</copy>
 
 SQL> select POLICY_NAME from AUDIT_UNIFIED_ENABLED_POLICIES;
 
@@ -163,13 +165,12 @@ ORA_SECURECONFIG
 ORA_LOGON_FAILURES
 ````
 
-
 ## Step 3 : Add your own policies ##
 
 Let us add Database Vault Policies including a customized policy to audit realm violations to **HR Realm**.
 
 ````
-$ <copy>aud_70_add_dbv_pol.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_70_add_dbv_pol.sh</copy>
 
 SQL> alter session set container=PDB1;
 Session altered.
@@ -196,7 +197,7 @@ Audit succeeded.
 We can also add a customized policy to audit DDL on the HR schema.
 
 ````
-$ <copy>aud_80_add_HR_pol.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_80_add_HR_pol.sh</copy>
 
 SQL> alter session set container=PDB1;
 Session altered.
@@ -221,7 +222,7 @@ Audit succeeded.
 Let us create some audit records by running aud_90_audit_records.sh, which creates a **login failure**, a **realm violation** and creates a **new table** in the HR schema (errors are expected!).
 
 ````
-$ <copy>aud_90_audit_records.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_90_audit_records.sh</copy>
 
 SQL> SQL> SQL> SQL> ERROR:
 ORA-01017: invalid username/password; logon denied
@@ -247,7 +248,7 @@ a.dbusername, a.CLIENT_PROGRAM_NAME, a.ACTION_NAME, a.RETURN_CODE, a.SQL_TEXT
 Let us use it to view recent audit records.
 
 ````
-$ <copy>aud_95_view_audit.sh</copy>
+[oracle@secdb lab07_audit]$ <copy>aud_95_view_audit.sh</copy>
 ````
 
 **This completes the Database Audit.** Participates can continue to [Lab 7: Oracle Audit Vault](../lab800/lab800_audit_vault.md)
