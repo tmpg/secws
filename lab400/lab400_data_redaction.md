@@ -36,7 +36,7 @@ Data redaction can help Participates to comply with **industry regulations** fou
 
 Redaction can be enabled via Oracle Enterprise Manager (which benefits from pre-defined redaction templates), SQL\*Developer and via the PL/SQL API (so SQL\*Plus or other client).
 
-### Additional Resources
+### Additional Resources ###
 * [Oracle Database Documentation - Advanced Security Guide: Introduction to Oracle Data Redaction](https://docs.oracle.com/en/database/oracle/oracle-database/19/asoag/introduction-to-oracle-data-redaction.html#GUID-82EA9712-387C-4D3A-BB72-F64A707C67CA)
 * [Encryption and Redaction with Oracle Advanced Security Whitepaper](https://www.oracle.com/a/tech/docs/dbsec/aso/advanced-security-wp-19c.pdf)
 

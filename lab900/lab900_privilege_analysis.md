@@ -1,6 +1,8 @@
 # Bonus Lab 2: Privilege Analysis
 
-**Privilege Analysis** allows to determine the minimum set of privileges required by a user or role, thus enforcing a least privilege approach.
+**Privilege Analysis** determines the minimum set of privileges required by a user or role, thus enforcing a least privilege approach.
+
+![](./images/privilege_analysis.png)
 
 ## Disclaimer ##
 
@@ -8,7 +10,7 @@ The following is intended to outline our general product direction. It is intend
 
 ## Requirements ##
 
-Access to secdb virtual machine.
+* SSH Session connected to **secdb** as user **oracle**
 
 ## Introduction  ##
 
@@ -16,7 +18,7 @@ The Privilege Analysis feature may be helpful to determine the minimum set of pr
 
 In our example, we will reduce the privileges granted to **DBA\_NICOLE** to the minimum she really needs.
 
-### Additional Resources
+### Additional Resources ###
 * [Oracle Database Security Privilege Analysis](https://www.oracle.com/database/technologies/security/priv-analysis.html)
 * [Performing Privilege Analysis to Find Privilege Use](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
 
