@@ -1,4 +1,4 @@
-# Lab 4: Data Redaction
+# Bonus Lab 1: Data Redaction
 
 **Oracle Data Redaction** enables data obfuscation at the database level (through DBAs), freeing developers from these responsibilities.
 

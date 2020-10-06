@@ -1,4 +1,4 @@
-# Lab 9: Masking Data with Enterprise Manager Cloud Control #
+# Bonus Lab 4: Masking Data with Enterprise Manager Cloud Control #
 
 This lab will demonstrate how to use Oracle Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover  and anonymize sensitive data in an Oracle database. The Data Masking and Subsetting Pack is a pre-installed module of Enterprise Manager.
 

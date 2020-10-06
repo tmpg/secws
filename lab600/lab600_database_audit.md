@@ -1,4 +1,4 @@
-# Lab 6: Unified Database Auditing #
+# Bonus Lab 3: Unified Database Auditing #
 
 In this lab, Participates will address the problem of enforcing strong internal controls and meeting regulatory compliance by auditing the database.
 
