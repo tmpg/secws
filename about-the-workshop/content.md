@@ -24,17 +24,17 @@ This workshop will cover the following Database Security topics.
 
 - **Lab 5: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
 
-### Appendix Labs
+### Appendix Bonus Labs
 
-- **Lab 1: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
+- **Bonus Lab 1: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
 
-- **Lab 2: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
+- **Bonus Lab 2: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
 
-- **Lab 3: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
+- **Bonus Lab 3: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
 
-- **Lab 4: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
+- **Bonus Lab 4: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
 
-- **Lab 5: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
+- **Bonus Lab 5: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
 ## Accessing the labs ##
 
