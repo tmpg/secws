@@ -1,6 +1,6 @@
-# Lab 5: Database Vault
+# Lab 4: Database Vault
 
-Security best practices dictates that it is **no longer acceptable** for over-privileged users (e.g. DBAs) to see sensitive data in the systems they manage. For instance, DBAs managing a health care system should not be able to see patients data. In this lab, we will see how Oracle Database Vault enforces these practices.
+Security best practices dictates that it is **no longer acceptable** for over-privileged users (e.g. DBAs) to see sensitive data in the systems they manage. For instance, DBAs managing a health care system should not be able to see patient data. In this lab, we will see how Oracle Database Vault enforces these practices.
 
 ![](./images/DB_VAULT_EXAMPLE.png)
 
@@ -14,9 +14,7 @@ Instructions in this lab expect that you have completed all the previous labs in
 
 ## Introduction  ##
 
-Many regulations require that privileged users such as DBAs be not able to read sensitive data in the database.
-Oracle Database Vault provides this kind of control, which prevent unauthorized privileged users from accessing sensitive data. It can also prevent unauthorized database changes.
-DBSAT has detected that Database Vault was not yet is use in our database.
+Many regulations require that privileged users such as DBAs not be able to read sensitive data in the database. Oracle Database Vault provides this kind of control, which prevents unauthorized privileged users from accessing sensitive data. It can also prevent unauthorized database changes. In this lab, DBSAT has detected that Database Vault is not in use in our database.
 
 ![Alt text](./images/img01.png " ")
 
