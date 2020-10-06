@@ -2,6 +2,8 @@
 
 The Oracle Database Security Assessment Tool (**DBSAT**) identifies sensitive data, analyzes database configurations, users, their entitlements and security policies to uncover security risks and improve the security posture of Oracle Databases within your organization.
 
+![](./images/DBSAT_Components.png)
+
 ## Disclaimer ##
 
 <em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
@@ -22,6 +24,7 @@ You can use report findings to:
 
 ### Additional Resources ###
 * [Latest information on DBSAT](https://www.oracle.com/database/technologies/security/dbsat.html)
+* [Oracle Database Security Assessment Tool 2.2.1 - Get Started](https://docs.oracle.com/en/database/oracle/security-assessment-tool/2.2.1/index.html)
 
 ## Requirements ##
 
