@@ -1,4 +1,4 @@
-# Lab 7: Oracle Audit Vault #
+# Lab 5: Oracle Audit Vault #
 
 This lab will demonstrate how to use Audit Vault to manage the audit data produced by an Oracle Database.
 
@@ -14,12 +14,11 @@ Instructions in this lab expect that you have completed all the previous labs in
 
 ## Introduction  ##
 
-A large deployment of Oracle (or non-Oracle) databases can produce a great amount of audit data to consolidate and manage over time. In addition to audit data from databases, other systems such operating systems and file systems produce audit trails that can be used to analyze events relevant to security.
+A large deployment of Oracle (or non-Oracle) databases can produce a great amount of audit data to consolidate and manage over time. In addition to audit data from databases, other systems such as operating systems and file systems produce audit trails that can be used to analyze events relevant to security.
 
 Good practice dictates that audit data should be transmitted to a remote centralized location where it is secure from tampering by the individuals whose activities are being audited.
 
 This is also recommended by DBSAT findings such as the following one:
-
 
 ![Alt text](./images/img01.png " ")
 
