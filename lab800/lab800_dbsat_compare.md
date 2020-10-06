@@ -10,18 +10,19 @@ This lab takes the Participates through running DBSAT again and comparing the re
 
 ## Requirements ##
 
-Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* SSH Session connected to **secdb** as user **oracle**
 
 ## Step 1 : Unzip DBSAT Companion Utilities ##
 
 Run **dbsat60\_prepare.sh** to copy locally previous DBSAT reports and unzip DBSAT companion utilities including the **dbsat\_diff tool**.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab10_dbsat</copy>
+[oracle@secdb]$ <copy>cd /home/oracle/HOL/lab10_dbsat</copy>
 ````
 
 ````
-$ <copy>dbsat60_prepare.sh</copy>
+[oracle@secdb lab10_dbsat]$ <copy>dbsat60_prepare.sh</copy>
 
 Archive:  dbsat_util.zip
   inflating: work/dbsat_diff
@@ -33,7 +34,7 @@ Archive:  dbsat_util.zip
 Enter password **oracle** to protect the output file.
 
 ````
-$ <copy>dbsat70_collect2.sh</copy>
+[oracle@secdb lab10_dbsat]$ <copy>dbsat70_collect2.sh</copy>
 
 Database Security Assessment Tool version 2.1 (March 2019)
 
@@ -63,7 +64,7 @@ zip completed successfully.
 Use again password **oracle** to protect the report.
 
 ````
-$ <copy>dbsat80_report2.sh</copy>
+[oracle@secdb lab10_dbsat]$ <copy>dbsat80_report2.sh</copy>
 
 Database Security Assessment Tool version 2.1 (March 2019)
 
@@ -91,11 +92,11 @@ zip completed successfully.
 Unzip the report file to be able to check the contents by opening it in Firefox. You will be asked for the password to unzip. Input **oracle** when requested.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab10_dbsat/work</copy>
+[oracle@secdb lab10_dbsat]$ <copy>cd /home/oracle/HOL/lab10_dbsat/work</copy>
 ````
 
 ````
-$ <copy>unzip dbsat_pdb1_2_report.zip</copy>
+[oracle@secdb work]$ <copy>unzip dbsat_pdb1_2_report.zip</copy>
 
 Archive:  dbsat_pdb1_2_report.zip
 [dbsat_pdb2_report.zip] dbsat_pdb1_2_report.txt password: oracle
@@ -110,7 +111,7 @@ Archive:  dbsat_pdb1_2_report.zip
 You can run dbsat90_compare.sh to generate all the differences between the first DBSAT report and this one.
 
 ````
-$ <copy>dbsat90_compare.sh</copy>
+[oracle@secdb work]$ <copy>dbsat90_compare.sh</copy>
 
 (...)
 < dbsat_pdb1_report.json: CONT PDB1 (PDB:3) Wed Mar 06 2019 10:02:00
