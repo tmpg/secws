@@ -2,12 +2,17 @@
 
 This lab will demonstrate how to use Oracle Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover  and anonymize sensitive data in an Oracle database. The Data Masking and Subsetting Pack is a pre-installed module of Enterprise Manager.
 
+![](./images/MaskingAndSubsetting.png)
+
 ## Disclaimer ##
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+
+<em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Requirements ##
 
-Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* SSH Session connected to **secdb** as user **oracle**
+* SSH Session connected to **emcc** as user **oracle**
 
 ## Introduction  ##
 
@@ -16,6 +21,9 @@ We have already seen that our database contains sensitive data:
 ![Alt text](./images/img01.png " ")
 
 In this chapter, we will use EM13cR3 Data Masking & Subsetting Pack to anonymize sensitive data before sharing it with developers or third parties.
+
+### Additional Resources ###
+* [Introduction to Oracle Data Masking](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dmksb/intro.html)
 
 ## Step 1 : Relax network settings for secdb ##
 

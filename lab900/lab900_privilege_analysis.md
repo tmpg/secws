@@ -6,7 +6,7 @@
 
 ## Disclaimer ##
 
-The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.
+<em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Requirements ##
 
@@ -20,9 +20,9 @@ In our example, we will reduce the privileges granted to **DBA\_NICOLE** to the 
 
 ### Additional Resources ###
 * [Oracle Database Security Privilege Analysis](https://www.oracle.com/database/technologies/security/priv-analysis.html)
-* [Performing Privilege Analysis to Find Privilege Use](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
+* [Performing Privilege Analysis to Find Privilege Use](https:Check DBA\//docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
 
-## Step 1 : Check DBA\_NICOLE's current role ##
+## Step 1 : _NICOLE's current role ##
 
 **DBA\_NICOLE** is a junior DBA who was initially granted the full **DBA** role. Run the following script from a terminal window to the **secdb** server.
 
