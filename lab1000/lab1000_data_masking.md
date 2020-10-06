@@ -30,7 +30,7 @@ In this chapter, we will use EM13cR3 Data Masking & Subsetting Pack to anonymize
 Remove or lower the following network settings on secdb, which Enterprise Manager Cloud Control 13cR3 still does not support with a default installation.
 
 ````
-$ <copy>cd /u01/oracle/db/prod/19c/ee/network/admin</copy>
+[oracle@secdb]$ <copy>cd /u01/oracle/db/prod/19c/ee/network/admin</copy>
 ````
 
 Modify sqlnet.ora on secdb as shown below:
@@ -68,11 +68,11 @@ We start this exercise by creating a new pluggable database named **MASKED** as 
 Using a terminal window to secdb, execute mask20_clone.sh to clone PDB1
 
 ````
-$ <copy>cd /home/oracle/HOL/lab09_masking</copy>
+[oracle@secdb]$ <copy>cd /home/oracle/HOL/lab09_masking</copy>
 ````
 
 ````
-$ <copy>mask20_clone.sh</copy>
+[oracle@secdb lab09_masking]$ <copy>mask20_clone.sh</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Apr 24 14:45:38 2020
 Version 19.6.0.0.0
@@ -89,7 +89,7 @@ Pluggable database altered.
 To mask data and also because we operate in a Database Vault environment, we need to grant additional privileges to SYSTEM on MASKED.
 
 ````
-$ <copy>mask30_grant.sh</copy>
+[oracle@secdb lab09_masking]$ <copy>mask30_grant.sh</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Fri Apr 24 14:49:20 2020
 Connected.
@@ -125,7 +125,7 @@ To enable advanced masking formats in our database, we also need to run a script
 These scripts have already been copied to secdb. Please run them by executing the following command.
 
 ````
-$ <copy>mask35_dm_fmtlib.sh</copy>
+[oracle@secdb lab09_masking]$ <copy>mask35_dm_fmtlib.sh</copy>
 
 (...)
 2957  function get_version return varchar2 is
@@ -266,7 +266,7 @@ Let us use a SQL Expression for **EMAIL** to construct it from the anonymized va
 Use the following expression:
 
 ````
-$ <copy>%FIRST_NAME%||'@myco.com'</copy>
+[oracle@secdb lab09_masking]$ <copy>%FIRST_NAME%||'@myco.com'</copy>
 ````
 
 
@@ -326,11 +326,11 @@ In the **Schedule Data Masking Job** screen, be sure to select the following:
 You can now compare the original and masked data in the database by running the following scripts on secdb:
 
 ````
-$ <copy>cd /home/oracle/HOL/lab09_masking</copy>
+[oracle@secdb lab09_masking]$ <copy>cd /home/oracle/HOL/lab09_masking</copy>
 ````
 
 ````
-$ <copy>mask40_view_original.sh</copy>
+[oracle@secdb lab09_masking]$ <copy>mask40_view_original.sh</copy>
 
 LAST_NAME                     SALARY EMAIL                     PAYMENTACCOUNTNO     TAXPAYERID
 ------------------------- ---------- ------------------------- -------------------- ---------------
@@ -348,7 +348,7 @@ Gietz                           8300 WGIETZ@ORACLE.COM         4321123454326206 
 Let us now view the anonymized data:
 
 ````
-$ <copy>mask50_view_masked.sh</copy>
+[oracle@secdb lab09_masking]$ <copy>mask50_view_masked.sh</copy>
 
 LAST_NAME                     SALARY EMAIL                     PAYMENTACCOUNTNO     TAXPAYERID
 ------------------------- ---------- ------------------------- -------------------- ---------------
