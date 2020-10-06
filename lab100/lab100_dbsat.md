@@ -20,7 +20,12 @@ You can use report findings to:
 - Fix immediate short-term risks
 - Implement a comprehensive security strategy
 
-For the latest information on DBSAT, please visit **[https://www.oracle.com/database/technologies/security/dbsat.html](https://www.oracle.com/database/technologies/security/dbsat.html)**
+### Additional Resources ###
+* [Oracle Database Documentation - Administrator's Guide: Oracle® Database Vault](https://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/index.html)
+* [Oracle Database Vault Whitepaper](https://www.oracle.com/a/tech/docs/dbsec/dbv/wp-dv-19c.pdf)
+
+###Additional Resources###
+* [Latest information on DBSAT](https://www.oracle.com/database/technologies/security/dbsat.html)**
 
 ## Requirements ##
 

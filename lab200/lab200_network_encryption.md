@@ -1,6 +1,6 @@
 # Lab 2: Network Encryption
 
-One of the basic protection that you can set on the database is the **Network Encryption**.
+One of the basic protections that you can set on the database is the **Network Encryption**.
 
 ## Disclaimer ##
 
@@ -16,6 +16,9 @@ One of the basic protection that you can set on the database is the **Network En
 **Network Encryption** is included with all Oracle DB editions since version 11gR2 so you can configure and start using it without any additional licensing.
 
 On Cloud environments, network encryption is configured by default. In this chapter, we will address the problem of cyber-attacks and network hijacking and we will learn how to configure it in an on-premise environment.
+
+### Additional Resources
+* [Oracle Database Documentation - Securing Data on the Network](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/part_4.html)
 
 ## Step 1: Setting Minimum Client Authentication to version 12
 
