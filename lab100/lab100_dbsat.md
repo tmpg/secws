@@ -21,7 +21,7 @@ You can use report findings to:
 - Implement a comprehensive security strategy
 
 ### Additional Resources ###
-* [Latest information on DBSAT](https://www.oracle.com/database/technologies/security/dbsat.html)**
+* [Latest information on DBSAT](https://www.oracle.com/database/technologies/security/dbsat.html)
 
 ## Requirements ##
 
