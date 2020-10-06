@@ -31,46 +31,46 @@
             "filename":"./lab300/lab300_transparent_data_encryption.md"
         },
         {
-            "title": "Lab 4: Data Redaction",
-            "description":"Lab 4: Data Redaction",
-            "publisheddate": "05/08/2020",
-            "filename":"./lab400/lab400_data_redaction.md"
-        },
-        {
-            "title": "Lab 5: Database Vault",
-            "description":"Lab 5: Database Vault",
+            "title": "Lab 4: Database Vault",
+            "description":"Lab 4: Database Vault",
             "publisheddate": "05/08/2020",
             "filename":"./lab500/lab500_database_vault.md"
         },
         {
-            "title": "Lab 6: Database Audit",
-            "description":"Lab 6: Database Audit",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab600/lab600_database_audit.md"
-        },
-        {
-            "title": "Lab 7: Audit Vault",
-            "description":"Lab 7: Audit Vault",
+            "title": "Lab 5: Audit Vault",
+            "description":"Lab 5: Audit Vault",
             "publisheddate": "04/21/2020",
             "filename":"./lab700/lab700_audit_vault.md"
         },
         {
-            "title": "Lab 8: Running DBSAT and compare results",
-            "description":"Lab 8: Running DBSAT and compare results",
-            "publisheddate": "04/21/2020",
-            "filename":"./lab800/lab800_dbsat_compare.md"
+            "title": "Bonus Lab 1: Data Redaction",
+            "description":"Lab 1: Data Redaction",
+            "publisheddate": "05/08/2020",
+            "filename":"./lab400/lab400_data_redaction.md"
         },
         {
-            "title": "Lab 9: Privilege Analysis",
-            "description":"Lab 9: Privilege Analysis",
+            "title": "Bonus Lab 2: Privilege Analysis",
+            "description":"Bonus Lab 2: Privilege Analysis",
             "publisheddate": "05/08/2020",
             "filename":"./lab900/lab900_privilege_analysis.md"
         },
         {
-            "title": "Lab 10: Data Masking",
-            "description":"Lab 10: Data Masking",
+            "title": "Bonus Lab 3: Database Audit",
+            "description":"Bonus Lab 3: Database Audit",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab600/lab600_database_audit.md"
+        },
+        {
+            "title": "Bonus Lab 4: Data Masking",
+            "description":"Bonus Lab 4: Data Masking",
             "publisheddate": "04/21/2020",
             "filename":"./lab1000/lab1000_data_masking.md"
+        },
+        {
+            "title": "Bonus Lab 5: Running DBSAT and compare results",
+            "description":"Bonus Lab 5: Running DBSAT and compare results",
+            "publisheddate": "04/21/2020",
+            "filename":"./lab800/lab800_dbsat_compare.md"
         }
 
     ]

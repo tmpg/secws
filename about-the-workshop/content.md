@@ -20,27 +20,29 @@ This workshop will cover the following Database Security topics.
 
 - **Lab 3: Transparent Data Encryption** - Encrypting On-Premise databases with Transparent Data Encryption.
 
-- **Lab 4: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
+- **Lab 4: Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
 
-- **Lab 5: Database Vault** - Configuring Database Vault to protect the database from over-privileged users and implement Separation Of Duties.
+- **Lab 5: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
 
-- **Lab 6: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
+### Appendix Labs
 
-- **Lab 7: Audit Vault** - Using Audit Vault to manage audit data, view reports and create alerts.
+- **Lab 1: Data Redaction** - Using Data Redaction policies to prevent sensitive data from leaving the database unprotected (aka pseudonymization).
 
-- **Lab 8: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
+- **Lab 2: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
 
-- **Lab 9: Privilege Analysis** - Using Privilege Analysis to adopt a Least Privilege Model.
+- **Lab 3: Database Audit** - Configuring Unified Auditing and Unified Auditing policies.
 
-- **Lab 10: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
+- **Lab 4: Data Masking** - Using Enterprise Manager Cloud Control Data Masking and Subsetting Pack to discover and anonymize sensitive data.
+
+- **Lab 5: Running DBSAT again to compare results** - Using dbsat_diff companion utility to DBSAT to measure progress in securing a database.
 
 ## Accessing the labs ##
 
-- Use the **Lab Contents** menu on your right to access the labs 0 to 8.
+- Use the **Lab Contents** menu on your right to access the labs.
 
 - If the menu is not displayed, click the menu button ![](./images/menu-button.png "") on the top right to make it visible.
 
-- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order from Lab 0 up to 10.
+- From the menu, click on the lab that you like to proceed with. The **Lab 0: Accessing the Lab Environment** is the first one to prepare and access the environment. The labs are **order dependent** so you need to proceed in order.
 
 - You may close the menu by clicking ![](./images/menu-close.png "")
 
@@ -51,4 +53,3 @@ This workshop will cover the following Database Security topics.
 - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - April 2020.
 
 - Robert Ross & Tim Pirog, NA Tech PreSales - Named-MM ECA - September 2020
-
