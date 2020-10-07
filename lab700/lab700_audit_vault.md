@@ -60,7 +60,7 @@ Save **agent.jar** to ``/home/oracle/HOL/lab08_av``
 
 ![Alt text](./images/img04.png " ")
 
-We can now configure and start the agent.
+In the SSH window for **secdb**, you can now configure and start the agent.
 
 ````
 [oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab08_av</copy>
