@@ -10,7 +10,8 @@ Security best practices dictates that it is **no longer acceptable** for over-pr
 
 ## Requirements ##
 
-Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* SSH Session connected to **secdb** as user **oracle**
 
 ## Introduction  ##
 
