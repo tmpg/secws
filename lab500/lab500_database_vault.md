@@ -721,7 +721,7 @@ SQL> select * from hr.regions;
 
 Note: The scripts in subdirectory **z_cleanup** are for your information only. They document the SQL syntax to **remove** the Database Vault configuration that was just built. **DO NOT RUN THESE SCRIPTS**.
 
-This completes the **Database Vault** lab. Participates can continue to **Lab 6: Database Audit**
+This completes the **Database Vault** lab. 
 
 ## Acknowledgements
 

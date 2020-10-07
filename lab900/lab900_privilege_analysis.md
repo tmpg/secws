@@ -341,8 +341,7 @@ Plan hash value: 2505473347
 (...)
 ````
 
-
-This completes the **Privilege Analysis** lab. You can continue with **Lab 6: Database Vault**
+This completes the **Privilege Analysis** lab. You can continue with the next lab.
 
 ## Acknowledgements
 

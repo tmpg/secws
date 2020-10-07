@@ -244,14 +244,13 @@ a.dbusername, a.CLIENT_PROGRAM_NAME, a.ACTION_NAME, a.RETURN_CODE, a.SQL_TEXT
 		from unified_audit_trail a
 			order by EVENT_TIMESTAMP desc;``
 
-
 Let us use it to view recent audit records.
 
 ````
 [oracle@secdb lab07_audit]$ <copy>aud_95_view_audit.sh</copy>
 ````
 
-**This completes the Database Audit.** Participates can continue to [Lab 7: Oracle Audit Vault](../lab800/lab800_audit_vault.md)
+**This completes the Database Audit Lab.**  You can continue to the next lab.
 
 ## Acknowledgements
 

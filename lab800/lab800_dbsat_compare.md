@@ -135,7 +135,6 @@ Database Version
 > Security options used: Advanced Security, Database Vault, Label Security
 (...)
 ````
-
 Congratulations: The Workshop is now complete!
 
 ## Acknowledgements

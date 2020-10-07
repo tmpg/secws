@@ -467,7 +467,7 @@ A detailed report of tables with sensitive data is provided at the end of the re
 The Discoverer CSV report can be loaded into Oracle Audit Vault and Database Firewall to add sensitive data context to the new Data Privacy reports. We will be doing this as part of the Audit Vault lab.
 
 
-This completes the DBSAT lab. You can continue with lab 2.
+This completes the DBSAT lab. You can continue with the next lab.
 
 ## Acknowledgements ##
 

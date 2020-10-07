@@ -482,8 +482,7 @@ total 36
 
 The presence of cwallet.sso indicates an **auto-login wallet**.
 
-This completes the **Transparent Data Encryption** lab. You can continue with **Lab 4: Data Redaction**
-
+This completes the **Transparent Data Encryption** lab. You can continue to the next Lab.
 
 ## Acknowledgements ##
 
