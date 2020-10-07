@@ -9,6 +9,9 @@ This lab will demonstrate how to use Audit Vault to manage the audit data produc
 <em>The following is intended to outline our general product direction. It is intended for information purposes only, and may not be incorporated into any contract. It is not a commitment to deliver any material, code, or functionality, and should not be relied upon in making purchasing decisions. The development, release, and timing of any features or functionality described for Oracle’s products remains at the sole discretion of Oracle.</em>
 
 ## Requirements ##
+* Instructions in this lab expect that you have completed all the previous labs in the workshop.
+* VNC connection to **secdb**
+* SSH Session connected to **secdb** as user **oracle**
 
 Instructions in this lab expect that you have completed all the previous labs in the workshop.
 
@@ -60,13 +63,11 @@ Save **agent.jar** to ``/home/oracle/HOL/lab08_av``
 We can now configure and start the agent.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab08_av</copy>
+[oracle@secdb ~]$ <copy>cd /home/oracle/HOL/lab08_av</copy>
 ````
-
 ````
-$ <copy>java -jar agent.jar -d /u01/oracle/avagent</copy>
+[oracle@secdb lab08_av]$ <copy>java -jar agent.jar -d /u01/oracle/avagent</copy>
 
-[oracle@secdb lab08_av]$ java -jar agent.jar -d /u01/oracle/avagent
 Checking for updates...
 Agent is updating. This operation may take a few minutes. Please wait...
 Agent updated successfully.
@@ -75,16 +76,14 @@ If deploying hostmonitor please refer to product documentation for additional in
 ````
 
 ````
-$ <copy>cd /u01/oracle/avagent/bin</copy>
+[oracle@secdb lab08_av]$ <copy>cd /u01/oracle/avagent/bin</copy>
 ````
 
 Run the following statement to enter the **Agent Activation Key** previously generated.
 
 ````
-$ <copy>./agentctl start -k</copy>
+[oracle@secdb bin]$ <copy>./agentctl start -k</copy>
 
-[oracle@secdb lab08_av]$ cd /u01/oracle/avagent/bin
-[oracle@secdb bin]$ ./agentctl start -k
 Enter Activation Key:
 Agent started successfully.
 ````
@@ -92,9 +91,8 @@ Agent started successfully.
 The Audit Vault agent should now be running.
 
 ````
-$ <copy>./agentctl status</copy>
+[oracle@secdb bin]$ <copy>./agentctl status</copy>
 
-[oracle@secdb bin]$ agentctl status
 Agent is running.
 ````
 
@@ -194,11 +192,11 @@ The Oracle Audit Vault Server provides powerful built-in reports to monitor a wi
 Let's generate new audit records by executing the following script which will create a number of violations that will be audited.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab08_av</copy>
+[oracle@secdb bin]$ <copy>cd /home/oracle/HOL/lab08_av</copy>
 ````
 
 ````
-$ <copy>av_createrecords.sh</copy>
+[oracle@secdb lab08_av]$ <copy>av_createrecords.sh</copy>
 
 [oracle@secdb lab08_av]$ av_createrecords.sh
 
@@ -339,11 +337,11 @@ We will first give back this privilege to SYSTEM. Please note that this change w
 Run the following scripts from a terminal window to the secdb server.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab08_av/dp</copy>
+[oracle@secdb lab08_av]$ <copy>cd /home/oracle/HOL/lab08_av/dp</copy>
 ````
 
 ````
-$ <copy>dp00_grant_become_user.sh</copy>
+[oracle@secdb dp]$ <copy>dp00_grant_become_user.sh</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Tue Apr 28 12:55:08 2020
 Version 19.6.0.0.0
@@ -359,12 +357,12 @@ Grant succeeded.
 Create a DIRECTORY object.
 
 ````
-$ <copy>sqlplus /nolog</copy>
+[oracle@secdb dp]$ <copy>sqlplus /nolog</copy>
 ````
 
 
 ````
-$ <copy>@dp10_data_dir.sql</copy>
+[oracle@secdb dp]$ <copy>@dp10_data_dir.sql</copy>
 
 SQL*Plus: Release 19.0.0.0.0 - Production on Tue Apr 28 12:55:08 2020
 Version 19.6.0.0.0
@@ -381,11 +379,8 @@ Grant succeeded.
 
 We can now run a Data Pump import of the SCOTT schema as SYSTEM:
 
-
 ````
-$ <copy>dp20_import.sh</copy>
-
-[oracle@secdb dp]$ dp20_import.sh
+[oracle@secdb dp]$ <copy>dp20_import.sh</copy>
 
 (...)
 Starting "SYSTEM"."SYS_IMPORT_SCHEMA_01":  system/********@secdb/pdb1 parfile=dp20_import.ini
@@ -512,14 +507,11 @@ We will now create a new alert in Audit Vault. This alert will let us know when 
 Let us test that the alert is functioning! Run the following script to create once again a new table.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab08_av</copy>
+[oracle@secdb dp]$ <copy>cd /home/oracle/HOL/lab08_av</copy>
 ````
 
-
 ````
-$ <copy>av_createrecords.sh</copy>
-
-[oracle@secdb lab08_av]$ av_createrecords.sh
+[oracle@secdb lab08_av]$ <copy>av_createrecords.sh</copy>
 
 (…)
 SQL> create table job2 as select * from jobs;
@@ -560,12 +552,10 @@ The Audit Vault Agent automatically sets a timestamp on audit data that has been
 1) Let us count the existing rows in audit tables.
 
 ````
-$ <copy>cd /home/oracle/HOL/lab08_av/purgejob</copy>
+[oracle@secdb lab08_av]$ <copy>cd /home/oracle/HOL/lab08_av/purgejob</copy>
 ````
-
-
 ````
-$ <copy>cleanup00_count.sh</copy>
+[oracle@secdb lab08_av]$ <copy>cleanup00_count.sh</copy>
 
 SQL> select count(*) from sys.aud$;
   COUNT(*)
@@ -595,7 +585,7 @@ SQL> select count(*) from unified_audit_trail;
 2) Initialize the purging job by setting it to run every hour by default
 
 ````
-$ <copy>cleanup10_init.sh</copy>
+[oracle@secdb lab08_av]$ <copy>cleanup10_init.sh</copy>
 
 SQL> BEGIN
   2   DBMS_AUDIT_MGMT.INIT_CLEANUP(
@@ -620,7 +610,7 @@ PL/SQL procedure successfully completed.
 3) Check the status of the purging job
 
 ````
-$ <copy>cleanup20_show.sh</copy>
+[oracle@secdb lab08_av]$ <copy>cleanup20_show.sh</copy>
 
 (…)
 CDB is initialized for cleanup
@@ -632,7 +622,7 @@ PDB1 is initialized for cleanup
 4) Schedule the purging job
 
 ````
-$ <copy>cleanup30_schedule.sh</copy>
+[oracle@secdb lab08_av]$ <copy>cleanup30_schedule.sh</copy>
 
 SQL> -- creates a purge job to run every hour to purge the audit records
 SQL> -- in the container database
@@ -667,7 +657,7 @@ PL/SQL procedure successfully completed.
 5) Verify that the number of rows in audit tables drops
 
 ````
-$ <copy>cleanup00_count.sh</copy>
+[oracle@secdb lab08_av]$ <copy>cleanup00_count.sh</copy>
 
 SQL> select count(*) from sys.aud$;
   COUNT(*)
