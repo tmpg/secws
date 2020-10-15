@@ -201,7 +201,7 @@ Let us first unzip the output produced in the previous step. The password is **o
 ````
 
 ````
-[oracle@secdb lab01_dbsat]$ <copy>unzip dbsat_pdb1.zip</copy>
+[oracle@secdb install]$ <copy>unzip dbsat_pdb1.zip</copy>
 
 [oracle@secdb install]$ unzip dbsat_pdb1.zip
 Archive:  dbsat_pdb1.zip
@@ -246,7 +246,7 @@ Let us unzip the file produced by DBSAT Reporter in order to view the four files
 ````
 
 ````
-[oracle@secdb lab01_dbsat]$ <copy>unzip dbsat_pdb1_report.zip</copy>
+[oracle@secdb install]$ <copy>unzip dbsat_pdb1_report.zip</copy>
 
 [oracle@secdb install]$ unzip dbsat_pdb1_report.zip
 Archive:  dbsat_pdb1_report.zip
@@ -335,11 +335,11 @@ DBSAT discoverer will connect to the database and collect data needed for analys
 ````
 
 ````
-[oracle@secdb lab01_dbsat]$ <copy>cp sample_dbsat.config dbsat.config</copy>
+[oracle@secdb conf]$ <copy>cp sample_dbsat.config dbsat.config</copy>
 ````
 
 ````
-[oracle@secdb lab01_dbsat]$ <copy>chmod +w dbsat.config</copy>
+[oracle@secdb conf]$ <copy>chmod +w dbsat.config</copy>
 ````
 
 Now use the editor of your choice (e.g. vi, gedit) to set the database service name in dbsat.config. Update the value of parameter **DB\_SERVICE\_NAME** to **PDB1** as follows:
@@ -423,7 +423,7 @@ You can change many parameters in the configuration file:
 - **Pattern File(s) = [sensitive.ini (default), other.ini, …]**  By default, sensitive_en.ini is used and it contains patterns in English and will look for English based sensitive columns/comments. This parameter enables the end user to choose which pattern ini files to add to the search. We provide sample pattern files in other languages in ./dbsat/install/Discover/conf
 
 ````
-[oracle@secdb lab01_dbsat]$ <copy>ls -l /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
+[oracle@secdb install]$ <copy>ls -l /home/oracle/HOL/lab01_dbsat/dbsat/install/Discover/conf</copy>
 
 total 236
 -rw-r--r--. 1 oracle oinstall  5907 Apr 28 00:10 dbsat.config
@@ -465,7 +465,6 @@ A detailed report of tables with sensitive data is provided at the end of the re
 ![](./images/Lab100_Step3_7.png)
 
 The Discoverer CSV report can be loaded into Oracle Audit Vault and Database Firewall to add sensitive data context to the new Data Privacy reports. We will be doing this as part of the Audit Vault lab.
-
 
 This completes the DBSAT lab. You can continue with the next lab.
 
