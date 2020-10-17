@@ -14,7 +14,7 @@
 
 For maximum transparency, redaction preserves the type and formatting of column data returned to applications, and it does not alter the underlying database blocks on disk or in cache.
 
-Participates can redact column data in one of the following methods:
+Participants can redact column data in one of the following methods:
 
 * **Full Redaction** obfuscates all content contained in the column data. 
     * The redacted value returned to the querying user depends on the data type of the column. 
@@ -22,13 +22,13 @@ Participates can redact column data in one of the following methods:
 * **Partial Redaction** only obfuscates a portion of the column data. 
     * For example, you can redact most of a Social Security number with asterisks (*), except for the last four digits.
 * **Regular Expressions** utilizes regular expressions for either full and partial redaction. 
-    * This enables Participates to redact data based on a search pattern. 
-    * For example, Participates can use regular expressions to redact specific phone numbers or email addresses found in the columns.
+    * This enables Participants to redact data based on a search pattern. 
+    * For example, Participants can use regular expressions to redact specific phone numbers or email addresses found in the columns.
 * **Random Redaction** obfuscates data presented to the querying user employing randomly-generated values each time it is displayed in accordance to the data type of the column.
 
-The Oracle Database applies redaction at query execution-time (the moment database-users attempt to access data). This solution excels in dynamic production systems which data is constantly changing. During the  redaction process, Participates can expect normal operation. Data processing will continue as expected and the back-end referential integrity constraints are preserved.  
+The Oracle Database applies redaction at query execution-time (the moment database-users attempt to access data). This solution excels in dynamic production systems which data is constantly changing. During the  redaction process, Participants can expect normal operation. Data processing will continue as expected and the back-end referential integrity constraints are preserved.  
 
-Data redaction can help Participates to comply with **industry regulations** found in: 
+Data redaction can help Participants to comply with **industry regulations** found in: 
 * Payment Card Industry
 * Data Security Standard (PCI DSS)
 * Sarbanes-Oxley Act
@@ -226,7 +226,7 @@ William              Gietz                              0 XXX-XX-6206     XXXXXX
 9 rows selected.
 ````
 
-To test the redaction policies on the client machine **dbclient**, Participates will use a **Window SQL** query to retrieve the highest salary in each department. Please take the time to understand the query and understand the syntax!
+To test the redaction policies on the client machine **dbclient**, Participants will use a **Window SQL** query to retrieve the highest salary in each department. Please take the time to understand the query and understand the syntax!
 
 On **dbclient** (as user **oracle**) run the following:
 
@@ -270,7 +270,7 @@ Kimberely            Grant                           7000
 (...)
 ````
 
-Connected as **HCM** users will see that the data is not redacted. If Participates run the same query as **HCM_CLERK** the data will now be redacted:
+Connected as **HCM** users will see that the data is not redacted. If Participants run the same query as **HCM_CLERK** the data will now be redacted:
 
 ````
 [oracle@dbclient lab04_redaction]$ <copy>get_highest_sal.sh HCM_CLERK</copy>
