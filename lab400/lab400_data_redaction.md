@@ -62,7 +62,7 @@ Run the following SQL on the **secdb** server to disable Database Vault in PDB1.
 </copy>
 ````
 ````
-begin
+<copy>begin
  dbms_macadm.disable_dv;
 end;
 /
