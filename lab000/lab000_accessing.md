@@ -21,9 +21,9 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 * Access to the Oracle Cloud (OCI) tenancy. 
 * SSH client. **[Download PuTTY](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
-* TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.  
-  * Windows users can use the following link.  **[Download TigerVNC Viewer for windows](https://bintray.com/tigervnc/stable/download_file?file_path=vncviewer-1.11.0.exe)**.
-  * Mac users can use this link.  **[Download TigerVNC Viewer for Mac](https://www.macupdate.com/app/mac/60678/tigervnc)**.
+* TigerVNC Viewer client software. 
+  - Windows users can use this link.  **[Download TigerVNC Viewer for Windows](https://bintray.com/tigervnc/stable/download_file?file_path=vncviewer-1.11.0.exe)**.
+  - Mac users can use this link.  **[Download TigerVNC Viewer for Mac](https://www.macupdate.com/app/mac/60678/tigervnc)**.
 
 ## Step 1: Get IP addresses for your workshop VM environment. ##
 
