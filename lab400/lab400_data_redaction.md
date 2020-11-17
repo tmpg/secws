@@ -55,6 +55,25 @@ DBSAT had identified a number of sensitive columns in the HCM schema:
 
 Let us create simple redaction policies for low privileged users on these three columns.
 
+## Step 0: Reset environment
+Run the following SQL on the **secdb** server to disable Data Vault in PDB1.
+````
+[oracle@secdb ~]$ <copy>sqlplus C##DBVO/MyDbPwd#1@pdb1
+</copy>
+````
+````
+begin
+ dbms_macadm.disable_dv;
+end;
+/
+
+connect / as sysdba
+alter pluggable database PDB1 close immediate;
+alter pluggable database PDB1 open;  
+exit;
+</copy>  
+````
+
 ## Step 1: Create a User with Minimal Privileges
 
 Run the following script on the **secdb** server to create `hcm_clerk` (a user with minimal privileges):
