@@ -21,7 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 * Access to the Oracle Cloud (OCI) tenancy. 
 * SSH client. **[Download PuTTY](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
-* RealVNC Viewer client software.  **[Download RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)**.
+* TigerVNC Viewer client software.  **[Download TigerVNC Viewer](https://tigervnc.org/)**.
 
 ## Step 1: Get IP addresses for your workshop VM environment. ##
 
@@ -98,7 +98,7 @@ The syntax to create an SSH tunnel to secdb enabling a VNC connection should be 
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
-For some labs, it will be easier to use a VNC connection to secdb. To do this, first connect using PuTTY to create the SSH tunnel and then launch a VNC client such as RealVNC Viewer and connect to **localhost:2**
+For some labs, it will be easier to use a VNC connection to secdb. To do this, first connect using PuTTY to create the SSH tunnel and then launch a VNC client such as TigerVNC Viewer and connect to **localhost:2**
 
 ![Compression](./images/Lab000_Step1_8.png )
 
