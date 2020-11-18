@@ -20,7 +20,7 @@ In our example, we will reduce the privileges granted to **DBA\_NICOLE** to the 
 
 ### Additional Resources ###
 * [Oracle Database Security Privilege Analysis](https://www.oracle.com/database/technologies/security/priv-analysis.html)
-* [Performing Privilege Analysis to Find Privilege Use](https:Check DBA\//docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
+* [Performing Privilege Analysis to Find Privilege Use](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/performing-privilege-analysis-find-privilege-use.html)
 
 ## Step 1 : _NICOLE's current role ##
 
