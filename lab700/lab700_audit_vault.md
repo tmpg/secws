@@ -471,7 +471,7 @@ Edit the **Alert Notification** Template, which is the default template used for
 
 Let's add a new Audit Vault **Alert Status**
 
-Navigate to the **Policy** tab, then to the **Alert** page.  Click on the **Manage Alert Status Values** button.
+Navigate to the **Policy** tab, then to **Alerts**, then Click on the **Manage Alert Status** menu option.  
 
 ![Alt text](./images/img44.png " ")
 
