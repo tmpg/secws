@@ -108,4 +108,5 @@ When asked for a password, enter **oracle**.
 ## Acknowledgements
 
 - **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
+- **Updates** - Robert Ross & Tim Pirog, NA Tech PreSales - Named-MM ECA - September 2020
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
