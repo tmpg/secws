@@ -52,7 +52,7 @@ Unzip and open `secws_windows_access_pkg.zip`
 
 ![Open secws_windows_access_pkg.zip](./images/Lab000_Step2_1.png "")
 
-Using the **Public IPs** in **Step 1**: open **PuTTYPortable**, load the **dbclient** profile, and add its IP. After, do the same for **secdb**.
+Using the **Public IPs** in **Step 1**: open **PuTTYPortable**, load the **dbclient** profile, add its IP, and **save** for later use! After, do the same for **secdb**.
 
 ![Setting PuTTYPortables IPs](./images/Lab000_Step2_2.png "")
 
