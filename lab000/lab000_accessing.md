@@ -21,7 +21,7 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 ### General
 * Access to the Oracle Cloud (OCI) tenancy. 
 ### Windows
-* Download the Windows Access Package [here](./files/secws_windows_access_pkg.zip)
+* Download the Windows Access Package **[here](./files/secws_windows_access_pkg.zip)**.
 ### Mac (or Unix-like machines)
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
 * TigerVNC Viewer client software. 
