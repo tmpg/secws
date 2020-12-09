@@ -52,14 +52,14 @@ Unzip and open `secws_windows_access_pkg.zip`
 
 ![Open secws_windows_access_pkg.zip](./images/Lab000_Step2_1.png "")
 
-Using the **Public IPs** in **Step 1**: open **PuttyPortable**, load the **dbclient** profile, and add its IP. After, do the same for **secdb**.
+Using the **Public IPs** in **Step 1**: open **PuTTYPortable**, load the **dbclient** profile, and add its IP. After, do the same for **secdb**.
 
-![Setting PuttyPortables IPs](./images/Lab000_Step2_2.png "")
+![Setting PuTTYPortables IPs](./images/Lab000_Step2_2.png "")
 
 Be sure to keep both sessions open during the lab!
 
 #### Troubleshooting
-To rule out connectivity problems, use the **Workshop Connectivity Test System** profile in **PuttyPortable** to ensure your machine can connect to Oracle Infrastructure
+To rule out connectivity problems, use the **Workshop Connectivity Test System** profile in **PuTTYPortable** to ensure your machine can connect to Oracle Infrastructure
 
 ![Troubleshooting](./images/Lab000_Step2_T.png "")
 
