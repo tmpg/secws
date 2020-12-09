@@ -77,7 +77,7 @@ Use the actual IP address for each server to create each terminal session:
 
 The syntax to create an SSH tunnel to secdb enabling a VNC connection should be (**Remember to use your own IP address**):
 
-  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
+    $ ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
