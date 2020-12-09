@@ -59,11 +59,9 @@ Using the **Public IPs** in **Step 1**: open **PuttyPortable**, load the **dbcli
 Be sure to keep both sessions open during the lab!
 
 #### Troubleshooting
-To rule out connectivity problems, use the **Workshop Connectivity Test System** to ensure your machine can connect to Oracle Infrastructure
+To rule out connectivity problems, use the **Workshop Connectivity Test System** profile in **PuttyPortable** to ensure your machine can connect to Oracle Infrastructure
 
 ![Troubleshooting](./images/Lab000_Step2_T.png "")
-
-
 
 ### Connect from Mac (or Unix-like machines) 
 
@@ -85,7 +83,7 @@ The syntax to create an SSH tunnel to secdb enabling a VNC connection should be 
 
 ### For Windows Users using the Windows Access Package
 
-Ensure an SSH session is established with **secdb** and drag&drop **secdb.vnc** into the **VNC-Viewer.exe** 
+Ensure an SSH session is established with **secdb** and drag&drop **secdb.vnc** into **VNC-Viewer.exe** 
 
 ![Open VNC-Viewer.exe](images/Lab000_Step3_1.png "")
 
