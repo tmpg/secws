@@ -48,7 +48,7 @@ A PDF file should download where you will see the public IPs for your workshop e
 
 ### For Windows Users using the Windows Access Package
 
-Unzip and open **secws\_windows\_access_pkg.zip**
+Unzip and open `secws_windows_access_pkg.zip`
 
 ![Open secws_windows_access_pkg.zip](./images/Lab000_Step2_1.png "")
 
