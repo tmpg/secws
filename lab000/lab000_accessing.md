@@ -18,13 +18,11 @@ For secdb, **VNC** has also been configured to provide a GUI to the desktop.
 
 ## Requirements
 
-### General
 * Access to the Oracle Cloud (OCI) tenancy. 
-### Windows
-* Download the Windows Access Package **[here](./files/secws_windows_access_pkg.zip)**.
-### Mac (or Unix-like machines)
+* SSH client. **[Download PuTTY](https://www.putty.org/)**.
 * Private key to access client machines by SSH. **[Download SSH keys](./files/dbsec_keys.zip)**.
 * TigerVNC Viewer client software. 
+  - Windows users can use this link.  **[Download TigerVNC Viewer for Windows](https://bintray.com/tigervnc/stable/download_file?file_path=vncviewer-1.11.0.exe)**.
   - Mac users can use this link.  **[Download TigerVNC Viewer for Mac](https://www.macupdate.com/app/mac/60678/tigervnc)**.
 
 ## Step 1: Get IP addresses for your workshop VM environment. ##
@@ -46,24 +44,45 @@ A PDF file should download where you will see the public IPs for your workshop e
 
 ## Step 2: Create SSH connections to secdb and dbclient ##
 
-### For Windows Users using the Windows Access Package
+### For Windows Users using PuTTY
 
-Unzip and open `secws_windows_access_pkg.zip`
+Using the Public IPs, open a SSH client like **PuTTY** and configure separate connections to **secdb** and **dbclient**. Here is an example for **secdb**:
 
-![Open secws_windows_access_pkg.zip](./images/Lab000_Step2_1.png "")
+![Connect to the instance](./images/Lab000_Step1_1.png "")
 
-Using the **Public IPs** in **Step 1**: open **PuTTYPortable**, load the **dbclient** profile, add its IP, and **save** for later use! After, do the same for **secdb**.
+Set user to **oracle** in **Connection** -> **Data** -> **Auto-login username** for **dbclient** and **secdb** connections.
 
-![Setting PuTTYPortables IPs](./images/Lab000_Step2_2.png "")
+![Connect with oracle User](./images/Lab000_Step1_2.png "")
 
-Be sure to keep both sessions open during the lab!
+Download the **[Security SSH keys](./files/dbsec_keys.zip)**.  This is typically a file named dbsec\_keys.zip in your Downloads directory.  
 
-#### Troubleshooting
-To rule out connectivity problems, use the **Workshop Connectivity Test System** profile in **PuTTYPortable** to ensure your machine can connect to Oracle Infrastructure
+Unzip dbsec\_keys.zip.  For PuTTY, locate the file *dbseckey.ppk*.
 
-![Troubleshooting](./images/Lab000_Step2_T.png "")
+In PuTTY, go to the (**Connection** -> **SSH** -> **Auth**) menu. In the field *Private key file for authentication*, you will Browse for the private key file *dbseckey.ppk* which you just unzipped. 
 
-### Connect from Mac (or Unix-like machines) 
+![Choose private key](./images/Lab000_Step1_3.png )
+
+Additionally you can specify a keepalive of 10 seconds to prevent disconnections.
+
+![Keepalive](./images/Lab000_Step1_4.png "")
+
+Also enable compression for better performance.
+
+![Compression](./images/Lab000_Step1_5.png )
+
+Finally, and **only for secdb**, create the following **tunnel**. VNC connections are secure and only possible through an SSH tunnel. Please create the following SSH tunnel in secdb's connection:
+
+*	Source port : 5902
+*	Destination : localhost:5902
+
+![Tunnel](./images/Lab000_Step1_6.png )
+
+Do not forget to **save** each PuTTY configuration:
+
+![Save](./images/Lab000_Step1_7.png )
+
+
+### Connect from Mac or Linux or Windows 10 Power Shell
 
 If you are using Linux, Mac or some bash terminal, you will need to use the downloaded private key in Open SSH format (*dbseckey.pub*).
 
@@ -77,21 +96,9 @@ Use the actual IP address for each server to create each terminal session:
 
 The syntax to create an SSH tunnel to secdb enabling a VNC connection should be (**Remember to use your own IP address**):
 
-    $ ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
+  ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
 
 ## Step 3: Create a GUI connection to secdb's desktop
-
-### For Windows Users using the Windows Access Package
-
-Ensure an SSH session is established with **secdb** and drag&drop **secdb.vnc** into **VNC-Viewer.exe** 
-
-![Open VNC-Viewer.exe](images/Lab000_Step3_1.png "")
-
-A VNC session should appear.
-
-![drag&drop secdb.vnc](images/Lab000_Step3_2.png "")
-
-### Connect from Mac (or Unix-like machines)
 
 For some labs, it will be easier to use a VNC connection to secdb. To do this, first connect using PuTTY to create the SSH tunnel and then launch a VNC client such as TigerVNC Viewer and connect to **localhost:2**
 
@@ -103,10 +110,9 @@ When asked for a password, enter **oracle**.
 
 *Note: In case you need to work on the command line outside VNC, you can use WinSCP or another tool to copy files to your local computer. Connect as oracle and specify the private key to authenticate.*
 
-### Now, you can start the workshop labs!
+Now, you can start the workshop labs.
 
 ## Acknowledgements
 
 - **Authors** - Adrian Galindo, PTS LAD & François Pons, PTS EMEA - Database Product Management - May 2020.
-- **Updates** - Robert Ross & Tim Pirog, NA Tech PreSales - Named-MM ECA - September 2020
 - **Credits** - This lab is based on materials provided by Oracle Database Security Product Management.
