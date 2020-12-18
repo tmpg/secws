@@ -65,19 +65,19 @@ To rule out connectivity problems, use the **Workshop Connectivity Test System**
 
 ### Connect from Mac (or Unix-like machines) 
 
-If you are using Linux, Mac or some bash terminal, you will need to use the downloaded private key in Open SSH format (*dbseckey.pub*).
+If you are using Linux, Mac or some bash terminal, you will need to use the downloaded private key in Open SSH format (*dbseckey.key*).
 
-To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the dbseckey.pub file):
+To connect to the dbclient or secdb servers from command line, use the following syntax (change the path to the directory holding the dbseckey.key file):
 
     $ cd /<path-to-keys-folder>/
 
 Use the actual IP address for each server to create each terminal session:
 
-    $ ssh -i dbseckey.pub oracle@129.213.112.147
+    $ ssh -i dbseckey.key oracle@129.213.112.147
 
 The syntax to create an SSH tunnel to secdb enabling a VNC connection should be (**Remember to use your own IP address**):
 
-    $ ssh -L 5902:localhost:5902 -i .ssh/dbseckey.pub oracle@129.213.112.147
+    $ ssh -L 5902:localhost:5902 -i .ssh/dbseckey.key oracle@129.213.112.147
 
 ## Step 3: Create a GUI connection to secdb's desktop
 
